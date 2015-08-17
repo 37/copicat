@@ -1,0 +1,27 @@
+extends ../partials/skeleton
+
+block prescript
+	script(type='text/javascript').
+		//var items = JSON.stringify(!{data});
+		var data = !{JSON.stringify(items)};
+		console.log(data);
+
+block content
+
+	if user
+		h3 Admin
+		h3 Products:
+		pre !{JSON.stringify(data)}
+
+	else
+		.container
+			h1  Wanna fite m8?
+				p Log in first.
+				p
+					a.btn.btn-primary(href="/login") Login
+				p
+					span.small I don't have an account?
+					span &nbsp;
+					a.small(href="/register") Get 1337.
+
+block scripts

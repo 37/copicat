@@ -1,0 +1,8 @@
+{
+  "name": "Fiteme",
+  "description": "An application build for Unihack 2015",
+  "repository": "https://github.com/LovelyHorse/fiteme.git",
+  "logo": "https://github.com/LovelyHorse/fiteme.png",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/node"
+}
