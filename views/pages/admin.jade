@@ -2,16 +2,19 @@ extends ../partials/skeleton
 
 block prescript
 	script(type='text/javascript').
-		//var items = JSON.stringify(!{data});
-		var data = !{JSON.stringify(items)};
-		console.log(data);
 
 block content
 
 	if user
 		h3 Admin
 		h3 Products:
-		pre !{JSON.stringify(data)}
+		#results
+		.grid
+			each item in items
+				.item(data-src="#{item.link}")
+					img.item-img(src="#{item.image}")
+					h3.item-price= item.price
+
 
 	else
 		.container
@@ -25,3 +28,34 @@ block content
 					a.small(href="/register") Get 1337.
 
 block scripts
+	script(type='text/javascript').
+		$(function(){
+			$('.item').on('click', function(e){
+				var parameters = {
+					url: $(this).attr('data-src')
+				};
+				console.log('sending AJAX request:');
+				console.log('Data is: ' + $(this).attr('data-src'));
+				$.get( '/api', parameters, function(data) {
+					$('#results').html(data);
+				});
+			});
+		});
+
+		// Update DOM functions | Looking pretty
+		$(document).ready(function(){
+			console.log('running shit');
+			var images = $('.item-img');
+			for (i= 0; i < images.length; i++) {
+				var height = $(images[i]).width();
+				$(images[i]).css({
+					height: height
+				});
+			}
+
+			var prices = $('.item-price');
+			for (j = 0; j < prices.length; j++) {
+				var temp = $(prices[j]).text().replace('US', '');
+				$(prices[j]).text(temp)
+			}
+		});

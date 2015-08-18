@@ -13,11 +13,11 @@ var x = Xray().driver(phantom());
 // A render function that will render our page and provide the values of the
 // fields, as well as any situation-specific Locals.
 
-function renderForm (items, req, res, locals){
+function renderForm (data, req, res, locals){
 
 	res.render('pages/admin', extend({
 		title: 'Admin',
-		items: items,
+		items: data,
 		csrfToken: req.csrfToken()
 	}, locals || {} ));
 }
@@ -30,28 +30,43 @@ module.exports = function loader(){
 
 	// LOAD PAGE -	renderForm (req, res);
 	// Capture all parametised requests, the form library will regotiate between them
-	router.all ('/', stormpath.loginRequired, function(req, res){
 
+	//DEFAULT LOAD
+	router.all ('/', stormpath.loginRequired, function(req, res){
 
 		url = 'http://superdeals.aliexpress.com/en?spm=2114.11010108.21.1.9F0sCN';
 
 		console.log('begin scraping!');
 
-		x(url, x('.product-list', ['.list-items']), {
-			name: '.pro-msg .pro-name',
-			image: '.pro-msg .pro-img img@src',
-			price: '.pro-msg .pro-price b',
-			link: '.pro-msg .pro-name@href'
-			}) (function(err, result) {
-		  if (err) return done(err);
-			console.log('checking data:');
-			var data = JSON.stringify(result);
-			console.log('results:' + data);
+		x(url, '.list-items', [
+			{
+				name: '.pro-msg .pro-name',
+				image: '.pro-msg .pro-img img@src',
+				price: '.pro-msg .pro-price b',
+				link: '.pro-msg .pro-name@href'
+			}
+		]) ( function(err, result) {
+			if (err){
+		  		console.log('error: ' + err);
+			} else {
+				console.log('checking data:');
+				var data = result;
+				console.log('data collecte.');
 
-			var items = 'blank';
-			renderForm (items, req, res);
-		})
+				var items = 'blank';
+
+				//for (i=0; i < data.length; i++){
+				//	var item = data[i];
+				//	console.log(item.link);
+
+					// Crawl the individual page links, this is going to take a F#CKLOAD of time.
+				//}
+
+				renderForm (data, req, res);
+			}
+		});
 	});
+
 
 	// This is an error handler for this router
 
