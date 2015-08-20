@@ -19,25 +19,32 @@ module.exports = function loader(){
         var url = req.query.url;
         console.log(url);
 
-        x(url, '.product-info-main',
+        x(url, '#bd-inner',
 			{
 				name: '.product-name',
 				images: x('.image-nav', ['.image-nav-item span img@src']),
+				rating: '#product-star b',
+				discountPrice: '#sku-discount-price',
 				price: '.total-price',
-				select: x(x('.product-info-operation .product-info-sku', ['dl']), {
+				select: x('#product-info-sku dl', [{
                     type: 'dt',
                     options: x('dd ul li', [{
-                        label: 'a span',
+                        labelSize: 'a span',
+                        labelColor: 'a@title',
+						labelImage: 'a img@src',
                         id: 'a@id'
                     }]),
-                })
+                }]),
+				tags: x('#product-desc .ui-box-body .ui-attr-list', [{
+					label: 'dt',
+					content: 'dd'
+				}])
 			}
 		) ( function(err, product) {
 			if (err){
 		  		console.log('error: ' + err);
 			} else {
-				console.log('received initial data; going deeper!');
-				console.log('data: ' + product);
+				console.log('received initial data;');
 				var items = 'blank';
 
 				//for (i=0; i < data.length; i++){

@@ -1,6 +1,8 @@
 extends ../partials/skeleton
 
 block prescript
+	script(type='text/javascript', src='/scripts/formFunctions.js')
+	script(type='text/javascript', src='/scripts/getXrate.js')
 	script(type='text/javascript').
 
 block content
@@ -8,7 +10,18 @@ block content
 	if user
 		h3 Admin
 		h3 Products:
-		#results
+		#lightbox
+			.innerbox
+				form(class="view-product", action="#", role="form", method="POST")
+					i.material-icons.exitbtn &#xE14C;
+					.imagebox
+					.product
+					.submit
+						button(type='submit')
+				.loading
+					h1 Loading...
+
+
 		.grid
 			each item in items
 				.item(data-src="#{item.link}")
@@ -30,14 +43,25 @@ block content
 block scripts
 	script(type='text/javascript').
 		$(function(){
+			var usdAud = getRate('AUD');
+
 			$('.item').on('click', function(e){
 				var parameters = {
 					url: $(this).attr('data-src')
 				};
 				console.log('sending AJAX request:');
 				console.log('Data is: ' + $(this).attr('data-src'));
+				showHideProduct();
 				$.get( '/api', parameters, function(data) {
-					$('#results').html(data);
+					// DATA returned!
+					console.log(data);
+					// populate form
+					populateForm(data, usdAud);
+
+					// hide loading animation
+					$('#lightbox .loading').css({
+						display: 'none'
+					});
 				});
 			});
 		});

@@ -51,7 +51,7 @@ module.exports = function loader(){
 			} else {
 				console.log('checking data:');
 				var data = result;
-				console.log('data collecte.');
+				console.log('data collected.');
 
 				var items = 'blank';
 
