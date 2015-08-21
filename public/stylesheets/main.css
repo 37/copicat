@@ -142,6 +142,7 @@ img.logomain {
 .innerbox .view-product {
     min-height: 400px;
     background-color: white;
+    float: left;
 }
 
 .exitbtn {
@@ -169,11 +170,59 @@ img.logomain {
     margin-left:1.25%;
 }
 
+.imagebox .image-line {
+    width: 50%;
+    float: left;
+    padding: 2px;
+    position: relative;
+}
+
+.imagebox .image-line i.delete-option {
+    position: absolute;
+    top: -6px;
+    right: 27px;
+    background-color: #FF6161;
+    border-radius: 15px;
+    color: #FFFFEC;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 0px 3px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 0px 3px 0px rgba(50, 50, 50, 0.5);
+}
+
+.image-line img {
+    width: 100%;
+}
+
 .productbox .option-line {
     width: 45%;
     float: left;
     margin-right: 5%;
+    position: relative;
 }
+
+.productbox .option-line i.delete-option {
+    position: absolute;
+    top: 5px;
+    right: -10px;
+    background-color: #444;
+    border-radius: 15px;
+    color: #FFFFEC;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.productbox .option-line i.delete-option:hover {
+    color: #FF6161;
+}
+
 .productbox .option-line h3,
 .productbox .option-line h3 input {
     width: 100%;
@@ -204,7 +253,7 @@ img.logomain {
     border: none;
     font-size: 30px;
     line-height: 40px;
-    margin-top: 100px;
+    margin-top: 50px;
     padding-bottom: 20px;
     border-bottom: 2px solid #444;
     box-sizing: content-box;
@@ -219,7 +268,20 @@ img.logomain {
     margin-top: 10px;
     float: right;
 }
-.submit btn
+
+.submit {
+    text-align:right;
+}
+
+.submit button {
+    width: 25%;
+    margin-right: 12.5%;
+    padding: 10px;
+    background-color: transparent;
+    border: 3px solid #444;
+    box-shadow: none;
+    font-size: 20px;
+}
 
 
 /* MEDIA CSS */
