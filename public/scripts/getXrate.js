@@ -1,7 +1,4 @@
-function getRate(currency) {
-    if (currency == 'AUD'){
-        var usdAud;
-    }
+function getRate(callback) {
 
     // set endpoint and your access key
     endpoint = 'convert';
@@ -19,7 +16,7 @@ function getRate(currency) {
 
             // access the conversion result in json.result
             var usdAud = json.quotes.USDAUD;
-            console.log('rate: ' + usdAud);
+            callback(usdAud);
         }
     });
 };
