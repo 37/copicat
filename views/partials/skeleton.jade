@@ -30,7 +30,40 @@ html
 								img(src="images/man-dark.png")
 							li
 								img(src="images/woman-dark.png")
+							li
+								input.site-search
+								i#search-button.material-icons search
 			#maincontent
 				block content
 
 		block scripts
+
+		script(type='text/javascript').
+			$(document).on('click', '#search-button', function() {
+				var button = $(this);
+				var searchbox = $('.site-search');
+				if ($(button).hasClass('active')) {
+
+					$(searchbox).animate({
+						width:'0'
+					},350).queue(function (next) {
+						$(this).css('display', 'none');
+						next();
+					});
+
+					$(button).removeClass('active');
+
+				} else {
+
+					$(searchbox).css({
+							display: 'block'
+					});
+
+					$(searchbox).animate({
+						width:'300px'
+					},350);
+
+					$(searchbox).focus();
+					$(button).addClass('active');
+				}
+			});

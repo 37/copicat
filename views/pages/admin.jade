@@ -66,6 +66,30 @@ block scripts
 				var selected = $(this);
 				var category = $(selected).attr('data-category');
 				console.log('Call API for category: ' + category);
+
+				// Set URL params based on category chosen
+				var parameters = {
+					url: category
+				};
+				console.log('sending AJAX request:');
+				console.log('Data is: ' + category);
+
+				// (TODO:) EDIT DOM HERE - clear old elements, add new & set loading animation
+
+				$.get( '/api', parameters, function(data) {
+
+					// DATA returned!
+					console.log('new category data has been returned: ');
+
+					// populate form
+
+
+					// hide loading animation
+					//$(<loading anim>).css({
+					//	display: 'none'
+					//});
+
+				});
 			});
 
 			var exchangeRate;
