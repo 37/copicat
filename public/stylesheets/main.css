@@ -170,6 +170,35 @@ img.logomain {
     margin-left:1.25%;
 }
 
+/* Interface stylings */
+
+.accordion-title {
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+.accordion-title i {
+    float: right;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.accordion-section {
+    display: none;
+    width: 100%;
+    float: left;
+}
+
+.accordion-section.active {
+    display: block;
+}
+
+/* Imagebox stylings */
 .imagebox .image-line {
     width: 50%;
     float: left;
@@ -178,9 +207,10 @@ img.logomain {
 }
 
 .imagebox .image-line i.delete-option {
+    display: none;
     position: absolute;
-    top: -6px;
-    right: 27px;
+    top: 3px;
+    right: 3px;
     background-color: #FF6161;
     border-radius: 15px;
     color: #FFFFEC;
@@ -194,10 +224,16 @@ img.logomain {
     box-shadow:         0px 0px 3px 0px rgba(50, 50, 50, 0.5);
 }
 
+.imagebox .image-line:hover i.delete-option {
+  display: block;
+}
+
 .image-line img {
     width: 100%;
 }
 
+
+/* Product option styling*/
 .productbox .option-line {
     width: 45%;
     float: left;
@@ -205,18 +241,27 @@ img.logomain {
     position: relative;
 }
 
-.productbox .option-line i.delete-option {
+.option-line input {
+    border: none;
+    padding-left: 10px;
+}
+
+.productbox .option-line h3 > i.delete-option {
     position: absolute;
-    top: 5px;
-    right: -10px;
-    background-color: #444;
-    border-radius: 15px;
-    color: #FFFFEC;
-    font-size: 20px;
+    display: none;
+    top: 22px;
+    right: 1px;
+    cursor: pointer;
+    color: #444;
     height: 30px;
     width: 30px;
-    text-align: center;
     line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.productbox .option-line h3:hover > i.delete-option {
+    display: block;
 }
 
 .productbox .option-line i.delete-option:hover {
@@ -244,9 +289,62 @@ img.logomain {
     height: 40px;
     line-height: 40px;
     float: left;
-    width:calc(100% - 40px);
+    width:calc(100% - 80px);
 }
 
+.productbox .option-line .option i {
+  float: right;
+  display: none;
+  cursor: pointer;
+  background-color: #444;
+  border-radius: 15px;
+  color: #FFFFEC;
+  font-size: 20px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  line-height: 30px;
+  margin: 5px;
+}
+
+.productbox .option-line .option:hover i {
+  display: block;
+}
+
+/* Product tag styling */
+
+.tag-line {
+    width: calc(50% - 5px);
+    height: 40px;
+    float: left;
+    padding: 5px;
+    margin: 2.5px;
+    background-color: #FFFF67;
+    border-radius: 5px;
+}
+
+.tag-line i {
+    display: none;
+    float: right;
+    line-height: 30px;
+    margin: 0 5px;
+}
+
+.tag-line:hover i {
+    display: block;
+}
+
+.tag-line input {
+    width: calc(100% - 40px);
+    line-height: 30px;
+    height: 30px;
+    float: left;
+    background-color: rgba(255,255,255,0.5);
+    padding: 0 5px;
+    border: none;
+}
+
+/* Product general element styling */
 .product-title {
     width: 100%;
     height: 40px;
