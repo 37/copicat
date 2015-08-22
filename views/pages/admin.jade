@@ -8,8 +8,6 @@ block prescript
 block content
 
 	if user
-		h3 Admin
-		h3 Products:
 		#lightbox
 			.backdrop
 			.innerbox
@@ -21,13 +19,32 @@ block content
 						button(type='submit') Create product
 				.loading
 					h1 Loading...
-
-
 		.grid
-			each item in items
-				.item(data-src="#{item.link}")
-					img.item-img(src="#{item.image}")
-					h3.item-price= item.price
+			.grid-nav
+				ul
+					li
+						a(data-category="H" class="active") Home
+					li
+						a(data-category="MS") Male Shirts
+					li
+						a(data-category="MJ") Male Jackets
+					li
+						a(data-category="MA") Male Accessories
+					li
+						a(data-category="MW") Male Watches
+					li
+						a(data-category="FS") Female Shirts
+					li
+						a(data-category="FJ") Female Jackets
+					li
+						a(data-category="FA") Female Accessories
+					li
+						a(data-category="FW") Female Watches
+			.grid-content
+				each item in items
+					.item(data-src="#{item.link}")
+						img.item-img(src="#{item.image}")
+						h3.item-price= item.price
 
 
 	else
@@ -44,6 +61,13 @@ block content
 block scripts
 	script(type='text/javascript').
 		$(function(){
+
+			$(document).on('click', '.grid-nav li a', function(e){
+				var selected = $(this);
+				var category = $(selected).attr('data-category');
+				console.log('Call API for category: ' + category);
+			});
+
 			var exchangeRate;
 			$('.item').on('click', function(e){
 				var parameters = {

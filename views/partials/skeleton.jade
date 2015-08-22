@@ -5,6 +5,7 @@ html
 		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
 		link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
 		link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto')
 		link(rel='stylesheet', href='/stylesheets/main.css')
 		link(rel='stylesheet', href='http://openfontlibrary.org/face/8bit-wonder', type='text/css', media='screen')
 		script(type='text/javascript', src='//code.jquery.com/jquery-2.1.4.min.js')
@@ -13,15 +14,22 @@ html
 		block prescript
 	body
 		#mainbody
-			nav(class=['navbar', 'navbar-inverse'])
+			nav(class='navbar grid')
 				div.container-fluid
 					div.navbar-header
 					div(class="navbar-collapse collapse")
+						ul(class=['navbar-nav', 'nav'])
+							li
+								.logobox
+									img(class="logomain", src="images/cat-head.png")
+									p Copicat
 						ul(class=['navbar-right', 'navbar-nav', 'nav'])
 							li
-								a.navbar-icon(href="#") Categories
-								a.navbar-icon(href="") Logo
-								// img(class="logomain",src="images/logo_transparent.gif")
+								p Shop
+							li
+								img(src="images/man-dark.png")
+							li
+								img(src="images/woman-dark.png")
 			#maincontent
 				block content
 

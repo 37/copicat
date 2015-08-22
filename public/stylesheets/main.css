@@ -7,30 +7,27 @@ body {
   font-weight: normal;
   font-style: normal;
   background-color: #efefef;
+  font-family: 'Roboto', sans-serif;
 }
 
 #mainbody {
 }
 
 #mainbody .navbar {
+  margin-top:60px;
+  margin-bottom: 200px;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
+  font-size: 16px;
   border-radius: 0;
 }
 
-.nav,
-.nav li {
-  width: 100%;
-}
 
 #mainbody .navbar-icon {
   font-weight: 600;
   display: inline-block;
 }
 
-.navbar-icon:last-child {
-  float: right;
-}
 
 #maincontent {
   float: left;
@@ -38,17 +35,34 @@ body {
   width: 100%;
 }
 
-.logobox {
+.logobox,
+.logobox img,
+.logobox p {
+  float: left;
+  display: inline-block;
+}
+.logobox img {
   position: absolute;
-  left: calc(50% - 90px);
+  width: 400px;
+  height: 400px;
+  z-index: 0;
 }
-.logobox a {
-  padding: 0!important;
-}
-img.logomain {
-  height: 50px;
+.logobox p {
+  font-size:50px;
+  position:relative;
+  z-index:10;
 }
 
+.navbar-right li img{
+  height: 50px;
+  cursor: pointer;
+}
+
+.navbar-nav p {
+  line-height: 50px;
+  color: #333;
+  padding: 0 10px;
+}
 /* -------------------------------
   |<- Individual page styling
 --------------------------------*/
@@ -59,13 +73,54 @@ img.logomain {
     margin: 0 10%;
     float: left;
 }
-.grid .item {
-    width: calc(20% - 4px);
+
+.grid-content,
+.grid-nav {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+.grid-nav {
+    z-index: 10;
+}
+
+/* Grid nav stling */
+.grid-nav ul {
+    padding: 0;
+    text-align: right;
+}
+
+.grid-nav ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+}
+
+.grid-nav ul li a {
+    color: rgba(0,0,0,0.5);
+    font-size: 16px;
+    cursor: pointer
+}
+
+.grid-nav ul li a:hover,
+.grid-nav ul li a.active {
+    color: #444;
+    text-decoration: none;
+}
+
+/* Grid content styling */
+.grid-content .item {
+    width: calc(25%- 6px);
     background-color: #fff;
     float: left;
     padding: 50px;
-    margin: 2px;
+    margin: 3px;
     position: relative;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
 }
 
 .item .item-img{
