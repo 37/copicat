@@ -24,26 +24,48 @@ function showHideProduct(){
 }
 
 function showHideGrid(){
-    var grid = $('.grid-content');
-    var loader = $('.grid-content > .loading');
+    var grid = $('#grid-content');
+    var loader = $('#grid-content > .loading');
     if ($(grid).hasClass('active')) {
         // TODO: style deletion of elements to be directional and heirarchial.
-        $(grid).empty();
+        $(grid).on('hidden.zmd.hierarchicalDisplay', function () {
+            $(grid).empty();
+        });
+
+        $(grid).hierarchicalDisplay('toggle');
+
         $(loader).css({ display: 'block' });
         $(grid).removeClass('active');
 
     } else {
-        $(loader).css({ display: 'none' });
-        $(grid).addClass('active');
+        console.log('hideShow called.');
+
+        $(grid).hierarchicalDisplay('toggle');
     }
 }
 
+function squareImages(){
+    console.log('running shit');
+    var images = $('.item-img');
+    for (i= 0; i < images.length; i++) {
+        var height = $(images[i]).width();
+        $(images[i]).css({
+            height: height
+        });
+    }
+
+    var prices = $('.item-price');
+    for (j = 0; j < prices.length; j++) {
+        var temp = $(prices[j]).text().replace('US', '');
+        $(prices[j]).text(temp)
+    }
+}
 
 function deleteElement(element) {
   $(element).remove();
 }
 
-function populateForm(data, rate) {
+function populateForm(data, rate, catset) {
 
     // Set up data structure
     var form = $('#lightbox form');
@@ -52,7 +74,7 @@ function populateForm(data, rate) {
 
     // Set up variables
     var images = data.images, select = data.select, tagsdata = data.tags;
-    var options = '', imageGrid = '', tags = '', price;
+    var options = '', imageGrid = '', tags = '', price, category = '';
 
     // Set up element containers
     var productElements = document.createElement('div');
@@ -176,6 +198,71 @@ function populateForm(data, rate) {
         '</div>';
     }
 
+    // GENERATE CATEGORY SELECTION
+
+    if (catset) {
+        var IFH = "", IFMS = "", IFMJ = "", IFMA = "", IFMW = "", IFWS = "", IFWJ = "", IFWD = "", IFWA = "", IFWW = "";
+        switch(mode) {
+            case 'H': //Home
+                IFH = 'required';
+                break;
+
+            case 'MS': // Male shirts
+                IFMS = 'required';
+                break;
+
+            case 'MJ': // Male Jackets
+                IFMJ = 'required';
+                break;
+
+            case 'MA': // Male Accessories
+                IFMA = 'required';
+                break;
+
+            case 'MW': // Male Watches
+                IFMW = 'required';
+                break;
+
+            case 'WS': // Female Shirts
+                IFWS = 'required';
+                break;
+
+            case 'WJ': // Female Jackets
+                IFWJ = 'required';
+                break;
+
+            case 'WD': // Female Dresses
+                IFWD = 'required';
+                break;
+
+            case 'WA': // Female Accessories
+                IFWA = 'required';
+                break;
+
+            case 'WW': // Female Watches
+                IFWW = 'required';
+                break;
+
+            default: // None Applicable
+                console.log('Err: no applicable category.')
+                break;
+        }
+
+        category += '<select name="category">'
+            '<option value="Mens > Shirts" ' + IFMS + '>Mens > Shirts</option>' +
+            '<option value="Mens > Jackets" ' + IFMJ + '>Mens > Jackets</option>' +
+            '<option value="Mens > Accessories" ' + IFMA + '>Mens > Accessories</option>' +
+            '<option value="Mens > Watches" ' + IFMW + '>Mens > Watches</option>' +
+            '<option value="Womens > Shirts" ' + IFWS + '>Womens > Shirts</option>' +
+            '<option value="Womens > Jackets" ' + IFWJ + '>Womens > Jackets</option>' +
+            '<option value="Womens > Dresses" ' + IFWD + '>Womens > Dresses</option>' +
+            '<option value="Womens > Accessories" ' + IFWA + '>Womens > Accessories</option>' +
+            '<option value="Womens > Watches" ' + IFWW + '>Womens > Watches</option>' +
+        '</select>';
+    }
+
+
+
     // Fill element containers
     productElements.innerHTML =
     '<input name="title" class="product-title" value="' + data.name + '" />' +
@@ -191,7 +278,8 @@ function populateForm(data, rate) {
      imageElements.innerHTML =
      imageGrid +
      '<div class="product-highlights">' +
-        '<input name="title" class="product-price" value="$' + Math.round(price * 100) / 100 + '" />' +
+        '<input name="price" class="product-price" value="$' + Math.round(price * 100) / 100 + '" />' +
+        '<input name="rating" class="product-rating" value="' + data.rating + '" />' +
      '</div>';
 
      // Populate page with element containers

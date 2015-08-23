@@ -41,19 +41,23 @@ module.exports = function loader(){
 			        url = 'http://www.aliexpress.com/af/category/200214006.html?shipCountry=AU&shipFromCountry=&shipCompanies=&SearchText=&minPrice=&maxPrice=&minQuantity=&maxQuantity=&isFreeShip=y&isFavorite=y&isRtl=all&isOnSale=n&isBigSale=n&similar_style=n&similar_style_id=&isAtmOnline=n&CatId=200214006&isAffiliate=y&needQuery=n&tag=&isOverseaTag=n';
 			        break;
 
-			    case 'FS': // Female Shirts
+			    case 'WS': // Female Shirts
 			        url = 'http://www.aliexpress.com/af/category/200001648.html?isrefine=y&site=glo&SortType=total_tranpro_desc&tag=&isFavorite=y&isAffiliate=y&shipCountry=AU&needQuery=n&isFreeShip=y';
 			        break;
 
-			    case 'FD': // Female Dresses
+			    case 'WJ': // Female Jackets
+			        url = 'http://www.aliexpress.com/af/category/200000775.html?isrefine=y&site=glo&SortType=default&tag=&isFavorite=y&isAffiliate=y&shipCountry=AU&needQuery=n&isFreeShip=y';
+			        break;
+
+			    case 'WD': // Female Dresses
 			        url = 'http://www.aliexpress.com/af/category/200003482.html?site=glo&SortType=total_tranpro_desc&tag=&isFavorite=y&isAffiliate=y&shipCountry=AU&needQuery=n&isFreeShip=y';
 			        break;
 
-			    case 'FA': // Female Accessories
+			    case 'WA': // Female Accessories
 			        url = 'http://www.aliexpress.com/af/category/200000724.html?isrefine=y&site=glo&SortType=total_tranpro_desc&tag=&isFavorite=y&isAffiliate=y&shipCountry=AU&needQuery=n&isFreeShip=y';
 			        break;
 
-			    case 'FW': // Female Watches
+			    case 'WW': // Female Watches
 			        url = 'http://www.aliexpress.com/af/category/200214031.html?isrefine=y&site=glo&g=n&SortType=total_tranpro_desc&tag=&isFavorite=y&isAffiliate=y&shipCountry=AU&needQuery=n&isRtl=yes&isFreeShip=y';
 			        break;
 

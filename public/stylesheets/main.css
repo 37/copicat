@@ -98,7 +98,7 @@ body {
     float: left;
 }
 
-.grid-content,
+#grid-content,
 .grid-nav {
     width: 100%;
     float: left;
@@ -134,8 +134,8 @@ body {
 }
 
 /* Grid content styling */
-.grid-content .item {
-    width: calc(25%- 6px);
+#grid-content .item {
+    width: calc(20%- 6px);
     background-color: #fff;
     float: left;
     padding: 50px;
@@ -147,7 +147,7 @@ body {
     box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
 }
 
-.grid-content .loading {
+#grid-content .loading {
     display: none;
 }
 .item .item-img{

@@ -5,6 +5,7 @@ block prescript
 	script(type='text/javascript', src='/scripts/getXrate.js')
 	script(type='text/javascript').
 
+
 block content
 
 	if user
@@ -25,29 +26,29 @@ block content
 					li
 						a(data-category="H" class="active") Home
 					li
-						a(data-category="MS") Male Shirts
+						a(data-category="MS") Mens Shirts
 					li
-						a(data-category="MJ") Male Jackets
+						a(data-category="MJ") Mens Jackets
 					li
-						a(data-category="MA") Male Accessories
+						a(data-category="MA") Mens Accessories
 					li
-						a(data-category="MW") Male Watches
+						a(data-category="MW") Mens Watches
 					li
-						a(data-category="FS") Female Shirts
+						a(data-category="WS") Womens Shirts
 					li
-						a(data-category="FJ") Female Jackets
+						a(data-category="WJ") Womens Jackets
 					li
-						a(data-category="FA") Female Accessories
+						a(data-category="WJ") Womens Jackets
 					li
-						a(data-category="FW") Female Watches
+						a(data-category="WA") Womens Accessories
+					li
+						a(data-category="WW") Womens Watches
 
-			.grid-content.active
+			#grid-content.active(data-animation="hierarchical-display")
 				each item in items
 					.item(data-src="#{item.link}")
 						img.item-img(src="#{item.image}")
 						h3.item-price= item.price
-				.loading
-					h1 Loading...
 
 
 	else
@@ -79,7 +80,6 @@ block scripts
 				console.log('Data is: ' + category);
 
 				// (TODO:) EDIT DOM HERE - clear old elements, add new & set loading animation
-
 				showHideGrid();
 
 				$.get( '/api', parameters, function(data) {
@@ -94,19 +94,17 @@ block scripts
 						} else {
 							image = data[i].imagesrc;
 						}
-						var item
 						var item =
-							'<div class="item" data-src="' + data[i].link + '">' +
+							'<div class="item" data-category="' + category + '" data-src="' + data[i].link + '">' +
 								'<img class="item-img" src="' + image + '" />' +
 								'<h3 class="item-price">' + data[i].price + '</h3>' +
 							'</div>'
 
-						$('.grid-content').append(item);
+						$('#grid-content').append(item);
 					}
 
-					// hide loading animation
-					showHideGrid();
-
+					squareImages();
+					$('#grid-content').hierarchicalDisplay('toggle');
 				});
 			});
 
@@ -137,18 +135,5 @@ block scripts
 
 		// Update DOM functions | Looking pretty
 		$(document).ready(function() {
-			console.log('running shit');
-			var images = $('.item-img');
-			for (i= 0; i < images.length; i++) {
-				var height = $(images[i]).width();
-				$(images[i]).css({
-					height: height
-				});
-			}
-
-			var prices = $('.item-price');
-			for (j = 0; j < prices.length; j++) {
-				var temp = $(prices[j]).text().replace('US', '');
-				$(prices[j]).text(temp)
-			}
+			squareImages();
 		});
