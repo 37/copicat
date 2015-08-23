@@ -41,12 +41,14 @@ body {
   float: left;
   display: inline-block;
 }
+
 .logobox img {
   position: absolute;
   width: 400px;
   height: 400px;
   z-index: 0;
 }
+
 .logobox p {
   font-size:50px;
   position:relative;
@@ -71,6 +73,7 @@ body {
   border: none;
   border-bottom: 2px solid #999;
 }
+
 .navbar-right li i{
   line-height: 50px;
   font-size: 50px;
@@ -80,7 +83,8 @@ body {
 
 .navbar-nav p {
   line-height: 50px;
-  color: #333;
+  font-size: 50px;
+  color: #999999;
   padding: 0 10px;
 }
 /* -------------------------------
@@ -143,6 +147,9 @@ body {
     box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
 }
 
+.grid-content .loading {
+    display: none;
+}
 .item .item-img{
     width: 100%;
 }

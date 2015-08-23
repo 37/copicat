@@ -23,6 +23,22 @@ function showHideProduct(){
     }
 }
 
+function showHideGrid(){
+    var grid = $('.grid-content');
+    var loader = $('.grid-content > .loading');
+    if ($(grid).hasClass('active')) {
+        // TODO: style deletion of elements to be directional and heirarchial.
+        $(grid).empty();
+        $(loader).css({ display: 'block' });
+        $(grid).removeClass('active');
+
+    } else {
+        $(loader).css({ display: 'none' });
+        $(grid).addClass('active');
+    }
+}
+
+
 function deleteElement(element) {
   $(element).remove();
 }
@@ -43,14 +59,14 @@ function populateForm(data, rate) {
     var imageElements = document.createElement('div');
 
     // Generate converted price in AUD from USD
-    if (data.discountPrice != "" || typeof data.discountPrice !== 'undefined') {
+    if (data.discountPrice != "" && typeof data.discountPrice != 'undefined') {
         if (data.discountPrice.indexOf(" - ") > -1){
             var fromto = data.discountPrice.split(" - ");
             var amount = fromto[1]
         } else {
             var amount = data.discountPrice;
         }
-    } else if (data.price.indexOf("0.00") !=- 1 ){
+    } else if (data.price.indexOf("0.00") != - 1 ){
         if (data.price.indexOf("US") != -1){
             var unstripped = data.price;
             var amount = unstripped.replace('US $', '');

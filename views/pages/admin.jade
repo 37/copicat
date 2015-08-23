@@ -40,11 +40,14 @@ block content
 						a(data-category="FA") Female Accessories
 					li
 						a(data-category="FW") Female Watches
-			.grid-content
+
+			.grid-content.active
 				each item in items
 					.item(data-src="#{item.link}")
 						img.item-img(src="#{item.image}")
 						h3.item-price= item.price
+				.loading
+					h1 Loading...
 
 
 	else
@@ -71,29 +74,44 @@ block scripts
 				var parameters = {
 					url: category
 				};
+
 				console.log('sending AJAX request:');
 				console.log('Data is: ' + category);
 
 				// (TODO:) EDIT DOM HERE - clear old elements, add new & set loading animation
 
+				showHideGrid();
+
 				$.get( '/api', parameters, function(data) {
 
 					// DATA returned!
 					console.log('new category data has been returned: ');
-
 					// populate form
+					for (i = 0; i < data.length; i++) {
 
+						if (data[i].image){
+							image = data[i].image;
+						} else {
+							image = data[i].imagesrc;
+						}
+						var item
+						var item =
+							'<div class="item" data-src="' + data[i].link + '">' +
+								'<img class="item-img" src="' + image + '" />' +
+								'<h3 class="item-price">' + data[i].price + '</h3>' +
+							'</div>'
+
+						$('.grid-content').append(item);
+					}
 
 					// hide loading animation
-					//$(<loading anim>).css({
-					//	display: 'none'
-					//});
+					showHideGrid();
 
 				});
 			});
 
 			var exchangeRate;
-			$('.item').on('click', function(e){
+			$('.grid').on('click', '.item', function(e){
 				var parameters = {
 					url: $(this).attr('data-src')
 				};
@@ -118,7 +136,7 @@ block scripts
 		});
 
 		// Update DOM functions | Looking pretty
-		$(document).ready(function(){
+		$(document).ready(function() {
 			console.log('running shit');
 			var images = $('.item-img');
 			for (i= 0; i < images.length; i++) {
