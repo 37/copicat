@@ -1,19 +1,53 @@
-extends ../partials/skeleton
+doctype html
+html
+	head
+		title=title
+		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+		link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+		link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+		link(rel='stylesheet', href='/stylesheets/zmd.hierarchical-display.min.css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto')
+		link(rel='stylesheet', href='/stylesheets/main.css')
+		script(type='text/javascript', src='//code.jquery.com/jquery-2.1.4.min.js')
+		script(type='text/javascript', src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js')
+		script(type='text/javascript', src='/scripts/jquery.zmd.hierarchical-display.min.js')
 
-block content
+	body.landing
+		#mainbody
+			.landingbox
+				.slogan
+					p.feature Meow!
+					p Want to pay for your products, rather than their brand names?
+				ul
+					li
+						p Pick your shop to get started:
+					li.selection
+						p
+					li.nav-btn
+						img(class="maleshop")
+					li.nav-btn
+						img(class="femaleshop")
+				.placeholder
 
-	if user
-		a(href="/battle")
-			h1(class="letsfight") Fight Me!
-	else
-		.container
-			h1  Wanna fite m8?
-				p Log in first.
-				p
-					a.btn.btn-primary(href="/login") Login
-				p
-					span.small I don't have an account?
-					span &nbsp;
-					a.small(href="/register") Get 1337.
 
-block scripts
+
+		script(type='text/javascript').
+			$(document).ready(function(){
+				$('.landingbox').css({
+					marginTop: (($(window).height() / 2) - (($('.landingbox').height() / 2) + 50))
+				});
+
+				//$("li.nav-btn img").hover(function(){
+				//	if ($(this).hasClass('maleshop')) {
+				//		$('body').css("background-color", "rgb(0, 181, 236)");
+				//		$('.selection > p').text('Men');
+				//		$('.selection > p').animate({opacity : 1}, 200);
+				//	} else {
+				//		$('body').css("background-color", "rgb(234, 76, 137)");
+				//		$('.selection > p').text('Women');
+				//		$('.selection > p').animate({opacity : 1}, 200);
+				//	}
+				//}, function(){
+				//	$('body').css("background-color", "rgb(22, 34, 33)");
+				//});
+			});

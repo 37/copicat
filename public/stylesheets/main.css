@@ -4,18 +4,40 @@
 /* Main site skeleton */
 
 body {
-  font-weight: normal;
-  font-style: normal;
-  background-color: #efefef;
-  font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'Roboto', sans-serif;
+    -webkit-transition: background-color 200ms linear;
+    -moz-transition: background-color 200ms linear;
+    -o-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
 }
 
-#mainbody {
+body.landing {
+    /* background-color: rgb(22, 34, 33); */
+    background: url("/images/brick.png");
+    background-color: #EAEAEA;
+    background-size: 180px;
 }
 
+body.man {
+    background-color: rgb(0, 181, 236);
+}
+
+body.woman {
+    background-color: rgb(234, 76, 137);
+}
+
+.landing #mainbody {
+    background: url("/images/window-animation.gif") no-repeat;
+    float: left;
+    width: 100%;
+    background-position: 0px 220px;
+    padding-bottom: 100px;
+}
 #mainbody .navbar {
   margin-top:60px;
-  margin-bottom: 200px;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   font-size: 16px;
@@ -55,9 +77,33 @@ body {
   z-index:10;
 }
 
+.navbar-right li {
+    margin-left: 10px;
+}
+
 .navbar-right li img{
   height: 50px;
   cursor: pointer;
+}
+
+img.maleshop {
+    content:url("/images/man-light.png");
+}
+
+img.femaleshop {
+    content:url("/images/woman-light.png");
+}
+
+img.maleshop.active {
+    content:url("/images/man-dark.png");
+    background-color: white;
+    border-radius: 3px;
+}
+
+img.female.active {
+    content:url("/images/female-dark.png");
+    background-color: white;
+    border-radius: 3px;
 }
 
 .navbar-right li .site-search {
@@ -78,23 +124,77 @@ body {
   line-height: 50px;
   font-size: 50px;
   cursor: pointer;
-  color: #999;
+  color: #fff;
 }
 
 .navbar-nav p {
   line-height: 50px;
   font-size: 50px;
-  color: #999999;
+  color: #fff;
   padding: 0 10px;
 }
+
+/* -------------------------------
+  |<- Landing page styling
+--------------------------------*/
+
+.landingbox{
+    width: 800px;
+    margin: 0 calc(45% - 400px) 0 calc(55% - 400px);
+    float: left;
+    background-color: rgba(0,0,0,0.9);
+    padding: 50px;
+}
+
+.landingbox .slogan > p{
+    color: white;
+    font-size: 50px;
+    float: left;
+}
+
+.landingbox .slogan > p.feature {
+    color: yellow;
+}
+
+.landingbox ul {
+    padding: 0;
+}
+
+.landingbox ul li {
+    float: left;
+    display: inline-block;
+    height: 100px;
+}
+
+.landingbox ul li.selection {
+    margin-left: 50px;
+}
+.landingbox ul li:nth-child(3) {
+    margin-left:250px;
+    clear: both;
+}
+
+.landingbox ul li p {
+    line-height: 100px;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.landingbox ul li img {
+    float: left;
+    height: 100%;
+    cursor: pointer;
+}
+
+
 /* -------------------------------
   |<- Individual page styling
 --------------------------------*/
 
 /* Admin page */
 .grid {
-    width: 80%;
-    margin: 0 10%;
+    width: 60%;
+    margin: 0 20%;
     float: left;
 }
 
@@ -117,29 +217,28 @@ body {
 
 .grid-nav ul li {
     list-style: none;
-    display: inline-block;
     padding: 10px;
 }
 
 .grid-nav ul li a {
-    color: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.7);
     font-size: 16px;
     cursor: pointer
 }
 
 .grid-nav ul li a:hover,
 .grid-nav ul li a.active {
-    color: #444;
+    color: #fff;
     text-decoration: none;
 }
 
 /* Grid content styling */
 #grid-content .item {
-    width: calc(20%- 6px);
+    width: calc(25% - 20px);
     background-color: #fff;
     float: left;
     padding: 50px;
-    margin: 3px;
+    margin: 10px;
     position: relative;
     cursor: pointer;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
