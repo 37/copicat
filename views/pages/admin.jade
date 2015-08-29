@@ -68,6 +68,12 @@ block scripts
 
 			$(document).on('click', '.grid-nav li a', function(e){
 				var selected = $(this);
+
+				// Set active tabs
+				var previous = $('.grid-nav li a.active');
+				$(previous).removeClass('active');
+				$(selected).addClass('active');
+
 				var category = $(selected).attr('data-category');
 				console.log('Call API for category: ' + category);
 
@@ -86,6 +92,10 @@ block scripts
 
 					// DATA returned!
 					console.log('new category data has been returned: ');
+
+					// Set page category
+
+
 					// populate form
 					for (i = 0; i < data.length; i++) {
 
@@ -110,8 +120,9 @@ block scripts
 
 			var exchangeRate;
 			$('.grid').on('click', '.item', function(e){
+				var link = $(this).attr('data-src') + '';
 				var parameters = {
-					url: $(this).attr('data-src')
+					url: link
 				};
 				console.log('sending AJAX request:');
 				console.log('Data is: ' + $(this).attr('data-src'));
@@ -123,7 +134,8 @@ block scripts
 					// DATA returned!
 					console.log(data);
 					// populate form
-					populateForm(data, exchangeRate);
+
+					populateForm(data, exchangeRate, link);
 
 					// hide loading animation
 					$('#lightbox .loading').css({

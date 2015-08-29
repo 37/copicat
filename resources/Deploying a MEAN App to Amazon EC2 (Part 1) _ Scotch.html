@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1 -->
+<html itemscope="" itemtype="https://schema.org/" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<!--
+	                                 /$$               /$$
+	                                | $$              | $$
+	  /$$$$$$$  /$$$$$$$  /$$$$$$  /$$$$$$    /$$$$$$$| $$$$$$$  /$$   /$$
+	 /$$_____/ /$$_____/ /$$__  $$|_  $$_/   /$$_____/| $$__  $$| $$  | $$
+	|  $$$$$$ | $$      | $$  \ $$  | $$    | $$      | $$  \ $$| $$  | $$
+	 \____  $$| $$      | $$  | $$  | $$ /$$| $$      | $$  | $$| $$  | $$
+	 /$$$$$$$/|  $$$$$$$|  $$$$$$/  |  $$$$/|  $$$$$$$| $$  | $$|  $$$$$$$
+	|_______/  \_______/ \______/    \___/   \_______/|__/  |__/ \____  $$
+	                                                             /$$  | $$
+	                                                            |  $$$$$$/
+	                                                             \______/
+	                                 /$$               /$$
+	                                | $$              | $$
+	  /$$$$$$$  /$$$$$$$  /$$$$$$  /$$$$$$    /$$$$$$$| $$$$$$$
+	 /$$_____/ /$$_____/ /$$__  $$|_  $$_/   /$$_____/| $$__  $$
+	|  $$$$$$ | $$      | $$  \ $$  | $$    | $$      | $$  \ $$
+	 \____  $$| $$      | $$  | $$  | $$ /$$| $$      | $$  | $$
+	 /$$$$$$$/|  $$$$$$$|  $$$$$$/  |  $$$$/|  $$$$$$$| $$  | $$
+	|_______/  \_______/ \______/    \___/   \_______/|__/  |__/
+
+
+
+	                                 /$$               /$$
+	                                | $$              | $$
+	  /$$$$$$$  /$$$$$$$  /$$$$$$  /$$$$$$    /$$$$$$$| $$$$$$$
+	 /$$_____/ /$$_____/ /$$__  $$|_  $$_/   /$$_____/| $$__  $$
+	|  $$$$$$ | $$      | $$  \ $$  | $$    | $$      | $$  \ $$
+	 \____  $$| $$      | $$  | $$  | $$ /$$| $$      | $$  | $$
+	 /$$$$$$$/|  $$$$$$$|  $$$$$$/  |  $$$$/|  $$$$$$$| $$  | $$
+	|_______/  \_______/ \______/    \___/   \_______/|__/  |__/
+	-->
+	<title>Deploying a MEAN App to Amazon EC2 (Part 1) | Scotch</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="google-site-verification" content="NoKkRtzSguNO3Xd1cuhpVkUoh7n8mz-aofV9Ch4aS8w">
+
+	<!-- RSS -->
+	 <script async="" src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/analytics.js"></script><script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1440514537,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"f8bfbb1fa67b2ace095ca1d8ef160f69",petok:"0d73565bd6465b4163beffbb1184d4accdd379ac-1440852941-1800",betok:"9a00e442c46a61d58c1703dea12a29f6aa2302b5-1440852941-120",zone:"scotch.io",rocket:"m",apps:{}}];document.write('<script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=e9627cd26a/cloudflare.min.js"><'+'\/script>');}}catch(e){};
+//]]>
+</script><script type="text/javascript" src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/cloudflare.min.js"></script><style type="text/css"></style><style type="text/css">.cf-hidden { display: none; } .cf-invisible { visibility: hidden; }</style><script data-module="cloudflare/rocket" id="cfjs_block_d6d8bb8921" onload="CloudFlare.__cfjs_block_d6d8bb8921_load()" onerror="CloudFlare.__cfjs_block_d6d8bb8921_error()" onreadystatechange="CloudFlare.__cfjs_block_d6d8bb8921_readystatechange()" type="text/javascript" src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/rocket.js"></script>
+<link rel="alternate" type="application/rss+xml" title="Scotch - Developers bringing fire to the people." href="https://scotch.io/feed">
+
+	<!-- ICONS/TILES/WHATEVER REALLY NEED A MORE UNIVERSAL STANDARD -->
+	<link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" href="https://scotch.io/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-57.png">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-152.png">
+	<meta name="application-name" content="Scotch Scotch scotch">
+	<meta name="msapplication-TileImage" content="https://scotch.io/wp-content/themes/forty/img/icons/favicon-144.png">
+	<meta name="msapplication-TileColor" content="#2A2A2A">
+
+	<!-- MUST PLEASE EVERYONE -->
+				
+		<!-- SEARCH ENGINES -->
+		<meta name="author" content="Ahmed Haque">
+		<meta name="description" content="Introduction As someone who has trudged through many tutorials on the MEAN development stack, I’ve built many demo applications using some variation of localhost. Yet, when time came for me to move onto real-world deployments, I had a much tougher time finding guides straightforward enough to follow. In an effort to help future versions of […]">
+		<link rel="canonical" href="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch.html">
+
+		<!-- THE TWITTER MACHINE -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@scotch_io">
+		<meta name="twitter:creator" content="">
+		<meta name="twitter:title" content="Deploying a MEAN App to Amazon EC2 (Part 1)">
+		<meta name="twitter:description" content="Introduction As someone who has trudged through many tutorials on the MEAN development stack, I’ve built many demo applications using some variation of localhost. Yet, when time came for me to move onto real-world deployments, I had a much tougher time finding guides straightforward enough to follow. In an effort to help future versions of […]">
+		<meta name="twitter:image:src" content="https://cask.scotch.io/2015/07/deploy-mean-app-to-amazon-ec2.png">
+
+		<!-- FACESPACE -->
+		<meta property="fb:admins" content="579622216,709634581">
+		<meta property="fb:app_id" content="1389892087910588">
+		<meta property="og:url" content="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1">
+		<meta property="og:type" content="article">
+		<meta property="og:title" content="Deploying a MEAN App to Amazon EC2 (Part 1)">
+		<meta property="og:image" content="https://cask.scotch.io/2015/07/deploy-mean-app-to-amazon-ec2.png">
+		<meta property="og:description" content="Introduction As someone who has trudged through many tutorials on the MEAN development stack, I’ve built many demo applications using some variation of localhost. Yet, when time came for me to move onto real-world deployments, I had a much tougher time finding guides straightforward enough to follow. In an effort to help future versions of […]">
+		<meta property="og:site_name" content="Scotch">
+		<meta property="article:author" content="https://www.facebook.com/ahmed.f.haque">
+		<meta property="article:publisher" content="https://www.facebook.com/scotchdevelopment">
+
+		<!-- G++ -->
+		<meta itemprop="name" content="Deploying a MEAN App to Amazon EC2 (Part 1)">
+		<meta itemprop="description" content="Introduction As someone who has trudged through many tutorials on the MEAN development stack, I’ve built many demo applications using some variation of localhost. Yet, when time came for me to move onto real-world deployments, I had a much tougher time finding guides straightforward enough to follow. In an effort to help future versions of […]">
+		<meta itemprop="image" content="https://cask.scotch.io/2015/07/deploy-mean-app-to-amazon-ec2.png">
+
+		
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700">
+	<link rel="stylesheet" href="https://scotch.io/wp-content/themes/forty/build/styles.min.css">
+
+	<!-- BEGIN UGLY WP HEAD FORMATTING -->
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"https:\/\/scotch.io\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.4"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="mp-theme-css" href="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/theme.css" type="text/css" media="all">
+
+			
+			
+<script>
+	// GOOGLE ANALYTICS
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-36045075-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script async="" src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/count-data.js"></script><script type="text/javascript" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script type="text/javascript" async="" src="https://s3.buysellads.com/ac/bsa.js"></script><script type="text/javascript" async="" src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/embed.js"></script></head>
+<body class="single single-post postid-9984 single-format-standard">
+	<header id="site-header">
+		<nav class="main-nav container-fluid">
+			<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#" class="toggle-nav visible-xs visible-sm">
+				<span class="icon ion-ios-pint-outline"></span>
+			</a>
+
+			<ul class="text-right hidden-xs hidden-sm">
+				<li class="tutorial-nav">
+					<a href="https://scotch.io/tutorials">
+						Tutorials
+						<span class="icon ion-ios-arrow-down"></span>
+					</a>
+				</li>
+				<li><a href="https://scotch.io/courses">Courses</a></li>
+				<li><a href="https://scotch.io/bar-talk">Bar Talk</a></li>
+				<li><a href="http://shop.scotch.io/">Shop</a></li>
+				<li><a href="https://scotch-slack.herokuapp.com/">Join on Slack</a></li>
+			</ul>
+
+			<div class="main-nav-logo">
+				<a href="https://scotch.io/"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/scotch-logo-small.png" width="25" height="37"></a>
+			</div>
+
+			<ul class="hidden-xs hidden-sm">
+
+									<li>
+						<a class="signup-nav">Sign Up</a>/
+						<a class="login-nav">Login</a>
+					</li>
+								<li>
+					<form action="https://scotch.io/" method="GET" class="search-form" role="search">
+						<span class="icon ion-ios-search-strong"></span>
+						<input type="search" name="s" autocomplete="off">
+					</form>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="site-main">
+	<div class="site-wrapper">
+	<div class="site-canvas">
+
+	<div id="site-content">
+		<div class="overlay"></div>
+
+		<div id="mobile-menu">
+			<ul>
+				<li><a href="https://scotch.io/tutorials">Tutorials</a></li>
+				<li><a href="https://scotch.io/courses">Courses</a></li>
+				<li><a href="https://scotch.io/bar-talk">Bar Talk</a></li>
+			</ul>
+		</div>
+
+		<div id="tags-list">
+			<a href="https://scotch.io/tag/angular-js" class="topic-angular">
+				<span class="topic-img"></span>
+				<span class="topic-name">Angular</span>
+			</a>
+			<a href="https://scotch.io/tag/node-js" class="topic-node">
+				<span class="topic-img"></span>
+				<span class="topic-name">Node</span>
+			</a>
+			<a href="https://scotch.io/tag/laravel" class="topic-laravel">
+				<span class="topic-img"></span>
+				<span class="topic-name">Laravel</span>
+			</a>
+			<a href="https://scotch.io/tag/mean" class="topic-mean">
+				<span class="topic-img"></span>
+				<span class="topic-name">MEAN</span>
+			</a>
+			<a href="https://scotch.io/tag/css" class="topic-css">
+				<span class="topic-img"></span>
+				<span class="topic-name">CSS</span>
+			</a>
+			<a href="https://scotch.io/tag/bootstrap" class="topic-bootstrap">
+				<span class="topic-img"></span>
+				<span class="topic-name">Bootstrap</span>
+			</a>
+			<a href="https://scotch.io/tag/sublime-text" class="topic-sublime">
+				<span class="topic-img"></span>
+				<span class="topic-name">Sublime Text</span>
+			</a>
+			<a href="https://scotch.io/tag/vagrant" class="topic-vagrant">
+				<span class="topic-img"></span>
+				<span class="topic-name">Vagrant</span>
+			</a>
+		</div>
+
+		<div id="signup-dropdown">
+		<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#" class="dropdown-close"><span class="icon ion-ios-close-outline"></span></a>
+		<div class="container">
+			<h3>Sign Up For Free</h3>
+			<div class="signup-why">
+				<div class="signup-reason">
+					<span class="icon ion-ios-bookmarks-outline"></span>
+					<h4>Save Your Favorite Articles</h4>
+				</div>
+				<div class="signup-reason">
+					<span class="icon ion-ios-help-outline"></span>
+					<h4>Get Help on the Forums</h4>
+				</div>
+				<div class="signup-reason">
+					<span class="icon ion-ios-flower-outline"></span>
+					<h4>Join the Community</h4>
+				</div>
+			</div>
+			<form id="register" class="signup-form" action="https://scotch.io/wp-admin/admin-ajax.php" method="POST">
+				<input type="hidden" id="signonsecurity" name="signonsecurity" value="253ebbfe93"><input type="hidden" name="_wp_http_referer" value="/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1">				<input type="hidden" name="redirect_to" value="/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1?register=true">
+				<div class="signup-row">
+					<div class="form-group">
+						<input type="text" name="username" class="form-control" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<input type="text" name="email" class="form-control" placeholder="Email">
+					</div>
+				</div>
+				<div class="signup-row">
+					<div class="form-group">
+						<input type="password" name="password" class="form-control" placeholder="Password">
+					</div>
+					<div class="form-group">
+						<input type="password" name="password_confirm" class="form-control" placeholder="Confirm Password">
+					</div>
+				</div>
+				<div class="signup-row">
+					<div class="form-group checkbox">
+						<label>
+							<input type="checkbox" name="newsletter_signup" checked=""> Sign Up for the Newsletter
+						</label>
+					</div>
+					<button type="submit" class="btn btn-danger">Sign Up</button>
+				</div>
+			</form>
+		</div>
+		<div class="alert alert-danger register-message"></div>
+		</div>
+
+		<div id="login-dropdown">
+		<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#" class="dropdown-close"><span class="icon ion-ios-close-outline"></span></a>
+		<div class="container container-login">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="login-form-header">
+					<span class="icon ion-ios-sunny-outline"></span>
+					<h3>Login</h3>
+				</div>
+				<form id="login" class="login-form" action="https://scotch.io/wp-admin/admin-ajax.php" method="POST">
+					<input type="hidden" id="security" name="security" value="7009a486ed"><input type="hidden" name="_wp_http_referer" value="/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1">					<input type="hidden" name="redirect_to" value="/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1">
+					<div class="form-group">
+						<input type="text" name="username" class="form-control" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<input type="password" name="password" class="form-control" placeholder="Password">
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="rememberme" value="forever" checked="checked"> Remember Me
+						</label>
+					</div>
+					<button type="submit" class="btn btn-danger btn-lg btn-block">Login</button>
+					<p class="text-right"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#" class="forgot-password btn btn-link btn-sm">Forgot Your Password</a></p>
+				</form>
+
+			</div>
+		</div>
+		</div>
+		<div class="container container-forgot">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="login-form-header">
+					<span class="icon ion-ios-locked-outline"></span>
+					<h3>Forgot Password</h3>
+				</div>
+				<form id="forgot" class="forgot-form" action="https://scotch.io/wp-admin/admin-ajax.php" method="POST">
+					<input type="hidden" id="forgotsecurity" name="forgotsecurity" value="0161ecf3ca"><input type="hidden" name="_wp_http_referer" value="/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1">					<input type="hidden" name="redirect_to" value="/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1">
+					<div class="form-group">
+						<input type="text" name="user_login" class="form-control" placeholder="Username or Email">
+					</div>
+					<button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+				</form>
+			</div>
+		</div>
+		</div>
+		<div class="alert alert-danger login-message"></div>
+		</div>
+
+<article class="single-article">
+
+	<div class="page-topper text-center">
+		<h1>
+			Deploying a MEAN App to Amazon EC2 (Part 1)		</h1>
+		<div class="byline">
+	<span class="byline-item byline-author">
+		<a href="https://scotch.io/author/ahmed">
+			<img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/55debbf98f66d0c0184c1b00d1fc36e0">
+			Ahmed 
+			Haque 
+					</a>
+	</span>
+	<span class="byline-item">
+		<span class="icon ion-ios-calendar-outline"></span> July 8, 2015	</span>
+	
+		<span class="byline-item">
+		<span class="icon ion-ios-chatboxes-outline"></span> 
+		<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#disqus_thread" class="disqus-comment-count" data-disqus-url="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1">7</a>
+	</span>
+		<span class="byline-item">
+		<span class="icon ion-coffee"></span> <a href="https://scotch.io/category/tutorials" rel="category tag">Tutorials</a>	</span>
+		<span class="byline-item">
+		<span class="icon ion-ios-pricetags"></span> <a href="https://scotch.io/tag/deployment" rel="tag">deployment</a>, <a href="https://scotch.io/tag/ec2" rel="tag">ec2</a>, <a href="https://scotch.io/tag/mean" rel="tag">MEAN</a> 
+	</span>
+	</div>	</div>
+
+	<div class="page-hero clearfix">
+		
+<div id="hero" class="page-hero-cover">
+	<div class="page-hero-cover-lg">
+		<div class="page-hero-cover-img " style="background-image:url(&#39;https://cask.scotch.io/2015/07/deploy-mean-app-to-amazon-ec2.png&#39;);"></div>
+
+		
+	</div>
+	<div class="page-hero-cover-info share-stats-box">
+		<div class="article-favorite">
+			<span class="wpfp-span"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/loading.gif" alt="Loading" title="Loading" class="wpfp-hide wpfp-img"><a class="wpfp-link" href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1?wpfpaction=add&postid=9984" title="&lt;span class=&quot;icon ion-android-star-outline&quot;&gt;&lt;/span&gt; Favorite" rel="nofollow"><span class="icon ion-android-star-outline"></span> Favorite</a></span>		</div>
+		<div class="share-stat share-stat-lg share-total sharrre" data-url="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1"><span class="share-number-total">143</span> shares</div>
+		<div class="share-stat share-stat-btns">
+			<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#" data-url="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1" class="sbg-twitter twitter-button sharrre"><span class="icon ion-social-twitter"></span> 68</a>
+			<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#" data-url="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1" class="sbg-facebook facebook-button sharrre"><span class="icon ion-social-facebook"></span> 75</a>
+		</div>
+		
+		
+		
+		
+<div class="share-stat share-stat-action">
+	
+	
+	
+			<a href="http://ec2-52-0-14-185.compute-1.amazonaws.com:8080/" class="btn-danger">
+			<span class="icon ion-ios-game-controller-b-outline"></span> View Demo
+		</a>
+	
+	</div>
+
+	</div>
+</div>	</div>	
+
+	<div class="page-main">
+		<div class="page-content">
+	
+			<!-- LEGEND -->
+			<div class="page-content-legend">
+							<div class="sticky-wrapper" style="height: 323px;"><div class="legend stuck" style="left: 101.5px;">
+	<div class="legend-box legend-social">
+		<ul class="list-inline">
+			<li><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#" data-url="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1" class="twitter-button sharrre"><span class="icon ion-social-twitter sbg-twitter" style="transform: rotate(266deg);"></span> 68</a></li>
+			<li><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#" data-url="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1" class="facebook-button sharrre"><span class="icon ion-social-facebook sbg-facebook" style="transform: rotate(266deg);"></span> 75</a></li>
+		</ul>
+	</div>
+
+	<div class="legend-box legend-action">
+		
+<div class="share-stat share-stat-action">
+	
+	
+	
+			<a href="http://ec2-52-0-14-185.compute-1.amazonaws.com:8080/" class="btn-danger">
+			<span class="icon ion-ios-game-controller-b-outline"></span> View Demo
+		</a>
+	
+	</div>
+
+	
+	</div>
+
+	<div class="legend-box legend-outline">
+		<h5>Outline</h5>
+		<form>
+			<select class="form-control"><option value="introduction">Introduction</option><option value="setting-up-your-initial-code" selected="selected">Setting up your initial code</option><option value="a-quick-primer-on-aws-and-ec2">A quick primer on AWS and EC2</option><option value="getting-started-with-ec2">Getting Started with EC2</option><option value="launching-our-ec2-instance">Launching our EC2 Instance</option><option value="connecting-to-your-ec2-instance">Connecting to your EC2 Instance</option><option value="pulling-files">Pulling Files</option><option value="setting-security-access">Setting Security Access</option><option value="launch-time!">Launch Time!</option><option value="utilizing-ec2-instance-of-mongodb-(part-2)">Utilizing EC2 Instance of MongoDB (Part 2)</option></select>
+		</form>						
+	</div>
+
+	
+	<div id="scroll-to-top"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#" class="icon-right">
+		<span class="icon ion-umbrella"></span> 
+		<span class="scroll-to-top-text">Scroll to Top</span>
+	</a></div>
+</div></div>						</div>
+
+			<!-- PAGE CONTENT -->
+			<div class="page-content-inside">
+				<div class="page-content-primary">
+
+										<div class="content-ad clearfix">
+						<div id="bsap_1300582" class="bsarocks bsap_8321ee0e3825ae084dc5408db80d21db"></div>
+					</div>
+										
+					<h2 id="introduction"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#introduction"><span class="heading-link icon ion-link"></span> Introduction</a></h2>
+<p>As someone who has trudged through many tutorials on the MEAN development stack, I’ve built many demo applications using some variation of <code>localhost</code>. Yet, when time came for me to move onto real-world deployments, I had a <em>much</em> tougher time finding guides straightforward enough to follow.</p>
+<p>In an effort to help future versions of myself, I’ll be releasing a two-part tutorial that demonstrates the process of deploying a MEAN application <em>live</em> onto Amazon’s EC2.</p>
+<ul>
+<li><strong>Part I: Getting Started and Deploying your Initial Application</strong> </li>
+<li><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-2">Part II: Utilizing your EC2 Instance of Mongodb</a></li>
+</ul>
+<p>In this first part, we’ll be taking an existing MEAN application and deploying it onto an EC2 instance with its own live URL.</p>
+<h2 id="setting-up-your-initial-code"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#setting-up-your-initial-code"><span class="heading-link icon ion-link"></span> Setting up your initial code</a></h2>
+<p>For this tutorial, we’ll be using the <a href="https://github.com/scotch-io/node-todo/tree/tut3-controllers-services">Node and Angular To-Do App</a> that Chris created in an earlier guide. (If you’re not familiar with the MEAN stack, I’d highly recommend you check out his <a href="https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>. It’s one of the best <em>free</em> MEAN guides out there).</p>
+<p>To begin, let’s create a forked copy of his code in <a href="https://github.com/">Github</a>. We’re forking the code as opposed to cloning it, because we’ll need our own repo to commit changes into for later steps.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/1-Forking-1200x148.png" alt="Cloning Repo"></p>
+<p>Now clone your forked repo into a local directory and run <code>npm install</code> to download all of the necessary dependencies.</p>
+<pre class=" language-bash"><code class=" language-bash"><span class="token function">git</span> clone https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>afhaque<span class="token operator">/</span>node<span class="token operator">-</span>todo<span class="token punctuation">.</span><span class="token function">git</span> 
+<span class="token function">cd</span> node<span class="token operator">-</span>todo
+npm <span class="token function">install</span>   
+</code></pre>
+<p>Let’s run a quick test to make sure things are working correctly, by running <code>node server.js</code>. Open your browser and navigate to <a href="http://localhost:8080/">http://localhost:8080</a>. If all goes well you should see the familiar “I’m a Todo-aholic” screen.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/2a-Todoaholiclocal-1200x467.png" alt="I&#39;m a Todo-aholic"></p>
+<p>Woo hoo! Now onto EC2 Deployment.</p>
+<h2 id="a-quick-primer-on-aws-and-ec2"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#a-quick-primer-on-aws-and-ec2"><span class="heading-link icon ion-link"></span> A quick primer on AWS and EC2</a></h2>
+<p>Before we begin, I think its worth having a quick primer on <a href="https://aws.amazon.com/">Amazon Web Services (AWS)</a> and <a href="http://aws.amazon.com/ec2/">Amazon Elastic Compute Cloud (EC2)</a>. AWS is a collection of remote computing services, or <em>web services</em>, offered by Amazon to handle tasks related to cloud computing, storage, databases, networks, deployments, and analytics. The <a href="http://aws.amazon.com/products/">list of services</a> included in AWS is <em>incredibly</em> vast and targets wide range of broad to extremely specific purposes.</p>
+<p>For today’s tutorial, we’ll be focused entirely on Amazon EC2, the most widely used of the AWS offerings. EC2 provides a low-cost computing service for handling computational tasks. In our case, we’ll be using EC2 to run the server which will host our web application.</p>
+<h2 id="getting-started-with-ec2"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#getting-started-with-ec2"><span class="heading-link icon ion-link"></span> Getting Started with EC2</a></h2>
+<p>The first step in our deployment is to <a href="http://aws.amazon.com/">create an account with AWS</a>. Just follow the steps on the screen to complete the process. All new AWS users are automatically placed in the <a href="http://aws.amazon.com/free/">free usage tier</a>, which grants, among other features, 750 hrs/month of free Amazon EC2 micro access – plenty of room for experimentation. As you are creating your account, be sure to choose the <em>Basic (Free)</em> option.</p>
+<p>Once registered, click “Sign In to the Console” and you’ll be taken to the AWS home screen. The console provides links to all of the AWS offerings available to you. For our deployment, we’ll be heading to the EC2 dashboard.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/2-AWSConsoleEC2-1042x500.png" alt="EC2 Interface on Dashboard"></p>
+<p>Before we start launching our EC2 instance, our first step is to create an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">EC2 Key Pair</a>. Key Pairs refer to the public and private keys used to encrypt and decrypt login information. Amazon requires that you use a key pair with every EC2 instance, so we’ll need to create one before proceeding. To do this, let’s navigate to the menu option titled “Key Pairs” and click “Create Key Pair”.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/5-CreateKeyPair-1102x500.png" alt="Image of where Key Pair is"></p>
+<p>Name your key pair in the pop-up that appears. Immediately after, a .pem file with the same name will download to your system. <em>Don’t lose this file!</em> It’s only generated once and you’ll need it to access your EC2 instance. (During development, I like to keep this file handy by placing it in a resources folder of the app I am working in.)</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/6-KeyPair.png" alt="Create Key Pair"></p>
+<pre class=" language-javascript"><code class=" language-javascript">node<span class="token operator">-</span>todo
+    <span class="token operator">|</span> app
+    <span class="token operator">|</span> config
+    <span class="token operator">|</span> node_modules
+    <span class="token operator">|</span> <span class="token keyword keyword-public">public</span>
+    <span class="token operator">|</span> resources
+        <span class="token operator">|</span> todoaholic<span class="token punctuation">.</span>pem
+</code></pre>
+<h2 id="launching-our-ec2-instance"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#launching-our-ec2-instance"><span class="heading-link icon ion-link"></span> Launching our EC2 Instance</a></h2>
+<p>Now that you have a key pair in hand, head back to the main AWS console, and go to the <a href="https://aws.amazon.com/marketplace">AWS Marketplace</a>. The Marketplace includes a variety of pre-configured images for quickly deploying software and operating systems onto EC2.</p>
+<p>In our case, we’ll be using a <a href="https://aws.amazon.com/marketplace/pp/B00GXYE87S/ref=srh_res_product_title?ie=UTF8&sr=0-3&qid=1435737629090">Bitnami MEAN image</a> from BitRock. Search for this in the marketplace and open up the one titled: “MEAN Powered by Bitnami”.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/4-MEANBitnami.png" alt="BitnamiMean"></p>
+<p>At this point, let me take a moment to say, I have a lot of mixed feelings about the Bitnami MEAN Stack for EC2. On the one hand, it’s free and offers a lot of convenience when it comes to initial setup. All the necessary MEAN components (MongoDB and Node) are pre-installed upon launch. On the other hand, the Bitnami documentation is <em>extremely</em> poor. My hope is this guide will help you take advantage of its convenience, while addressing its poor documentation.</p>
+<p>From the Bitnami MEAN screen, click the continue button. You can keep the region set to US East (N. Virginia). Next you’ll be shown a number of options regarding version, region, security groups, and more. The only thing to change is the EC2 Instance Type. In order for you to avoid any charges, select <em>t2.micro</em>. (As a new user, you have 750 hours of no-cost EC2 micro usage).</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/7-LaunchEC2.png" alt="EC2 Launch"></p>
+<p>Also, note on the bottom how the Key Pair you created earlier has been pre-selected for you.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/8-NoteKeyPairListing.png" alt="KeyPair"></p>
+<p>Now, click: “Accept Terms &amp; Launch with 1-Click”. You will then receive a notification telling you that your EC2 instance is being deployed.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/9-CongratsEC2.png" alt="CongratsDeploy"></p>
+<p>From here, navigate back to the Amazon Web Services Console and open up the EC2 dashboard again. What you’ll see on this screen is that you now have 1 Running Instance (server), 1 Volume (storage), 1 Key Pair (encryption), and 2 Security Groups (security) under your resources.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/10-RunningInstances.png" alt="RunningResources"></p>
+<p>Click the link on “1 Running Instance” and you’ll be taken to your newly created server with the Bitnami MEAN image. Wait a few moments for the instance to complete its initialization. You will know its ready when the Status Checks change from “Initializing” to “2/2 checks”.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/11-RunningInstance.png" alt="InstanceReady"></p>
+<h2 id="connecting-to-your-ec2-instance"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#connecting-to-your-ec2-instance"><span class="heading-link icon ion-link"></span> Connecting to your EC2 Instance</a></h2>
+<p>Now, this next step is very important. So read closely. As part of the Bitnami MEAN installation, your instance comes pre-configured with an initial MongoDB admin username and password. The initial username is always <code>root</code>, but a unique password is created upon first launch of an instance. To obtain your password, right-click on the row of your EC2 instance and navigate to Instance Settings -&gt; Get System Log.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/12-SystemLog-1200x370.png" alt="SystemLog"></p>
+<p>Scroll through the System Log to the very end. You should see a bright box with the words: <code>Setting Bitnami application password to</code> followed by a password. This is your initial MongoDB admin password. Copy it and paste it somewhere safe. And again, don’t lose this password either! You will only be shown it once, and you will need this in order to access your EC2 instance of MongoDB.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/13-ExamplePassword.png" alt="InitialPassword"></p>
+<p>Okay! We’re making great progress. The next item of business is connecting to our EC2 instance via SSH. As a windows user, I like to use <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a> for this. Download this program if you don’t already have an SSH client handy. (Note: I also like to keep the PuTTY .exe file in the resources folder of my application for convenience as well. You’ll be using it fairly frequently).</p>
+<p>Once installed, navigate back to your AWS Console and to your running EC2 instance. From this screen look at the description section associated with your EC2 instance. Note the <em>Public DNS</em>. This represents the URL where your application will sit and the hostname you will be connecting to. You’ll be using this Host Name along with the .pem security key you downloaded earlier to connect to your EC2 instance.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/14-publicdns-1200x450.png" alt="PublicDNS"></p>
+<p>But before we can proceed with our connection, you will need to convert your .pem file into a .ppk file that PuTTY can recognize. For this you will need the program <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTYgen</a>. Go ahead and download the program now.</p>
+<p>After its ready, load your existing .pem security file into PuTTYgen. Remember to switch the file types to all “All Files <em>.</em>” when browsing for your key. Once its loaded, click “Save Private Key” and re-save your file as a PuTTY Private Key file (.ppk).</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/16-SavePrivateKey.png" alt="LoadedPEM"></p>
+<p>Still with me? Great! Because we’re finally ready to connect to our EC2 instance.</p>
+<p>Open up PuTTY and enter the Public DNS you noted earlier as the Host Name. Set the Port for 22. Finally, look through the category menu for the SSH -&gt; Auth page. Where it says: “Private Key for Authentication” upload the .ppk file we generated earlier.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/18-PuTTY.png" alt="Putty1"></p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/19-PuTTYPPK.png" alt="Putty2"></p>
+<p>Click “Open” and a terminal will pop-up. If this is the first time you’ve accessed this specific host, a warning will appear informing you that the <code>server's host key is not cached in the registry</code>. Just hit “Yes” to instruct it to continue. You’ll then be greeted by a screen saying: “login as”. Enter <code>bitnami</code>and you should see a few lines welcoming you to the system.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/20-BitnamiEntrance.png" alt="WelcometoEC2"></p>
+<p>Huzzah! Connection successful :-)</p>
+<h2 id="pulling-files"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#pulling-files"><span class="heading-link icon ion-link"></span> Pulling Files</a></h2>
+<p>Alright now that our system is setup and configured, it’s time to start deploying our code.</p>
+<p>First, let’s get familiar with what we have installed. In the SSH terminal, type <code>ls</code> to see the directories. As you can see, we have three folders, one for <code>apps</code> one for <code>htdocs</code> and one for <code>stack</code>. Let’s look into the stack folder.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/21-CheckFiles.png" alt="checkdirectory"></p>
+<p>You’ll see a variety of directories including ones for <code>apache2</code>, <code>mongodb</code>, <code>nodejs</code>, <code>php</code>, <code>python</code>, and <code>sqlite</code>. By using the Bitnami image, we’ve saved ourselves the trouble of having to install each of these ourselves. Yay, convenience!</p>
+<p>But let’s not celebrate too much yet. There’s still a lot more to be done. Let’s begin by cloning our node-todo git repository onto the server. (Always remember to include sudo!)</p>
+<pre class=" language-bash"><code class=" language-bash"><span class="token function">cd</span>
+<span class="token function">cd</span> apps
+<span class="token function">sudo</span> <span class="token function">git</span> clone https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>scotch<span class="token operator">-</span>io<span class="token operator">/</span>node<span class="token operator">-</span>todo<span class="token punctuation">.</span><span class="token function">git</span> <span class="token punctuation">{</span>USE YOUR LINK<span class="token punctuation">}</span>
+<span class="token function">cd</span> node<span class="token operator">-</span>todo
+</code></pre>
+<p>To confirm things worked out, do a quick <code>ls</code> to check that the <code>node-todo</code> folder was created. <code>cd</code> into that folder and again check the contents with <code>ls</code>.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/21b-CheckFiles.png" alt="checkdirectory"></p>
+<p>Looking good! Next step, let’s download and install all of our npm dependencies.</p>
+<pre class=" language-bash"><code class=" language-bash"><span class="token function">sudo</span> npm <span class="token function">install</span> 
+</code></pre>
+<p>Okay! <em>deep breath</em> Let’s see if we can run our server.js file using node.</p>
+<pre class=" language-bash"><code class=" language-bash">node server<span class="token punctuation">.</span>js
+</code></pre>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/22-TCPClosed.png" alt="tcperror"></p>
+<p>Ugh. Guess not. So, what’s going on here?</p>
+<h2 id="setting-security-access"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#setting-security-access"><span class="heading-link icon ion-link"></span> Setting Security Access</a></h2>
+<p>Well. As you may remember from testing local applications in the past, whenever we build MEAN applications we designate a specific port to which the server refers. (Think <code>localhost:3000</code>, <code>localhost:8080</code>, etc). This doesn’t require configuring when you’re running locally, but now that we’re in the real-world, our ports aren’t just open by default. This means since our application is looking to use port 8080, we need to make sure that port 8080 is accessible for use. We need to configure these settings in AWS.</p>
+<p>Open up your web browser and navigate back to the AWS EC2 Dashboard. Then, using the menu on the left, open up the Security Groups panel. Click on the row associated with our MEAN application. (It will have a Group name like: “MEAN powered by Bitnami”). Beneath our row is a set of Inbound and Outbound rules specifying which ports are accessible for the application and by the outside world.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/23-SecurityGroups-1111x500.png" alt="SecurityGroups"></p>
+<p>We need to create a custom inbound TCP rule that makes port 8080 accessible. Set the Protocol to TCP, the Port Range to 8080, and the source 0.0.0.0/0 (anywhere). Additionally, we’ll do the same for port 27017, which will be used by MongoDB.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/25-CustomTCPRules.png" alt="CustomTCPRules"></p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/26-PostRules-1200x296.png" alt="PostAdd"></p>
+<p>Once you’ve added this new rule, refresh the security group using the menu button at the top right.</p>
+<p>Now, let’s close out the PuTTY connection previously opened and reconnect using the same DNS name, port, and .ppk file that you used earlier.</p>
+<h2 id="launch-time!"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#launch-time!"><span class="heading-link icon ion-link"></span> Launch Time!</a></h2>
+<p>Okay. Round 2. Let’s try launching our server.js file again.</p>
+<pre class=" language-bash"><code class=" language-bash">node server<span class="token punctuation">.</span>js
+</code></pre>
+<p>No errors. That’s a good sign.</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/27-WorkingApp.png" alt="ErrorFree"></p>
+<p>But there’s only one way to see if our application is actually working. It’s time to check things in our browser.</p>
+<p>But what’s the URL? Good question! It’s just going to be the complete DNS Hostname followed by the port.</p>
+<pre class=" language-bash"><code class=" language-bash"><span class="token operator">&lt;</span>DNS Hostname<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token operator">&lt;</span>Port Number<span class="token operator">&gt;</span> 
+</code></pre>
+<p>In my case this means: <a href="http://ec2-52-0-14-185.compute-1.amazonaws.com:8080/">http://ec2-52-0-14-185.compute-1.amazonaws.com:8080/</a></p>
+<p>Open up your browser and give it a go.</p>
+<p>And if you do, you’ll hopefully see our friendly To-Do list right before your eyes. (Relish this moment. It may be one of the few times you can take pride looking at a to-do-list).</p>
+<p><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/28-LiveApp-1013x500.png" alt="LiveApp"></p>
+<p><em>“Okay! Mission accomplished!”</em></p>
+<p>Not quite. As of now, the moment we close out PuTTY, our application dies with it. Conceivably, we could keep our PuTTY window open forever, but that sort of defeats the purpose of having our application on a server.</p>
+<p>So instead, we’re going to utilize the node package <a href="https://github.com/foreverjs/forever">forever.js</a>. Forever is a simple tool that ensures a given script runs continuously (i.e. forever). To install it, let’s first stop our existing application with <code>ctrl+c</code>.</p>
+<p>Then we’ll run:</p>
+<pre class=" language-bash"><code class=" language-bash"><span class="token function">sudo</span> npm <span class="token function">install</span> forever <span class="token operator">-</span>g
+</code></pre>
+<p>And finally, to launch our application continuously, we wil enter</p>
+<pre class=" language-bash"><code class=" language-bash">forever start server<span class="token punctuation">.</span>js
+</code></pre>
+<p>You will get a short message saying <code>Forever processing file: server.js</code> and you should be good to go. The best way to test that things after that is to simply close out your instance of PuTTY and give your application another try in browser.</p>
+<p>If all went well, you should once again see your familiar Todo-aholic screen.</p>
+<p>Yay! Congratulations! You now have a live deployment of your first MEAN application!</p>
+<h2 id="utilizing-ec2-instance-of-mongodb-(part-2)"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#utilizing-ec2-instance-of-mongodb-(part-2)"><span class="heading-link icon ion-link"></span> Utilizing EC2 Instance of MongoDB (Part 2)</a></h2>
+<p>Now, at this point, you have fully deployed a MEAN application to EC2.</p>
+<p>But as some of you may have picked up, we never even touched MongoDB in EC2. We never specified the MongoDB URL in our MEAN application, and we never used that funny green password I told you to not lose.</p>
+<p>Yet, still our application worked wonderfully. Why is that?</p>
+<p>Well, in the original MEAN application developed by Chris, we make use of an external instance of MongoDB – specifically one sourced from <a href="http://help.modulus.io/customer/portal/articles/1649367-using-modulus-mongo">Modulus.io</a>. In this case, Modulus is providing our application with a Database-as-a-Service (DaaS). There are other companies out there that offer similar services (<a href="https://mongolab.com/">MongoLab</a> and <a href="https://www.compose.io/mongodb/">Compose.io</a> for instance). All-in-all these services are pretty great. They offer you a quick, reliable instance of MongoDB, fantastic GUIs for administering your data, and a free sandbox instances to play around with. For many purposes, this is exactly what you need.</p>
+<p>That said, if you are looking to retain greater control of your MongoDB database, you may be inclined to use your own MongoDB instance in EC2. As an added advantage, utilizing your own MongoDB instance in EC2 can be significantly cheaper in the long-run. As an example, an M1 Cluster with 40 GB of storage would cost you about <a href="https://mongolab.com/plans/pricing/">$180 per month</a> using MongoLab. In contrast, a similarly structured MongoDB instance in EC2 would <a href="http://calculator.s3.amazonaws.com/index.html">cost only $36 per month</a>, if you set it up yourself. You wouldn’t have the nifty GUIs or the dedicated support, but hey – it’s always good to know your options.</p>
+<p>In the <a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-2">next part of our tutorial</a>, we’ll be working through the process of migrating from the current DaaS to our own EC2 instance of MongoDB. Stay tuned!</p>
+<p>p.s. Don’t lose your password. It’s never coming back! :-)</p>
+
+					
+<div class="share-stat share-stat-action">
+	
+	
+	
+			<a href="http://ec2-52-0-14-185.compute-1.amazonaws.com:8080/" class="btn-danger">
+			<span class="icon ion-ios-game-controller-b-outline"></span> View Demo
+		</a>
+	
+	</div>
+
+
+					
+				</div>
+
+									<!-- PAGE SECONDARY -->
+					<div class="page-secondary">
+						<div id="article-author" class="secondary-box clearfix">
+
+	<a href="https://scotch.io/author/ahmed" class="author-image">
+		<img id="author-avatar" src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/55debbf98f66d0c0184c1b00d1fc36e0(1)" width="300" height="300" class="pull-left">
+	</a>
+	<div class="author-content">
+		<h3>
+			<a href="https://scotch.io/author/ahmed">
+				Ahmed Haque			</a>
+					</h3>
+
+		<p>Grad Student. Javascript Developer. Wannabe Social Entrepreneur. Trying to fit it all together.</p>
+
+		<a id="view-contributions" class="btn btn-primary" href="https://scotch.io/author/ahmed">
+			<span class="icon ion-ios-flame-outline"></span> View My Articles
+		</a>
+	</div>
+
+</div>					</div>
+
+					<div class="yarpp-related">
+
+
+<div class="further-reading text-center">
+<section class="section-grid section-inverse">
+
+	<div class="page-header text-center">
+		<h2>Read Next</h2>
+	</div>
+
+	<div class="container">
+			
+		
+<div id="post-10056" class="card ">
+	
+	<div class="card-img-container">
+		<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-2" style="background-image:url(&#39;https://cask.scotch.io/2015/07/deploy-mean-app-to-amazon-ec2-450x188.png&#39;)" class="card-img"></a>
+		<div class="card-favorite"><span class="wpfp-span"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/loading.gif" alt="Loading" title="Loading" class="wpfp-hide wpfp-img"><a class="wpfp-link" href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1?wpfpaction=add&postid=10056" title="&lt;span class=&quot;icon ion-android-star-outline&quot;&gt;&lt;/span&gt; Favorite" rel="nofollow"><span class="icon ion-android-star-outline"></span> Favorite</a></span></div>
+	</div>
+
+	<div class="card-content">
+		<div class="card-meta">
+			
+			<span class="meta-date meta-box">
+				Jul 21			</span>
+			
+			<span class="meta-pulse meta-box">
+				<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-2" data-url="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-2" class="card-share-number sharrre">70 Shares</a>
+			</span>
+		</div>
+
+		<h2><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-2">
+			Deploying a MEAN App to Amazon EC2 (Part 2)		</a></h2>
+		
+	</div>	
+
+	
+	<span class="meta-tags">
+		 
+	</span>
+
+</div>			
+		
+<div id="post-7730" class="card ">
+	
+	<div class="card-img-container">
+		<a href="https://scotch.io/tutorials/build-deployable-artifacts-with-packer" style="background-image:url(&#39;https://cask.scotch.io/2015/03/packer-image-450x188.jpg&#39;)" class="card-img"></a>
+		<div class="card-favorite"><span class="wpfp-span"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/loading.gif" alt="Loading" title="Loading" class="wpfp-hide wpfp-img"><a class="wpfp-link" href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1?wpfpaction=add&postid=7730" title="&lt;span class=&quot;icon ion-android-star-outline&quot;&gt;&lt;/span&gt; Favorite" rel="nofollow"><span class="icon ion-android-star-outline"></span> Favorite</a></span></div>
+	</div>
+
+	<div class="card-content">
+		<div class="card-meta">
+			
+			<span class="meta-date meta-box">
+				Apr 6			</span>
+			
+			<span class="meta-pulse meta-box">
+				<a href="https://scotch.io/tutorials/build-deployable-artifacts-with-packer" data-url="https://scotch.io/tutorials/build-deployable-artifacts-with-packer" class="card-share-number sharrre">26 Shares</a>
+			</span>
+		</div>
+
+		<h2><a href="https://scotch.io/tutorials/build-deployable-artifacts-with-packer">
+			Deploying a LAMP stack on AWS (part 2): Build Deployable Artifacts with Packer		</a></h2>
+		
+	</div>	
+
+	
+	<span class="meta-tags">
+		 
+	</span>
+
+</div>			
+		
+<div id="post-9190" class="card ">
+	
+	<div class="card-img-container">
+		<a href="https://scotch.io/tutorials/deploying-a-lamp-stack-on-aws-part-3-deploy-infrastructure-and-applications-with-terraform" style="background-image:url(&#39;https://cask.scotch.io/2015/05/terraform-450x188.jpg&#39;)" class="card-img"></a>
+		<div class="card-favorite"><span class="wpfp-span"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/loading.gif" alt="Loading" title="Loading" class="wpfp-hide wpfp-img"><a class="wpfp-link" href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1?wpfpaction=add&postid=9190" title="&lt;span class=&quot;icon ion-android-star-outline&quot;&gt;&lt;/span&gt; Favorite" rel="nofollow"><span class="icon ion-android-star-outline"></span> Favorite</a></span></div>
+	</div>
+
+	<div class="card-content">
+		<div class="card-meta">
+			
+			<span class="meta-date meta-box">
+				May 7			</span>
+			
+			<span class="meta-pulse meta-box">
+				<a href="https://scotch.io/tutorials/deploying-a-lamp-stack-on-aws-part-3-deploy-infrastructure-and-applications-with-terraform" data-url="https://scotch.io/tutorials/deploying-a-lamp-stack-on-aws-part-3-deploy-infrastructure-and-applications-with-terraform" class="card-share-number sharrre">16 Shares</a>
+			</span>
+		</div>
+
+		<h2><a href="https://scotch.io/tutorials/deploying-a-lamp-stack-on-aws-part-3-deploy-infrastructure-and-applications-with-terraform">
+			Deploying a LAMP stack on AWS (part 3): Deploy Infrastructure and Applications with Terraform		</a></h2>
+		
+	</div>	
+
+	
+	<span class="meta-tags">
+		 
+	</span>
+
+</div>			
+		
+<div id="post-7702" class="card ">
+	
+	<div class="card-img-container">
+		<a href="https://scotch.io/tutorials/overview-of-the-atlas-workflow-and-mindset" style="background-image:url(&#39;https://cask.scotch.io/2015/03/atlas-1-450x188.jpg&#39;)" class="card-img"></a>
+		<div class="card-favorite"><span class="wpfp-span"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/loading.gif" alt="Loading" title="Loading" class="wpfp-hide wpfp-img"><a class="wpfp-link" href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1?wpfpaction=add&postid=7702" title="&lt;span class=&quot;icon ion-android-star-outline&quot;&gt;&lt;/span&gt; Favorite" rel="nofollow"><span class="icon ion-android-star-outline"></span> Favorite</a></span></div>
+	</div>
+
+	<div class="card-content">
+		<div class="card-meta">
+			
+			<span class="meta-date meta-box">
+				Mar 31			</span>
+			
+			<span class="meta-pulse meta-box">
+				<a href="https://scotch.io/tutorials/overview-of-the-atlas-workflow-and-mindset" data-url="https://scotch.io/tutorials/overview-of-the-atlas-workflow-and-mindset" class="card-share-number sharrre">36 Shares</a>
+			</span>
+		</div>
+
+		<h2><a href="https://scotch.io/tutorials/overview-of-the-atlas-workflow-and-mindset">
+			Deploying a LAMP stack on AWS (part 1): Overview of the Atlas Workflow and Mindset		</a></h2>
+		
+	</div>	
+
+	
+	<span class="meta-tags">
+		 
+	</span>
+
+</div>			
+		
+<div id="post-7422" class="card ">
+	
+	<div class="card-img-container">
+		<a href="https://scotch.io/tutorials/build-a-time-tracker-with-laravel-5-and-angularjs-part-1" style="background-image:url(&#39;https://cask.scotch.io/2015/03/laravel-angular-time-tracker-1-450x188.jpg&#39;)" class="card-img"></a>
+		<div class="card-favorite"><span class="wpfp-span"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/loading.gif" alt="Loading" title="Loading" class="wpfp-hide wpfp-img"><a class="wpfp-link" href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1?wpfpaction=add&postid=7422" title="&lt;span class=&quot;icon ion-android-star-outline&quot;&gt;&lt;/span&gt; Favorite" rel="nofollow"><span class="icon ion-android-star-outline"></span> Favorite</a></span></div>
+	</div>
+
+	<div class="card-content">
+		<div class="card-meta">
+			
+			<span class="meta-date meta-box">
+				Mar 26			</span>
+			
+			<span class="meta-pulse meta-box">
+				<a href="https://scotch.io/tutorials/build-a-time-tracker-with-laravel-5-and-angularjs-part-1" data-url="https://scotch.io/tutorials/build-a-time-tracker-with-laravel-5-and-angularjs-part-1" class="card-share-number sharrre">655 Shares</a>
+			</span>
+		</div>
+
+		<h2><a href="https://scotch.io/tutorials/build-a-time-tracker-with-laravel-5-and-angularjs-part-1">
+			Build a Time Tracker with Laravel 5 and AngularJS – Part 1		</a></h2>
+		
+	</div>	
+
+	
+	<span class="meta-tags">
+		<a href="https://scotch.io/tag/angular-js" title="angularJS Tag" class="tag-angular-js">angularJS</a><a href="https://scotch.io/tag/laravel" title="laravel Tag" class="tag-laravel">laravel</a><a href="https://scotch.io/tag/php" title="php Tag" class="tag-php">php</a> 
+	</span>
+
+</div>			
+		
+<div id="post-9485" class="card ">
+	
+	<div class="card-img-container">
+		<a href="https://scotch.io/tutorials/building-a-slack-clone-in-meteor-js-part-3-authentication-and-security" style="background-image:url(&#39;https://cask.scotch.io/2015/05/build-a-slack-clone-meteor-users-security-450x188.png&#39;)" class="card-img"></a>
+		<div class="card-favorite"><span class="wpfp-span"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/loading.gif" alt="Loading" title="Loading" class="wpfp-hide wpfp-img"><a class="wpfp-link" href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1?wpfpaction=add&postid=9485" title="&lt;span class=&quot;icon ion-android-star-outline&quot;&gt;&lt;/span&gt; Favorite" rel="nofollow"><span class="icon ion-android-star-outline"></span> Favorite</a></span></div>
+	</div>
+
+	<div class="card-content">
+		<div class="card-meta">
+			
+			<span class="meta-date meta-box">
+				May 28			</span>
+			
+			<span class="meta-pulse meta-box">
+				<a href="https://scotch.io/tutorials/building-a-slack-clone-in-meteor-js-part-3-authentication-and-security" data-url="https://scotch.io/tutorials/building-a-slack-clone-in-meteor-js-part-3-authentication-and-security" class="card-share-number sharrre">129 Shares</a>
+			</span>
+		</div>
+
+		<h2><a href="https://scotch.io/tutorials/building-a-slack-clone-in-meteor-js-part-3-authentication-and-security">
+			Building a Slack Clone in Meteor.js (Part 3): Authentication and Security		</a></h2>
+		
+	</div>	
+
+	
+	<span class="meta-tags">
+		<a href="https://scotch.io/tag/node-js" title="node.js Tag" class="tag-node-js">node.js</a> 
+	</span>
+
+</div>		</div>
+
+</section>
+</div>
+</div>
+
+					<div class="page-secondary page-secondary-two">
+						<div class="article-announcement">
+<div class="row">
+<div class="col-sm-10 col-sm-offset-1">
+
+    <div class="announcement-img pull-left">
+        <a href="https://leanpub.com/mean-machine" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Leanpub&#39;, &#39;Click&#39;, &#39;MEAN Machine - Article&#39;]);"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/mean-machine-page.jpeg"></a>
+    </div>
+    <div class="announcement-content">
+        <p><small class="text-muted">scotch.io books presents:</small></p>
+
+        <h3>MEAN Machine</h3>
+
+        <p>Learn Node, Angular, Express, and MongoDB from scratch.<br>No experience necessary.</p>
+
+        <a href="https://leanpub.com/mean-machine" class="btn btn-danger" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Leanpub&#39;, &#39;Click&#39;, &#39;MEAN Machine - Article&#39;]);">Learn About the Book <span class="ti-arrow-circle-right"></span></a>
+    </div>
+        
+</div>
+</div>
+</div>
+						<div id="stay-connected" class="text-center secondary-box">
+
+	<div class="connected-container">
+		<a class="share-rss sbg-rss" href="https://scotch.io/feed">
+			<span class="icon ion-social-rss-outline"></span> Subscribe
+		</a>
+
+		<a class="sbg-twitter" href="http://twitter.com/scotch_io"> 
+			<span class="icon ion-social-twitter-outline"></span> Follow
+		</a>
+
+		<a class="sbg-facebook" href="http://www.facebook.com/scotchdevelopment"> 
+			<span class="icon ion-social-facebook-outline"></span> Like
+		</a>
+
+		<a class="sbg-googleplus" href="http://plus.google.com/b/113854128330570384219/+ScotchIo/posts">
+			<span class="icon ion-social-googleplus-outline"></span> +1
+		</a>
+	</div>
+
+	<h4><span class="icon ion-ios-email"></span></h4>
+	<p>Get valuable tips, articles, and resources straight to your inbox. Every Tuesday.</p>
+
+	<!-- Begin MailChimp Signup Form -->
+	<div id="mc_embed_signup">
+		<form action="https://scotch.us3.list-manage.com/subscribe/post?u=1c412c864c03eadaf07ccd61e&id=a818d504d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" target="_blank" novalidate="">
+			
+		<input type="hidden" name="LOCATION" id="LOCATION" value="article_end">
+
+		<div class="mc-field-group form-group">
+			<input type="email" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email Address">
+		</div>
+
+		<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary">
+
+		<div id="mce-responses" class="clear">
+			<div class="response" id="mce-error-response" style="display:none"></div>
+			<div class="response" id="mce-success-response" style="display:none"></div>
+		</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+	    <div style="position: absolute; left: -5000px;"><input type="text" name="b_1c412c864c03eadaf07ccd61e_a818d504d4" value=""></div>
+	</form>
+	</div>
+	<!--End mc_embed_signup-->
+	
+</div>						<div id="comment-section" class="secondary-box">
+							<div id="disqus_thread"><iframe id="dsq-1" data-disqus-uid="1" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/saved_resource.html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 1375px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+						</div>
+					</div>
+				
+			</div>
+
+		</div>
+		<div class="page-sidebar">
+
+						<!-- SIDEBAR -->
+			<div class="page-sidebar-inside">
+				<div class="sidebar-section ad-side clearfix">
+	<div class="ad-sidebar clearfix">
+		<div id="bsap_1291897" class="bsarocks bsap_8321ee0e3825ae084dc5408db80d21db"></div>
+	</div>
+	<div class="ad-sidebar clearfix">
+		<div id="bsap_1300581" class="bsarocks bsap_8321ee0e3825ae084dc5408db80d21db"></div>
+	</div>
+</div>
+
+<div class="sidebar-section sidebar-social clearfix">
+	<div class="sidebar-social-box clearfix">
+		<div class="sidebar-social-top clearfix">
+			<ul class="list-unstyled">
+				<li><a href="https://www.facebook.com/scotchdevelopment" class="sbg-facebook">
+					<span class="icon ion-social-facebook-outline"></span>
+				</a></li>
+				<li><a href="https://twitter.com/scotch_io" class="sbg-twitter">
+					<span class="icon ion-social-twitter-outline"></span>
+				</a></li>
+				<li><a href="https://plus.google.com/+ScotchIo/posts" class="sbg-googleplus">
+					<span class="icon ion-social-googleplus-outline"></span>
+				</a></li>
+				<li><a href="https://feeds.feedblitz.com/scotch_io" class="sbg-rss">
+					<span class="icon ion-social-rss-outline"></span>
+				</a></li>
+			</ul>
+		</div>
+		<div class="sidebar-social-bottom clearfix">
+			<div class="text-center">
+				<a href="https://scotch.io/books/build-your-first-node-js-app">
+					<img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/first-node-app-small.png" class="img-repsonsive">
+				</a>
+			</div>
+			<p>Subscribe and get our FREE eBook: <a href="https://scotch.io/books/build-your-first-node-js-app">Build Your First Node.js App</a></p>
+			<!-- Begin MailChimp Signup Form -->
+			<div id="mc_embed_signup">
+			<form action="https://scotch.us3.list-manage.com/subscribe/post?u=1c412c864c03eadaf07ccd61e&id=a818d504d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+
+			<input type="hidden" name="LOCATION" id="LOCATION" value="sidebar_top">
+
+			<div class="mc-field-group form-group">
+				<input type="email" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email Address">
+			</div>
+				<div id="mce-responses" class="clear">
+					<div class="response" id="mce-error-response" style="display:none"></div>
+					<div class="response" id="mce-success-response" style="display:none"></div>
+				</div>
+			    <div style="position: absolute; left: -5000px;"><input type="text" name="b_1c412c864c03eadaf07ccd61e_a818d504d4" value=""></div>
+				<div class="clear text-center"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary btn-sm btn-block"></div>
+			</form>
+			</div>
+			<!--End mc_embed_signup-->
+		</div>
+	</div>
+</div>
+
+<div class="sidebar-section sidebar-popular clearfix">
+	<h4><span class="icon ion-beer"></span> Popular on Scotch</h4>
+
+	
+	<ul>
+					<li class="clearfix"><a href="https://scotch.io/tutorials/getting-started-with-vim-an-interactive-guide">
+				<div class="popular-img" style="background-image:url(https://cask.scotch.io/2015/07/vim1-450x188.png)"></div>
+				<div class="popular-text">Getting Started with Vim: An Interactive Guide</div>
+			</a></li>
+					<li class="clearfix"><a href="https://scotch.io/tutorials/how-to-build-a-wordpress-plugin-part-1">
+				<div class="popular-img" style="background-image:url(https://cask.scotch.io/2015/08/featured-image-big-450x188.jpg)"></div>
+				<div class="popular-text">How to Build a WordPress Plugin (part 1)</div>
+			</a></li>
+					<li class="clearfix"><a href="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch.html">
+				<div class="popular-img" style="background-image:url(https://cask.scotch.io/2015/07/deploy-mean-app-to-amazon-ec2-450x188.png)"></div>
+				<div class="popular-text">Deploying a MEAN App to Amazon EC2 (Part 1)</div>
+			</a></li>
+					<li class="clearfix"><a href="https://scotch.io/tutorials/building-a-real-time-markdown-viewer">
+				<div class="popular-img" style="background-image:url(https://cask.scotch.io/2015/06/build-a-real-time-markdown-editor-in-node-450x188.png)"></div>
+				<div class="popular-text">Build a Real-Time Markdown Editor with Node.js</div>
+			</a></li>
+					<li class="clearfix"><a href="https://scotch.io/tutorials/use-mongodb-with-a-node-application-on-heroku">
+				<div class="popular-img" style="background-image:url(https://cask.scotch.io/2015/07/node-mongodb-on-heroku-450x188.png)"></div>
+				<div class="popular-text">Use MongoDB with a Node.js Application on Heroku</div>
+			</a></li>
+					<li class="clearfix"><a href="https://scotch.io/tutorials/use-gulp-to-start-a-laravel-php-server">
+				<div class="popular-img" style="background-image:url(https://cask.scotch.io/2015/06/laravel-server-with-gulp-connect-php-450x188.png)"></div>
+				<div class="popular-text">Use Gulp to Start a Laravel PHP Server</div>
+			</a></li>
+					<li class="clearfix"><a href="https://scotch.io/tutorials/token-based-authentication-for-angularjs-and-laravel-apps">
+				<div class="popular-img" style="background-image:url(https://cask.scotch.io/2015/06/angular-laravel-token-auth-1-450x188.png)"></div>
+				<div class="popular-text">Token-Based Authentication for AngularJS and Laravel Apps</div>
+			</a></li>
+			</ul>
+
+</div>
+
+<div class="sidebar-section ad-side clearfix text-center">
+	<div id="bsap_1300589" class="bsarocks bsap_8321ee0e3825ae084dc5408db80d2d1b"></div>
+</div>
+
+<!-- <div class="sidebar-section sidebar-scotch-projects text-center clearfix">
+<h4><span class="icon ion-erlenmeyer-flask"></span> Projects By Scotch</h4>
+<div class="sidebar-scotch-project-inside">
+
+	<a href="http://bit.ly/1FxJ3TI" class="sidebar-scotch-project">
+		<div class="sidebar-scotch-project-img" style="background-image:url(https://cask.scotch.io/2014/12/title_page.jpg);"></div>
+		<h5>MEAN Machine</h5>
+		<p>The beginner's book to Node and Angular</p>
+	</a>
+
+	<a href="http://bit.ly/1PY0ujh" class="sidebar-scotch-project">
+		<div class="sidebar-scotch-project-img" style="background-image:url(https://cask.scotch.io/2014/10/banner1.jpg);"></div>
+		<h5>Scotch Box</h5>
+		<p>A Vagrant LAMP Stack That Just Works</p>
+	</a>
+
+	<a href="http://bit.ly/1QJLLK5" class="sidebar-scotch-project">
+		<div class="sidebar-scotch-project-img" style="background-image:url(https://cask.scotch.io/2014/10/scotch-panels-cover-1.jpg);"></div>
+		<h5>Scotch Panels</h5>
+		<p>Dead simple Off Canvas jQuery Plugin</p>
+	</a>
+</div>
+</div> -->
+
+<div class="sidebar-section text-center clearfix">
+
+	<div class="sidebar-section sidebar-announcement">
+		<h4 class="text-center">Learn Node and Angular<br>with Our eBook</h4>
+		<a href="http://bit.ly/1FxJ3TI" target="_blank"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/mean-machine-page.jpeg" class="img-responsive"></a>
+	</div>
+
+	<div class="sidebar-section sidebar-announcement">
+		<h4 class="text-center">A Vagrant LAMP Stack<br>That Just works</h4>
+		<a href="http://bit.ly/1PY0ujh" target="_blank"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/scotch-box-sidebar.png" class="img-responsive"></a>
+	</div>
+
+	<div class="sidebar-section sidebar-announcement">
+		<h4 class="text-center">Dead Simple<br>Off-Canvas Panels</h4>
+		<a href="http://bit.ly/1QJLLK5" target="_blank"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/scotch-panels-sidebar.png" class="img-responsive"></a>
+	</div>
+
+	<div class="sidebar-section sidebar-announcement">
+		<h4 class="text-center">Scotch.io Stickers!</h4>
+		<a href="http://shop.scotch.io/" target="_blank"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/scotch-stickers.jpg" class="img-responsive"></a>
+	</div>
+
+</div>
+
+
+<div class="sticky-wrapper" style="height: 117px;"><div class="sidebar-sticky stuck" style="left: 1513.421875px;">
+		<div class="clearfix">
+		<!-- Fixed Sidebar -->
+		<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4625466825098355" data-ad-slot="8619471422"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	<div class="sidebar-email sidebar-section sidebar-option hidden">
+		<h4>
+			<span class="icon ion-ios-email"></span>
+			The Newsletter
+		</h4>
+		<p class="text-center">Subscribe and get our free eBook: <a href="https://scotch.io/books/build-your-first-node-js-app">Build Your First Node App</a>.</p>
+		<!-- Begin MailChimp Signup Form -->
+		<div id="mc_embed_signup">
+		<form action="https://scotch.us3.list-manage.com/subscribe/post?u=1c412c864c03eadaf07ccd61e&id=a818d504d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+
+		<input type="hidden" name="LOCATION" id="LOCATION" value="sidebar_bottom">
+
+		<div class="mc-field-group form-group">
+			<input type="email" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email Address">
+		</div>
+			<div id="mce-responses" class="clear">
+				<div class="response" id="mce-error-response" style="display:none"></div>
+				<div class="response" id="mce-success-response" style="display:none"></div>
+			</div>
+		    <div style="position: absolute; left: -5000px;"><input type="text" name="b_1c412c864c03eadaf07ccd61e_a818d504d4" value=""></div>
+			<div class="clear text-right"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary btn-sm"></div>
+		</form>
+		</div>
+		<!--End mc_embed_signup-->
+	</div>
+	
+	<div class="sidebar-section sidebar-announcement sidebar-option hidden">
+		<h4 class="text-center">Learn by Doing</h4>
+		<a href="http://synd.co/1JmyjuK" target="_blank"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/marketing-ads-better-dev-campus-260x200-d.png" class="img-responsive"></a>
+	</div>
+
+	<!--<div class="sidebar-section sidebar-announcement sidebar-option hidden">
+		<h4 class="text-center">Learn Node and Angular<br>with Our eBook</h4>
+		<a href="http://bit.ly/1FxJ3TI" target="_blank"><img src="https://cask.scotch.io/2014/12/mean-machine-page.jpeg" class="img-responsive"></a>
+	</div>-->
+	
+	<div class="sidebar-section sidebar-announcement sidebar-option">
+		<h4 class="text-center">Automated Online Invoicing</h4>
+		<a href="https://invoicebus.com/partner/scotch.io/?aff=8hlimbxx" target="_blank"><img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/invoicebus_300x250.png" class="img-responsive" width="0" height="0" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;"></a>
+	</div>
+
+ 	<!--<div class="sidebar-section sidebar-announcement sidebar-option hidden">
+		<h4 class="text-center">A Vagrant LAMP Stack<br>That Just works</h4>
+		<a href="http://bit.ly/1PY0ujh" target="_blank"><img src="https://cask.scotch.io/2015/04/scotch-box-sidebar.png" class="img-responsive"></a>
+	</div>
+
+	<div class="sidebar-section sidebar-announcement sidebar-option hidden">
+		<h4 class="text-center">Dead Simple<br>Off-Canvas Panels</h4>
+		<a href="http://bit.ly/1QJLLK5" target="_blank"><img src="https://cask.scotch.io/2015/04/scotch-panels-sidebar.png" class="img-responsive"></a>
+	</div>
+
+	<div class="sidebar-section sidebar-announcement sidebar-option hidden">
+		<h4 class="text-center">Scotch.io Stickers!</h4>
+		<a href="http://shop.scotch.io" target="_blank"><img src="https://cask.scotch.io/2015/05/scotch-stickers.jpg" class="img-responsive"></a>
+	</div>-->
+
+	<div class="sidebar-social">
+		<ul class="list-unstyled list-inline">
+			<li><a href="https://www.facebook.com/scotchdevelopment" class="sbg-facebook"><i class="icon ion-social-facebook"></i></a></li>
+			<li><a href="https://twitter.com/scotch_io" class="sbg-twitter"><i class="icon ion-social-twitter"></i></a></li>
+			<li><a href="https://feeds.feedblitz.com/scotch_io" class="sbg-rss"><i class="icon ion-social-rss"></i></a></li>
+		</ul>
+	</div>
+
+</div></div>			</div>
+			
+		</div>
+	</div>
+
+</article>	
+
+</div><!-- .site-content -->
+
+</div><!-- .site-canvas -->
+</div><!-- .site-wrapper -->
+</main><!-- #site-main -->
+
+	<footer id="site-footer">
+		<div id="footer-content">
+		<div class="row">
+			<div class="col-md-2 footer-box">
+				<nav class="footer-social">
+					<ul class="list-unstyled list-inline">
+						<li><a href="https://www.facebook.com/scotchdevelopment" class="sbg-facebook">
+							<span class="icon ion-social-facebook"></span>
+						</a></li>
+						<li><a href="https://twitter.com/scotch_io" class="sbg-twitter">
+							<span class="icon ion-social-twitter"></span>
+						</a></li>
+						<li><a href="https://plus.google.com/+ScotchIo/posts" class="sbg-googleplus">
+							<span class="icon ion-social-googleplus"></span>
+						</a></li>
+						<li><a href="http://feeds.feedblitz.com/scotch_io" class="sbg-rss">
+							<span class="icon ion-social-rss"></span>
+						</a></li>
+					</ul>
+				</nav>
+				<nav class="footer-nav">
+					<ul>
+						<li><a href="https://scotch.io/license">License</a></li>
+						<li><a href="https://scotch.io/advertise">Advertise with Us</a></li>
+						<li><a href="https://scotch.io/about">About</a></li>
+						<li><a href="https://scotch-slack.herokuapp.com/">Join Us on Slack</a></li>
+						<li class="divider"></li>
+						<li><a href="http://shop.scotch.io/">Store</a></li>
+						<li><a href="https://scotch.io/write-for-us">Write for Us</a></li>
+						<li><a href="https://scotch.io/contact-us">Contact Us</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-md-3 footer-box">
+				<div class="footer-newsletter">
+					<h5>Join the Newsletter</h5>
+					<p>Web design/development tutorials and news from around the web.</p>
+					<!-- Begin MailChimp Signup Form -->
+					<div id="mc_embed_signup">
+					<form action="https://scotch.us3.list-manage.com/subscribe/post?u=1c412c864c03eadaf07ccd61e&id=a818d504d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+						
+					<input type="hidden" name="LOCATION" id="LOCATION" value="footer">
+
+					<div class="mc-field-group form-group">
+						<input type="email" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email Address">
+					</div>
+						<div id="mce-responses" class="clear">
+							<div class="response" id="mce-error-response" style="display:none"></div>
+							<div class="response" id="mce-success-response" style="display:none"></div>
+						</div>
+					    <div style="position: absolute; left: -5000px;"><input type="text" name="b_1c412c864c03eadaf07ccd61e_a818d504d4" value=""></div>
+						<div class="clear text-center"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-success btn-block"></div>
+					</form>
+					</div>
+					<!--End mc_embed_signup-->
+				</div>
+			</div>
+			<div class="col-md-3 footer-box text-center footer-digital">
+				<a href="http://bit.ly/18ib8jR" class="text-danger">
+					<img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/digital.svg" width="250" height="22">
+					Hire Us
+				</a>
+			</div>
+			<div class="col-md-4 footer-box">
+				<div class="footer-announcement">
+					<a href="https://leanpub.com/mean-machine">
+						<img src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/mean-machine-page-e1425418361486-129x1671.jpeg" class="img-responsive">
+					</a>
+					<div class="footer-announcement-content">
+						<h5>Learn Node and Angular</h5>
+						<p>Scotch's new JavaScript eBook. Learn the full JavaScript stack.</p>
+						<a href="https://leanpub.com/mean-machine" class="btn btn-info">Get the Book</a>
+					</div>			
+				</div>
+			</div>
+		</div>
+		<div class="text-center footer-copyright">
+			<p class="text-muted">Web design and development tutorials for the masses.</p>
+			<p>© Scotch.io | Proudly hosted by <a href="https://www.digitalocean.com/?refcode=eaf67777e85b">Digital Ocean</a></p>
+		</div>
+		</div>
+	</footer>
+	
+<!--[if lt IE 9]>
+	<script async data-cfasync="true" src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script async data-cfasync="true" src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script>
+	var disqus_shortname = 'scotchwebdevelopment';
+</script>
+
+<script type="text/javascript">function ctSetCookie(c_name, value, def_value) {    document.cookie = c_name + "=" + escape(value.replace(/^def_value$/, value)) + "; path=/";}ctSetCookie("ct_checkjs", "1429206557", "0");</script><script type="text/javascript" src="./Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files/scripts.min.js"></script>
+
+	<script>
+		// ADSENSE
+		var gadsense = document.createElement('script');
+			gadsense.type = 'text/javascript';
+			gadsense.async = true;
+			gadsense.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+		(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(gadsense);
+	</script>
+
+		<script>
+		// BUY SELL ADS
+		(function() {
+			var bsa = document.createElement('script');
+				bsa.type = 'text/javascript';
+				bsa.async = true;
+				bsa.src = 'https://s3.buysellads.com/ac/bsa.js';
+			(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		}());
+	</script>
+	
+	<script>
+		(function() {
+			var e = document.createElement("script");
+			e.type = "text/javascript";
+			e.async = true;
+			e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+			(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e);
+		}());
+	</script>
+
+	
+	
+
+
+
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using apc
+Object Caching 2582/2615 objects using apc
+
+ Served from: scotch.io @ 2015-08-29 05:06:35 by W3 Total Cache --></body></html>

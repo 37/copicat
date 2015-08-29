@@ -65,15 +65,62 @@ function deleteElement(element) {
   $(element).remove();
 }
 
-function populateForm(data, rate, catset) {
+function cleanSpaces(input){
+    var raw = input + '';
+    var cleaned = raw.replace(' ', '');
+    return cleaned;
+}
+
+function separateLabel(input){
+    var raw = input + '';
+    var separated = raw.split(':');
+    var lastIndex = (separated.length - 1);
+    var value = separated[lastIndex];
+    // Checks if sizing is Asian standard, otherwise European.
+
+    return value;
+}
+
+function adjustSize(input){
+    var asian = input;
+    switch(asian) {
+        case 'S':
+            return 'XXS';
+            break;
+        case 'M':
+            return 'XS';
+            break;
+        case 'L':
+            return 'S';
+            break;
+        case 'XL':
+            return 'M';
+            break;
+        case 'XXL':
+            return 'L';
+            break;
+        case 'XXXL':
+            return 'XL';
+            break;
+        case '4XL':
+            return 'XXL';
+            break;
+        case 'XXXXL':
+            return 'XXL';
+            break;
+    }
+}
+
+function populateForm(data, rate, link) {
 
     // Set up data structure
     var form = $('#lightbox form');
     var imagebox = $('#lightbox form .imagebox');
     var productBox = $('#lightbox form .productbox');
+    var sizing = 'asian';
 
     // Set up variables
-    var images = data.images, select = data.select, tagsdata = data.tags;
+    var images = (data.imagePrimary).concat(data.imageSecondary), select = data.select, tagsdata = data.tags;
     var options = '', imageGrid = '', tags = '', price, category = '';
 
     // Set up element containers
@@ -81,18 +128,26 @@ function populateForm(data, rate, catset) {
     var imageElements = document.createElement('div');
 
     // Generate converted price in AUD from USD
-    if (data.discountPrice != "" && typeof data.discountPrice != 'undefined') {
+    if ((data.discountPrice) && (typeof data.discountPrice != 'undefined')) {
+        console.log('price is discounted: ' + data.discountPrice);
         if (data.discountPrice.indexOf(" - ") > -1){
             var fromto = data.discountPrice.split(" - ");
             var amount = fromto[1]
         } else {
             var amount = data.discountPrice;
         }
-    } else if (data.price.indexOf("0.00") != - 1 ){
+    } else if (data.multiPrice) {
+        console.log('price is multi: ' + data.multiPrice);
+        var input = data.multiPrice + '';
+        var separated = input.split(' - ');
+        var lastIndex = (separated.length - 1);
+        var amount = separated[lastIndex];
+
+    } else if (data.price) {
+        console.log('price is standard: ' + data.price);
         if (data.price.indexOf("US") != -1){
             var unstripped = data.price;
             var amount = unstripped.replace('US $', '');
-
         } else {
             var amount = data.price;
         }
@@ -103,14 +158,31 @@ function populateForm(data, rate, catset) {
     price = rate * amount;
 
     // Generate product details
+    // GENERATE TAGS
+    for (y=0; y < tagsdata.length; y++) {
+
+        // CREATE INDIVIDUAL TAG & INPUT
+
+        var content = tagsdata[y].content;
+        var label = separateLabel(tagsdata[y].label);
+
+        tag = '<input type="text" name="tags[]" value="' + label + content + '">';
+
+        // Append individual tag to tags object
+        tags +=
+        '<div class="tag-line" id="tag-identifier-' + y + '">' +
+                '<i class="material-icons delete-option" onclick="deleteElement(\'#tag-identifier-' + y + '\')">&#xE872;</i>' +
+                tag +
+        '</div>';
+    }
+
+
     // FOR EACH OPTION TYPE
     for (i=0; i < select.length; i++) {
         var optionValues = "";
         var optionType = select[i].type;
-        console.log(optionType);
         // CHECK FOR TYPE AND CREATE OPTIONS
         if ((optionType.indexOf('Color') > -1) || (optionType.indexOf('color') != -1)){
-            console.log('number of color options: ' + select[i].options.length);
 
             for (l=0; l < select[i].options.length; l++) {
 
@@ -140,10 +212,11 @@ function populateForm(data, rate, catset) {
                                  '</div>';
             }
         } else if ((optionType.indexOf('Size') != -1) || (optionType.indexOf('size') != -1)) {
-            console.log('number of size options: ' + select[i].options.length);
             for (l=0; l < select[i].options.length; l++) {
                 var id = select[i].options[l].id;
-                var size = select[i].options[l].labelSize;
+                var rawSize = cleanSpaces(select[i].options[l].labelSize);
+                var size = adjustSize(rawSize);
+                // call adjustment function
                 optionValues += '<div class="option" id="option-line-' + i + '-' + l + '">' +
                                     '<input type="text" name="option[' + i + ']" value="' + size + '"></input>' +
                                     '<i class="material-icons delete-option" onClick="deleteElement(\'#option-line-' + i + '-' + l + '\')">&#xE872;</i>' +
@@ -153,6 +226,8 @@ function populateForm(data, rate, catset) {
         } else {
             optionValues += '<div><h3>Not a recognised option.</h3></div>';
         }
+
+        console.log('Sizing recognised as: ' + sizing);
 
         options +=
         '<div class="option-line" id="option-identifier-' + i + '">' +
@@ -181,90 +256,73 @@ function populateForm(data, rate, catset) {
         '</div>';
     }
 
-    // GENERATE TAGS
-    for (y=0; y < tagsdata.length; y++) {
-
-        // CREATE INDIVIDUAL TAG & INPUT
-
-        var content = tagsdata[y].content;
-        var label = tagsdata[y].label.replace(':', ' : ');
-        tag = '<input type="text" name="tags[]" value="' + label + content + '">';
-
-        // Append individual tag to tags object
-        tags +=
-        '<div class="tag-line" id="tag-identifier-' + y + '">' +
-                '<i class="material-icons delete-option" onclick="deleteElement(\'#tag-identifier-' + y + '\')">&#xE872;</i>' +
-                tag +
-        '</div>';
-    }
-
     // GENERATE CATEGORY SELECTION
 
-    if (catset) {
-        var IFH = "", IFMS = "", IFMJ = "", IFMA = "", IFMW = "", IFWS = "", IFWJ = "", IFWD = "", IFWA = "", IFWW = "";
-        switch(mode) {
-            case 'H': //Home
-                IFH = 'required';
-                break;
+    var activenav = $('.grid-nav li a.active').attr('data-category');
+    var IFH = "", IFMS = "", IFMJ = "", IFMA = "", IFMW = "", IFWS = "", IFWJ = "", IFWD = "", IFWA = "", IFWW = "";
+    switch(activenav) {
+        case 'H': //Home
+            IFH = 'selected';
+            break;
 
-            case 'MS': // Male shirts
-                IFMS = 'required';
-                break;
+        case 'MS': // Male shirts
+            IFMS = 'selected';
+            break;
 
-            case 'MJ': // Male Jackets
-                IFMJ = 'required';
-                break;
+        case 'MJ': // Male Jackets
+            IFMJ = 'selected';
+            break;
 
-            case 'MA': // Male Accessories
-                IFMA = 'required';
-                break;
+        case 'MA': // Male Accessories
+            IFMA = 'selected';
+            break;
 
-            case 'MW': // Male Watches
-                IFMW = 'required';
-                break;
+        case 'MW': // Male Watches
+            IFMW = 'selected';
+            break;
 
-            case 'WS': // Female Shirts
-                IFWS = 'required';
-                break;
+        case 'WS': // Female Shirts
+            IFWS = 'selected';
+            break;
 
-            case 'WJ': // Female Jackets
-                IFWJ = 'required';
-                break;
+        case 'WJ': // Female Jackets
+            IFWJ = 'selected';
+            break;
 
-            case 'WD': // Female Dresses
-                IFWD = 'required';
-                break;
+        case 'WD': // Female Dresses
+            IFWD = 'selected';
+            break;
 
-            case 'WA': // Female Accessories
-                IFWA = 'required';
-                break;
+        case 'WA': // Female Accessories
+            IFWA = 'selected';
+            break;
 
-            case 'WW': // Female Watches
-                IFWW = 'required';
-                break;
+        case 'WW': // Female Watches
+            IFWW = 'selected';
+            break;
 
-            default: // None Applicable
-                console.log('Err: no applicable category.')
-                break;
-        }
-
-        category += '<select name="category">'
-            '<option value="Mens > Shirts" ' + IFMS + '>Mens > Shirts</option>' +
-            '<option value="Mens > Jackets" ' + IFMJ + '>Mens > Jackets</option>' +
-            '<option value="Mens > Accessories" ' + IFMA + '>Mens > Accessories</option>' +
-            '<option value="Mens > Watches" ' + IFMW + '>Mens > Watches</option>' +
-            '<option value="Womens > Shirts" ' + IFWS + '>Womens > Shirts</option>' +
-            '<option value="Womens > Jackets" ' + IFWJ + '>Womens > Jackets</option>' +
-            '<option value="Womens > Dresses" ' + IFWD + '>Womens > Dresses</option>' +
-            '<option value="Womens > Accessories" ' + IFWA + '>Womens > Accessories</option>' +
-            '<option value="Womens > Watches" ' + IFWW + '>Womens > Watches</option>' +
-        '</select>';
+        default: // None Applicable
+            console.log('Err: no applicable category.')
+            break;
     }
 
+    category +=
+    '<select name="category">' +
+        '<option value="Mens > Shirts" ' + IFMS + '>Mens > Shirts</option>' +
+        '<option value="Mens > Jackets" ' + IFMJ + '>Mens > Jackets</option>' +
+        '<option value="Mens > Accessories" ' + IFMA + '>Mens > Accessories</option>' +
+        '<option value="Mens > Watches" ' + IFMW + '>Mens > Watches</option>' +
+        '<option value="Womens > Shirts" ' + IFWS + '>Womens > Shirts</option>' +
+        '<option value="Womens > Jackets" ' + IFWJ + '>Womens > Jackets</option>' +
+        '<option value="Womens > Dresses" ' + IFWD + '>Womens > Dresses</option>' +
+        '<option value="Womens > Accessories" ' + IFWA + '>Womens > Accessories</option>' +
+        '<option value="Womens > Watches" ' + IFWW + '>Womens > Watches</option>' +
+    '</select>';
 
 
     // Fill element containers
     productElements.innerHTML =
+    '<a target="_blank" href="' + link + '"><i class="material-icons page-link">link</i></a>' +
     '<input name="title" class="product-title" value="' + data.name + '" />' +
     '<h3 class="accordion-title">Tags<i href="#product-tags" class="fa fa-chevron-up accordion-button"></i></h3>' +
     '<div class="accordion-section active" id="product-tags">'+
@@ -280,6 +338,7 @@ function populateForm(data, rate, catset) {
      '<div class="product-highlights">' +
         '<input name="price" class="product-price" value="$' + Math.round(price * 100) / 100 + '" />' +
         '<input name="rating" class="product-rating" value="' + data.rating + '" />' +
+         category +
      '</div>';
 
      // Populate page with element containers

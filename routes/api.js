@@ -3,6 +3,7 @@ var stormpath = require('express-stormpath');
 var csurf = require('csurf');
 var phantom = require('x-ray-phantom');
 var Xray = require('x-ray');
+
 var x = Xray().driver(phantom());
 
 module.exports = function loader(){
@@ -93,9 +94,11 @@ module.exports = function loader(){
 			x(url, 'body',
 				{
 					name: '.product-name',
-					images: x('.image-nav', ['.image-nav-item span img@src']),
+					imagePrimary: x('.image-nav', ['.image-nav-item span img@src']),
+					imageSecondary: x('#extend .col-main .main-content .detail-tab #pdt #product-desc #custom-description .ui-box-body', ['img@src']),
 					rating: '#product-star b',
 					discountPrice: '#sku-discount-price',
+					multiPrice: x('#sku-price', ['span']),
 					price: '#sku-price',
 					select: x('#product-info-sku dl', [{
 	                    type: 'dt',
@@ -111,7 +114,7 @@ module.exports = function loader(){
 						content: 'dd'
 					}])
 				}
-			) ( function(err, product) {
+			)(function(err, product) {
 				if (err){
 			  		console.log('error: ' + err);
 				} else {

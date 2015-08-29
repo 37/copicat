@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0373)https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#1 -->
+<html lang="en" dir="ltr" class="js no-touch localstorage sessionstorage contenteditable use-opacity-transitions"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Disqus Comments</title>
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    
+    
+    <style>
+        html {
+            overflow: hidden;
+        }
+
+        
+    </style>
+
+<style type="text/css"></style><link rel="stylesheet" href="https://a.disquscdn.com/next/embed/styles/lounge.fcc2aae7ac79584a0849157bcc4b0f37.css" media="all"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="remote/config" src="config.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="common.bundle" src="common.bundle.b2afad436ae6cd3e780b3b68b2b7dfb3.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="lounge.bundle" src="lounge.bundle.a42487daa805a0edb0193c3fdc4918d8.js"></script><style id="css_1440852996741"></style><!--<base target="_parent">--><base href="." target="_parent"><script src="event.js" async="" charset="UTF-8"></script><link rel="stylesheet" href="https://a.disquscdn.com/next/embed/styles/discovery.1fe89d176a9928445563cdce9d8680d4.css" media="all"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="ga" src="ga.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="discovery/main" src="discovery.bundle.c9ddb8122b13c76cab1bc60ddfec99ed.js"></script></head>
+<body>
+    
+
+    
+    <!--[if lt IE 10]><p style="color: #fff; background-color: #f05f70; padding: 10px; margin-top: 20px;">
+        You're using a browser that Disqus plans to stop supporting soon. For more information, visit our list of 
+        <a href="https://help.disqus.com/customer/portal/articles/466228-which-browsers-does-disqus-work-with-" style="color: #fff; text-decoration: underline;">supported browsers</a>
+        and consider upgrading.
+    </p><![endif]-->
+    <div id="error" style="display:none; text-align: center">
+        <p>We were unable to load Disqus. If you are a moderator please see our <a href="https://docs.disqus.com/help/83/"> troubleshooting guide</a>. </p>
+    </div>
+
+    
+    <script type="text/json" id="disqus-forumData">{"session":{"canModerate":false,"audienceSyncVerified":false,"canReply":true,"mustVerifyEmail":false},"features":{},"forum":{"category":"Tech","description":null,"founder":"49935259","settings":{"supportLevel":1,"adsDRNativeEnabled":false,"disable3rdPartyTrackers":true,"moderatorText":"Bartender","ssoRequired":false,"linkAffiliationEnabled":false,"hasCustomAvatar":false,"organicDiscoveryEnabled":true,"colorScheme":"light","discoveryMax":false,"discoverySettingsUrl":"https://scotchwebdevelopment.disqus.com/admin/settings/ads/","adsVideoEnabled":false,"allowAnonPost":true,"allowMedia":true,"promotedDiscoveryEnabled":false,"allowAnonVotes":false,"mustVerifyEmail":false,"discoveryVariant":"default","adsBannerEnabled":false,"audienceSyncEnabled":false,"typeface":"auto","discoveryLocked":false,"discoveryThumbnailsEnabled":false,"isVIP":false},"url":"https://scotch.io/","guidelines":null,"favicon":{"permalink":"https://disqus.com/api/forums/favicons/scotchwebdevelopment.jpg","cache":"//a.disquscdn.com/uploads/forums/232/8316/favicon.png"},"language":"en","avatar":{"small":{"permalink":"https://disqus.com/api/forums/avatars/scotchwebdevelopment.jpg?size=32","cache":"//a.disquscdn.com/1440694703/images/noavatar32.png"},"large":{"permalink":"https://disqus.com/api/forums/avatars/scotchwebdevelopment.jpg?size=92","cache":"//a.disquscdn.com/1440694703/images/noavatar92.png"}},"pk":"2328316","signedUrl":"https://disq.us/?url=https%3A%2F%2Fscotch.io%2F&key=vZZ-iXv8NyYwpe2-kYPCHg","raw_guidelines":null,"id":"scotchwebdevelopment","channel":null,"name":"Scotch"}}</script>
+
+    
+    <script type="text/json" id="disqus-threadData">{"cursor":{"hasPrev":false,"prev":null,"total":7,"hasNext":false,"next":"1:0:0"},"code":0,"response":{"lastModified":1440084123,"posts":[{"forum":"scotchwebdevelopment","parent":null,"isApproved":true,"author":{"username":"luisrecillas","about":"","name":"Luis Recillas","disable3rdPartyTrackers":false,"url":"","isAnonymous":false,"rep":1.2327869999999999,"profileUrl":"https://disqus.com/by/luisrecillas/","reputation":1.2327869999999999,"location":"","isPrivate":false,"isPrimary":true,"joinedAt":"2015-07-09T21:29:43","id":"164853880","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/luisrecillas.jpg","cache":"//a.disquscdn.com/1440694703/images/noavatar32.png"},"isCustom":false,"permalink":"https://disqus.com/api/users/avatars/luisrecillas.jpg","cache":"//a.disquscdn.com/1440694703/images/noavatar92.png","large":{"permalink":"https://disqus.com/api/users/avatars/luisrecillas.jpg","cache":"//a.disquscdn.com/1440694703/images/noavatar92.png"}}},"media":[],"isDeleted":false,"isFlagged":false,"dislikes":0,"raw_message":"Very nice article!\n\nI'm working in the same process with AWS and nodejs, and I found that elastic beanstalk give you a robust nodejs  pre configure  EC2 server as a Bitnami, did you test that option? What  do you think about that?\n\nI'm waiting the second part! =D","createdAt":"2015-07-09T21:35:59","id":"2127362174","thread":"3911071803","depth":0,"numReports":0,"isDeletedByAuthor":false,"likes":1,"isEdited":false,"message":"\u003cp>Very nice article!\u003c/p>\u003cp>I'm working in the same process with AWS and nodejs, and I found that elastic beanstalk give you a robust nodejs  pre configure  EC2 server as a Bitnami, did you test that option? What  do you think about that?\u003c/p>\u003cp>I'm waiting the second part! =D\u003c/p>","isSpam":false,"isHighlighted":false,"points":1},{"forum":"scotchwebdevelopment","parent":2127362174,"isApproved":true,"author":{"username":"ahmed_haque","about":"Mr. Haque is a PhD student in Bioengineering at Rice University, where he is working on the development of mobile health systems for portable blood-based biomarker analysis. He holds a BS in Biomedical Engineering from Texas A&M University. Mr. Haque is a Howard Hughes Med-Into-Grad Fellow in Translational Cancer Research at MD Anderson Cancer Center, a Rice Alliance Venture and Commercialization Fellow at Methodist Research Institute, and a recent finalist in the Nokia Sensing X Challenge. His interests include early-stage preventive diagnostics, low-cost medical interventions, behavior modification, and social entrepreneurship. You can reach him via email at afhaque@rice.edu.","name":"Ahmed Haque","disable3rdPartyTrackers":false,"url":"https://www.linkedin.com/in/ahmedhaque","isAnonymous":false,"rep":1.235912,"profileUrl":"https://disqus.com/by/ahmed_haque/","reputation":1.235912,"location":"Houston, TX","isPrivate":false,"isPrimary":true,"joinedAt":"2014-03-28T09:11:48","id":"100773414","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/ahmed_haque.jpg","cache":"//a.disquscdn.com/uploads/users/10077/3414/avatar32.jpg?1436366804"},"isCustom":true,"permalink":"https://disqus.com/api/users/avatars/ahmed_haque.jpg","cache":"//a.disquscdn.com/uploads/users/10077/3414/avatar92.jpg?1436366804","large":{"permalink":"https://disqus.com/api/users/avatars/ahmed_haque.jpg","cache":"//a.disquscdn.com/uploads/users/10077/3414/avatar92.jpg?1436366804"}}},"media":[],"isDeleted":false,"isFlagged":false,"dislikes":0,"raw_message":"Thanks for the read! I've actually never worked with Elastic Beanstalk. But I'll definitely check it out now!\n\nI think the major advantage of the Bitnami stack though is that it also includes MongoDB built into the server as well. When I tried setting up MongoDB myself I ran into crazy errors. The Bitnami solution means that both Node and MongoDB are ready to be accessed immediately. (Well, kind of immediately. Getting MongoDB working was still a pain as you'll see in Part II, but a manageable one at least).","createdAt":"2015-07-10T00:36:34","id":"2127621021","thread":"3911071803","depth":1,"numReports":0,"isDeletedByAuthor":false,"likes":0,"isEdited":false,"message":"\u003cp>Thanks for the read! I've actually never worked with Elastic Beanstalk. But I'll definitely check it out now!\u003c/p>\u003cp>I think the major advantage of the Bitnami stack though is that it also includes MongoDB built into the server as well. When I tried setting up MongoDB myself I ran into crazy errors. The Bitnami solution means that both Node and MongoDB are ready to be accessed immediately. (Well, kind of immediately. Getting MongoDB working was still a pain as you'll see in Part II, but a manageable one at least).\u003c/p>","isSpam":false,"isHighlighted":false,"points":0},{"forum":"scotchwebdevelopment","parent":null,"isApproved":true,"author":{"username":"disqus_60HGsqYGdT","about":"","name":"Impulsive","disable3rdPartyTrackers":false,"url":"","isAnonymous":false,"rep":1.2493859999999999,"profileUrl":"https://disqus.com/by/disqus_60HGsqYGdT/","reputation":1.2493859999999999,"location":"","isPrivate":false,"isPrimary":true,"joinedAt":"2013-06-30T19:39:34","id":"59955473","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/disqus_60HGsqYGdT.jpg","cache":"//a.disquscdn.com/uploads/users/5995/5473/avatar32.jpg?1372621175"},"isCustom":true,"permalink":"https://disqus.com/api/users/avatars/disqus_60HGsqYGdT.jpg","cache":"//a.disquscdn.com/uploads/users/5995/5473/avatar92.jpg?1372621175","large":{"permalink":"https://disqus.com/api/users/avatars/disqus_60HGsqYGdT.jpg","cache":"//a.disquscdn.com/uploads/users/5995/5473/avatar92.jpg?1372621175"}}},"media":[],"isDeleted":false,"isFlagged":false,"dislikes":0,"raw_message":"Great article. Thanks","createdAt":"2015-07-08T13:45:54","id":"2123540356","thread":"3911071803","depth":0,"numReports":0,"isDeletedByAuthor":false,"likes":1,"isEdited":false,"message":"\u003cp>Great article. Thanks\u003c/p>","isSpam":false,"isHighlighted":false,"points":1},{"forum":"scotchwebdevelopment","parent":null,"isApproved":true,"author":{"username":"craig_gibbons","about":"","name":"Craig Gibbons","disable3rdPartyTrackers":false,"url":"","isAnonymous":false,"rep":1.232124,"profileUrl":"https://disqus.com/by/craig_gibbons/","reputation":1.232124,"location":"","isPrivate":false,"isPrimary":true,"joinedAt":"2014-09-02T18:15:20","id":"120508134","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/craig_gibbons.jpg","cache":"//a.disquscdn.com/uploads/users/12050/8134/avatar32.jpg?1440084124"},"isCustom":true,"permalink":"https://disqus.com/api/users/avatars/craig_gibbons.jpg","cache":"//a.disquscdn.com/uploads/users/12050/8134/avatar92.jpg?1440084124","large":{"permalink":"https://disqus.com/api/users/avatars/craig_gibbons.jpg","cache":"//a.disquscdn.com/uploads/users/12050/8134/avatar92.jpg?1440084124"}}},"media":[],"isDeleted":false,"isFlagged":false,"dislikes":0,"raw_message":"Really, really helpful. I hacked my way through the auth problems discussed in Part 2 and wish I had found this article at that time.","createdAt":"2015-08-20T15:22:03","id":"2205025697","thread":"3911071803","depth":0,"numReports":0,"isDeletedByAuthor":false,"likes":0,"isEdited":false,"message":"\u003cp>Really, really helpful. I hacked my way through the auth problems discussed in Part 2 and wish I had found this article at that time.\u003c/p>","isSpam":false,"isHighlighted":false,"points":0},{"forum":"scotchwebdevelopment","parent":null,"isApproved":true,"author":{"username":"ahmed_haque","about":"Mr. Haque is a PhD student in Bioengineering at Rice University, where he is working on the development of mobile health systems for portable blood-based biomarker analysis. He holds a BS in Biomedical Engineering from Texas A&M University. Mr. Haque is a Howard Hughes Med-Into-Grad Fellow in Translational Cancer Research at MD Anderson Cancer Center, a Rice Alliance Venture and Commercialization Fellow at Methodist Research Institute, and a recent finalist in the Nokia Sensing X Challenge. His interests include early-stage preventive diagnostics, low-cost medical interventions, behavior modification, and social entrepreneurship. You can reach him via email at afhaque@rice.edu.","name":"Ahmed Haque","disable3rdPartyTrackers":false,"url":"https://www.linkedin.com/in/ahmedhaque","isAnonymous":false,"rep":1.235912,"profileUrl":"https://disqus.com/by/ahmed_haque/","reputation":1.235912,"location":"Houston, TX","isPrivate":false,"isPrimary":true,"joinedAt":"2014-03-28T09:11:48","id":"100773414","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/ahmed_haque.jpg","cache":"//a.disquscdn.com/uploads/users/10077/3414/avatar32.jpg?1436366804"},"isCustom":true,"permalink":"https://disqus.com/api/users/avatars/ahmed_haque.jpg","cache":"//a.disquscdn.com/uploads/users/10077/3414/avatar92.jpg?1436366804","large":{"permalink":"https://disqus.com/api/users/avatars/ahmed_haque.jpg","cache":"//a.disquscdn.com/uploads/users/10077/3414/avatar92.jpg?1436366804"}}},"media":[],"isDeleted":false,"isFlagged":false,"dislikes":0,"raw_message":"Hey guys! Looking forward to your comments. This is actually my first ever coding article. If you run into any issues feel free to shoot me a message!","createdAt":"2015-07-08T14:47:57","id":"2123742389","thread":"3911071803","depth":0,"numReports":0,"isDeletedByAuthor":false,"likes":0,"isEdited":false,"message":"\u003cp>Hey guys! Looking forward to your comments. This is actually my first ever coding article. If you run into any issues feel free to shoot me a message!\u003c/p>","isSpam":false,"isHighlighted":false,"points":0},{"forum":"scotchwebdevelopment","parent":2123742389,"isApproved":true,"author":{"username":"disqus_JVmWamNPro","about":"","name":"Mike Fisher","disable3rdPartyTrackers":false,"url":"http://mikefisher.io","isAnonymous":false,"rep":1.238192,"profileUrl":"https://disqus.com/by/disqus_JVmWamNPro/","reputation":1.238192,"location":"New York, NY","isPrivate":false,"isPrimary":true,"joinedAt":"2014-05-01T04:57:46","id":"105325782","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/disqus_JVmWamNPro.jpg","cache":"//a.disquscdn.com/uploads/users/10532/5782/avatar32.jpg?1436370571"},"isCustom":true,"permalink":"https://disqus.com/api/users/avatars/disqus_JVmWamNPro.jpg","cache":"//a.disquscdn.com/uploads/users/10532/5782/avatar92.jpg?1436370571","large":{"permalink":"https://disqus.com/api/users/avatars/disqus_JVmWamNPro.jpg","cache":"//a.disquscdn.com/uploads/users/10532/5782/avatar92.jpg?1436370571"}}},"media":[],"isDeleted":false,"isFlagged":false,"dislikes":0,"raw_message":"Nice article. It would be nice to have a section on how to connect to EC2 on a Mac/Linux box","createdAt":"2015-07-08T15:49:29","id":"2123933228","thread":"3911071803","depth":1,"numReports":0,"isDeletedByAuthor":false,"likes":1,"isEdited":false,"message":"\u003cp>Nice article. It would be nice to have a section on how to connect to EC2 on a Mac/Linux box\u003c/p>","isSpam":false,"isHighlighted":false,"points":1},{"forum":"scotchwebdevelopment","parent":2123933228,"isApproved":true,"author":{"username":"ahmed_haque","about":"Mr. Haque is a PhD student in Bioengineering at Rice University, where he is working on the development of mobile health systems for portable blood-based biomarker analysis. He holds a BS in Biomedical Engineering from Texas A&M University. Mr. Haque is a Howard Hughes Med-Into-Grad Fellow in Translational Cancer Research at MD Anderson Cancer Center, a Rice Alliance Venture and Commercialization Fellow at Methodist Research Institute, and a recent finalist in the Nokia Sensing X Challenge. His interests include early-stage preventive diagnostics, low-cost medical interventions, behavior modification, and social entrepreneurship. You can reach him via email at afhaque@rice.edu.","name":"Ahmed Haque","disable3rdPartyTrackers":false,"url":"https://www.linkedin.com/in/ahmedhaque","isAnonymous":false,"rep":1.235912,"profileUrl":"https://disqus.com/by/ahmed_haque/","reputation":1.235912,"location":"Houston, TX","isPrivate":false,"isPrimary":true,"joinedAt":"2014-03-28T09:11:48","id":"100773414","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/ahmed_haque.jpg","cache":"//a.disquscdn.com/uploads/users/10077/3414/avatar32.jpg?1436366804"},"isCustom":true,"permalink":"https://disqus.com/api/users/avatars/ahmed_haque.jpg","cache":"//a.disquscdn.com/uploads/users/10077/3414/avatar92.jpg?1436366804","large":{"permalink":"https://disqus.com/api/users/avatars/ahmed_haque.jpg","cache":"//a.disquscdn.com/uploads/users/10077/3414/avatar92.jpg?1436366804"}}},"media":[],"isDeleted":false,"isFlagged":false,"dislikes":0,"raw_message":"Thanks for the read-through. Actually, the process for Mac users is almost exactly the same. The only place where things would be different is instead of using PuTTY like I did -- you'd use the in-built terminal as your SSH client. This link is a good guide on how you'd do this: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html","createdAt":"2015-07-08T16:07:20","id":"2123988074","thread":"3911071803","depth":2,"numReports":0,"isDeletedByAuthor":false,"likes":0,"isEdited":false,"message":"\u003cp>Thanks for the read-through. Actually, the process for Mac users is almost exactly the same. The only place where things would be different is instead of using PuTTY like I did -- you'd use the in-built terminal as your SSH client. This link is a good guide on how you'd do this: \u003ca href=\"http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html\" rel=\"nofollow\">http://docs.aws.amazon.com/AWS...\u003c/a>\u003c/p>","isSpam":false,"isHighlighted":false,"points":0}],"thread":{"feed":"https://scotchwebdevelopment.disqus.com/deploying_a_mean_app_to_amazon_ec2_part_1/latest.rss","uploadAdd":"//scotchwebdevelopment.disqus.com/thread/deploying_a_mean_app_to_amazon_ec2_part_1/async_media_upload/","identifiers":[],"dislikes":0,"likes":3,"message":"","id":"3911071803","createdAt":"2015-07-07T02:30:33","category":"2363325","clean_title":"Deploying a MEAN App to Amazon EC2 (Part 1)","userScore":0,"userSubscription":false,"isSpam":false,"signedLink":"https://disq.us/?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&key=hmagUTg24JC3dw9OIuwrlQ","isDeleted":false,"hasStreaming":false,"uploadRemove":"//scotchwebdevelopment.disqus.com/thread/deploying_a_mean_app_to_amazon_ec2_part_1/async_media_remove/","raw_message":"","isClosed":false,"link":"https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1","slug":"deploying_a_mean_app_to_amazon_ec2_part_1","forum":"scotchwebdevelopment","author":"49935259","posts":7,"moderators":[46391121,62492562,49935259,63850549,89054046],"title":"\n\t\t\tDeploying a MEAN App to Amazon EC2 (Part 1)\t\t","highlightedPost":null}},"order":"popular"}</script>
+
+    
+
+    <div id="fixed-content"></div>
+
+
+    
+        
+        <!--[if lte IE 8]>
+<script src="//a.disquscdn.com/1440694703/build/vendor/ie8.js"></script>
+<![endif]-->
+<!--[if IE 9]>
+<script src="//a.disquscdn.com/1440694703/build/vendor/ie9.js"></script>
+<![endif]-->
+
+        
+<script type="text/json" id="disqus-urls">{
+    "root":"//disqus.com",
+    "next":"//a.disquscdn.com/next/current/embed"
+}</script>
+
+        <script src="lounge.load.3aa223e9358fe29f29e60acc6f5afcd4.js" id="bootstrap-script" data-app="lounge"></script>
+    
+
+
+<div id="layout" data-tracking-area="layout">
+
+<div id="placement-top" data-tracking-area="discovery-north"><div class="post-list" style="height: 0px; visibility: hidden;"></div></div>
+
+<div id="onboard" data-tracking-area="onboard"></div>
+
+<div id="highlighted-post" data-tracking-area="highlighted" class="highlighted-post" style="display: none;"></div>
+
+<div id="global-alert"></div>
+
+<header id="main-nav" data-tracking-area="main-nav">
+<nav class="nav nav-primary">
+<ul>
+<li class="tab-conversation active" data-role="post-count">
+<a class="publisher-nav-color">
+<span class="comment-count">
+7 comments
+</span>
+
+<span class="comment-count-placeholder">
+Comments
+</span>
+</a>
+</li>
+<li class="tab-community">
+<a href="https://disqus.com/home/forums/scotchwebdevelopment/" class="publisher-nav-color" data-action="community-sidebar" data-forum="scotchwebdevelopment" id="community-tab">
+<span class="community-name">
+<strong>Scotch</strong>
+
+</span>
+
+<strong class="community-name-placeholder">Community</strong>
+</a>
+</li>
+<li class="dropdown user-menu" data-role="logout"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="dropdown-toggle" data-toggle="dropdown">
+<span class="dropdown-toggle-wrapper">
+
+<span>
+Login
+</span>
+
+</span> <span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+
+
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="auth:disqus">Disqus</a>
+</li>
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="auth:facebook">Facebook</a>
+</li>
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="auth:twitter">Twitter</a>
+</li>
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="auth:google">Google</a>
+</li>
+
+
+
+</ul>
+</li>
+<li class="notification-menu unread" data-role="notification-menu"><a href="https://disqus.com/home/inbox/" class="notification-container" data-action="home" data-home-path="home/inbox/">
+<span class="notification-icon icon-comment" aria-hidden=""></span>
+<span class="notification-count" data-role="notification-count">1</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+
+<section id="conversation" data-role="main" data-tracking-area="main">
+<div class="nav nav-secondary" data-tracking-area="secondary-nav">
+<ul>
+<li id="recommend-button" class="recommend dropdown">
+<div class="thread-likes"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="recommend" title="Recommend this discussion" class="dropdown-toggle ">
+<span class="icon-heart"></span>
+<span class="label label-default">Recommend</span>
+<span class="label label-recommended">Recommended</span>
+<span class="label label-count">3</span>
+</a>
+<ul class="dropdown-menu coachmark">
+<li>
+<h2>Discussion Recommended!</h2>
+<p>Recommending means this is a discussion worth sharing. It gets shared to your followers' Disqus feeds, and gives the creator kudos!</p>
+<a href="https://disqus.com/home/?utm_source=disqus_embed&utm_content=recommend_btn" class="btn btn-primary" target="_blank">
+ Find More Discussions 
+</a>
+</li>
+</ul>
+</div></li>
+<li id="thread-share-menu" class="dropdown share-menu hidden-sm"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="dropdown-toggle" data-toggle="dropdown" title="Share">
+<span class="icon-export"></span>
+<span class="label">Share</span>
+</a>
+<ul class="share-menu dropdown-menu">
+<li class="share">Share this discussion on
+<ul>
+<li class="twitter">
+<a data-action="share:twitter" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#">Twitter</a>
+</li>
+<li class="facebook">
+<a data-action="share:facebook" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#">Facebook</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-role="post-sort" class="dropdown sorting pull-right">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="dropdown-toggle" data-toggle="dropdown">
+Sort by Best
+
+
+<span class="caret"></span>
+</a>
+<ul class="dropdown-menu pull-right">
+<li class="selected">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="sort" data-sort="popular">Best<i aria-hidden="true" class="icon-checkmark"></i></a>
+</li>
+
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="sort" data-sort="desc">Newest<i aria-hidden="true" class="icon-checkmark"></i></a>
+</li>
+
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="sort" data-sort="asc">Oldest<i aria-hidden="true" class="icon-checkmark"></i></a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="posts">
+<div id="form"><form class="reply">
+<div class="postbox">
+<div role="alert"></div>
+<div class="avatar">
+<span class="user">
+<img data-role="user-avatar" src="noavatar92.b677f9ddbee6f4bb22f473ae3bd61b85.png" alt="Avatar">
+</span>
+</div>
+
+<div class="textarea-wrapper" data-role="textarea" dir="auto"><div><span class="placeholder">Join the discussion…</span><div class="textarea" tabindex="0" role="textbox" aria-multiline="true" contenteditable="true" data-role="editable" aria-label="Join the discussion…" style="overflow: auto; max-height: 350px;"><p><br></p></div><div style="display: none;"><ul class="suggestions">
+<li class="header">
+<h5>in this conversation</h5>
+</li>
+</ul>
+</div></div>
+<div data-role="drag-drop-placeholder" class="media-drag-hover" style="display: none">
+<div class="drag-text">
+⬇ Drag and drop your images here to upload them.
+</div>
+</div>
+<div class="media-preview empty" data-role="media-preview"><ul data-role="media-legacy-list"></ul>
+<ul data-role="media-progress-list"></ul>
+<ul data-role="media-rich-list"></ul>
+<div class="media-expanded empty" data-role="media-preview-expanded">
+<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-role="media-preview-expanded-image" alt="Media preview placeholder">
+</div>
+</div>
+<div class="edit-alert" role="postbox-alert"></div>
+<div class="post-actions">
+<ul class="wysiwyg">
+<li data-role="media-uploader"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" tabindex="-1" data-action="attach" class="attach" title="Upload Images"><span>Attach</span></a>
+<input type="file" data-role="media-upload" tabindex="-1" accept="image/*">
+</li>
+</ul>
+</div>
+</div>
+
+<div data-role="login-form"><div><section class="auth-section logged-out">
+<div class="connect">
+<h6>Log in with</h6>
+<ul data-role="login-menu" class="services login-buttons">
+
+
+<li class="auth-disqus">
+<button type="button" data-action="auth:disqus" title="Disqus"><i class="icon-disqus"></i></button>
+</li>
+<li class="auth-facebook">
+<button type="button" data-action="auth:facebook" title="Facebook"><i class="icon-facebook-circle"></i></button>
+</li>
+<li class="auth-twitter">
+<button type="button" data-action="auth:twitter" title="Twitter"><i class="icon-twitter-circle"></i></button>
+</li>
+<li class="auth-google">
+<button type="button" data-action="auth:google" title="Google"><i class="icon-google-plus-circle"></i></button>
+</li>
+</ul>
+</div>
+<div class="guest">
+<h6 class="guest-form-title">
+<span class="register-text"> or sign up with Disqus </span>
+<span class="guest-text"> or pick a name </span>
+</h6>
+
+<div class="what-is-disqus help-icon">
+<div id="rules" class="tooltip show">
+<h3>Disqus is a discussion network</h3>
+<ul>
+<li><span>Disqus never moderates or censors. The rules on this community are its own.</span></li>
+<li><span>Your email is safe with us. It's only used for moderation and optional notifications.</span></li>
+<li><span>Don't be a jerk or do anything illegal. Everything is easier that way.</span></li>
+</ul>
+<p class="clearfix"><a href="https://docs.disqus.com/kb/terms-and-policies/" class="btn btn-small" target="_blank">Read full terms and conditions</a></p>
+</div>
+</div>
+
+<p class="input-wrapper">
+<input dir="auto" type="text" placeholder="Name" name="display_name" id="view45_display_name" maxlength="30">
+</p>
+
+<div class="guest-details " data-role="guest-details">
+<p class="input-wrapper">
+<input dir="auto" type="email" placeholder="Email" name="email" id="view45_email">
+</p>
+
+<p class="input-wrapper">
+<input dir="auto" type="password" class="register-text" placeholder="Password" name="password" id="view45_password">
+</p>
+
+<div class="acceptance-wrapper register-text">
+By signing up, you agree to the Disqus <a target="_blank" href="https://help.disqus.com/customer/portal/articles/1753105-basic-rules-for-disqus-powered-profiles-and-discussions">Basic Rules</a>, <a target="_blank" href="https://help.disqus.com/customer/portal/articles/466260-terms-of-service">Terms of Service</a>, and <a target="_blank" href="https://help.disqus.com/customer/portal/articles/466259-privacy-policy">Privacy Policy</a>.
+</div>
+<div class="acceptance-wrapper guest-text">
+By posting, you agree to the Disqus <a target="_blank" href="https://help.disqus.com/customer/portal/articles/1753105-basic-rules-for-disqus-powered-profiles-and-discussions">Basic Rules</a>, <a target="_blank" href="https://help.disqus.com/customer/portal/articles/466260-terms-of-service">Terms of Service</a>, and <a target="_blank" href="https://help.disqus.com/customer/portal/articles/466259-privacy-policy">Privacy Policy</a>.
+</div>
+
+<div class="guest-checkbox">
+<label>
+<input type="checkbox" name="author-guest">
+I'd rather post as guest
+</label>
+</div>
+
+<div class="proceed" data-role="submit-btn-container">
+<button type="submit" class="btn submit" aria-label="Post"><span class="icon-proceed"></span><div class="spinner"></div></button>
+<button type="submit" class="btn next" aria-label="Next"><span class="icon-proceed"></span><div class="spinner"></div></button>
+</div>
+</div>
+</div>
+</section>
+
+</div></div>
+</div>
+</form></div>
+
+<button class="alert realtime" style="display: none" data-role="realtime-notification">
+</button>
+
+<div id="no-posts" style="display:none"></div>
+
+<ul id="post-list" class="post-list"><li class="post" id="post-2127362174"><div role="alert"></div>
+<div data-role="post-content" class="post-content">
+<ul class="post-menu dropdown" data-role="menu">
+<li class="collapse">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Collapse"><span>−</span></a>
+</li>
+<li class="expand">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Expand"><span>+</span></a>
+</li>
+
+<li class="" role="menu">
+<a class="dropdown-toggle" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="flag" data-role="flag" title="Flag as inappropriate">
+<i aria-hidden="true" class="icon icon-flag"></i>
+</a>
+</li>
+</ul>
+<div class="indicator"></div>
+
+<div class="avatar hovercard">
+<a href="https://disqus.com/by/luisrecillas/" class="user" data-action="profile" data-username="luisrecillas">
+<img data-role="user-avatar" data-user="164853880" src="noavatar92.png" alt="Avatar">
+</a>
+</div>
+<div class="post-body">
+<header>
+<span class="post-byline">
+<span class="author publisher-anchor-color"><a href="https://disqus.com/by/luisrecillas/" data-action="profile" data-username="luisrecillas" data-role="username">Luis Recillas</a></span>
+
+</span>
+
+<span class="post-meta">
+<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+
+<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2127362174" data-role="relative-time" class="time-ago" title="Friday, July 10, 2015 7:35 AM">2 months ago</a>
+</span>
+
+</header>
+
+<div class="post-body-inner">
+<div class="post-message-container" data-role="message-container">
+<div class="publisher-anchor-color" data-role="message-content">
+<div class="post-message " data-role="message" dir="auto">
+<p>Very nice article!</p><p>I'm working in the same process with AWS and nodejs, and I found that elastic beanstalk give you a robust nodejs  pre configure  EC2 server as a Bitnami, did you test that option? What  do you think about that?</p><p>I'm waiting the second part! =D</p>
+</div>
+
+<span class="post-media"><ul data-role="post-media-list"></ul></span>
+</div>
+</div>
+<a class="see-more hidden" title="see more" data-action="see-more">see more</a>
+</div>
+
+<footer>
+<menu>
+
+<li class="voting" data-role="voting">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="vote-up  count-1" data-action="upvote" title="">
+
+<span class="updatable count" data-role="likes">1</span>
+<span class="control"><i aria-hidden="true" class="icon icon-arrow-2"></i></span>
+</a>
+<span role="button" class="vote-down  count-0" data-action="downvote" title="Vote down">
+
+<span class="control"><i aria-hidden="true" class="icon icon-arrow"></i></span>
+</span>
+</li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="reply" data-role="reply-link">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="reply">
+<i class="icon icon-mobile icon-reply"></i><span class="text">Reply</span></a></li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="share">
+<a class="toggle"><i class="icon icon-mobile icon-share"></i><span class="text">Share ›</span></a>
+<ul>
+<li class="twitter"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:twitter">Twitter</a></li>
+<li class="facebook"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:facebook">Facebook</a></li>
+<li class="link"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2127362174">Link</a></li>
+</ul>
+</li>
+
+<li class="realtime" data-role="realtime-notification:2127362174">
+<span style="display:none;" class="realtime-replies"></span>
+<a style="display:none;" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="btn btn-small"></a>
+</li>
+
+</menu>
+</footer>
+</div>
+
+<div data-role="blacklist-form"></div>
+<div class="reply-form-container" data-role="reply-form"></div>
+</div>
+
+<ul data-role="children" class="children"><li class="post" id="post-2127621021"><div role="alert"></div>
+<div data-role="post-content" class="post-content">
+<ul class="post-menu dropdown" data-role="menu">
+<li class="collapse">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Collapse"><span>−</span></a>
+</li>
+<li class="expand">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Expand"><span>+</span></a>
+</li>
+
+<li class="" role="menu">
+<a class="dropdown-toggle" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="flag" data-role="flag" title="Flag as inappropriate">
+<i aria-hidden="true" class="icon icon-flag"></i>
+</a>
+</li>
+</ul>
+<div class="indicator"></div>
+
+<div class="avatar hovercard">
+<a href="https://disqus.com/by/ahmed_haque/" class="user" data-action="profile" data-username="ahmed_haque">
+<img data-role="user-avatar" data-user="100773414" src="noavatar92.png" alt="Avatar">
+</a>
+</div>
+<div class="post-body">
+<header>
+<span class="post-byline">
+<span class="author publisher-anchor-color"><a href="https://disqus.com/by/ahmed_haque/" data-action="profile" data-username="ahmed_haque" data-role="username">Ahmed Haque</a></span>
+
+<span><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2127362174" class="parent-link" data-role="parent-link"><i aria-hidden="true" class="icon-forward" title="in reply to"></i> Luis Recillas</a></span>
+</span>
+
+<span class="post-meta">
+<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+
+<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2127621021" data-role="relative-time" class="time-ago" title="Friday, July 10, 2015 10:36 AM">2 months ago</a>
+</span>
+
+</header>
+
+<div class="post-body-inner">
+<div class="post-message-container" data-role="message-container">
+<div class="publisher-anchor-color" data-role="message-content">
+<div class="post-message " data-role="message" dir="auto">
+<p>Thanks for the read! I've actually never worked with Elastic Beanstalk. But I'll definitely check it out now!</p><p>I think the major advantage of the Bitnami stack though is that it also includes MongoDB built into the server as well. When I tried setting up MongoDB myself I ran into crazy errors. The Bitnami solution means that both Node and MongoDB are ready to be accessed immediately. (Well, kind of immediately. Getting MongoDB working was still a pain as you'll see in Part II, but a manageable one at least).</p>
+</div>
+
+<span class="post-media"><ul data-role="post-media-list"></ul></span>
+</div>
+</div>
+<a class="see-more hidden" title="see more" data-action="see-more">see more</a>
+</div>
+
+<footer>
+<menu>
+
+<li class="voting" data-role="voting">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+
+<span class="updatable count" data-role="likes">0</span>
+<span class="control"><i aria-hidden="true" class="icon icon-arrow-2"></i></span>
+</a>
+<span role="button" class="vote-down  count-0" data-action="downvote" title="Vote down">
+
+<span class="control"><i aria-hidden="true" class="icon icon-arrow"></i></span>
+</span>
+</li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="reply" data-role="reply-link">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="reply">
+<i class="icon icon-mobile icon-reply"></i><span class="text">Reply</span></a></li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="share">
+<a class="toggle"><i class="icon icon-mobile icon-share"></i><span class="text">Share ›</span></a>
+<ul>
+<li class="twitter"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:twitter">Twitter</a></li>
+<li class="facebook"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:facebook">Facebook</a></li>
+<li class="link"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2127621021">Link</a></li>
+</ul>
+</li>
+
+<li class="realtime" data-role="realtime-notification:2127621021">
+<span style="display:none;" class="realtime-replies"></span>
+<a style="display:none;" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="btn btn-small"></a>
+</li>
+
+</menu>
+</footer>
+</div>
+
+<div data-role="blacklist-form"></div>
+<div class="reply-form-container" data-role="reply-form"></div>
+</div>
+
+<ul data-role="children" class="children"></ul>
+
+</li></ul>
+
+</li><li class="post" id="post-2123540356"><div role="alert"></div>
+<div data-role="post-content" class="post-content">
+<ul class="post-menu dropdown" data-role="menu">
+<li class="collapse">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Collapse"><span>−</span></a>
+</li>
+<li class="expand">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Expand"><span>+</span></a>
+</li>
+
+<li class="" role="menu">
+<a class="dropdown-toggle" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="flag" data-role="flag" title="Flag as inappropriate">
+<i aria-hidden="true" class="icon icon-flag"></i>
+</a>
+</li>
+</ul>
+<div class="indicator"></div>
+
+<div class="avatar hovercard">
+<a href="https://disqus.com/by/disqus_60HGsqYGdT/" class="user" data-action="profile" data-username="disqus_60HGsqYGdT">
+<img data-role="user-avatar" data-user="59955473" src="noavatar92.png" alt="Avatar">
+</a>
+</div>
+<div class="post-body">
+<header>
+<span class="post-byline">
+<span class="author publisher-anchor-color"><a href="https://disqus.com/by/disqus_60HGsqYGdT/" data-action="profile" data-username="disqus_60HGsqYGdT" data-role="username">Impulsive</a></span>
+
+</span>
+
+<span class="post-meta">
+<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+
+<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123540356" data-role="relative-time" class="time-ago" title="Wednesday, July 8, 2015 11:45 PM">2 months ago</a>
+</span>
+
+</header>
+
+<div class="post-body-inner">
+<div class="post-message-container" data-role="message-container">
+<div class="publisher-anchor-color" data-role="message-content">
+<div class="post-message " data-role="message" dir="auto">
+<p>Great article. Thanks</p>
+</div>
+
+<span class="post-media"><ul data-role="post-media-list"></ul></span>
+</div>
+</div>
+<a class="see-more hidden" title="see more" data-action="see-more">see more</a>
+</div>
+
+<footer>
+<menu>
+
+<li class="voting" data-role="voting">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="vote-up  count-1" data-action="upvote" title="">
+
+<span class="updatable count" data-role="likes">1</span>
+<span class="control"><i aria-hidden="true" class="icon icon-arrow-2"></i></span>
+</a>
+<span role="button" class="vote-down  count-0" data-action="downvote" title="Vote down">
+
+<span class="control"><i aria-hidden="true" class="icon icon-arrow"></i></span>
+</span>
+</li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="reply" data-role="reply-link">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="reply">
+<i class="icon icon-mobile icon-reply"></i><span class="text">Reply</span></a></li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="share">
+<a class="toggle"><i class="icon icon-mobile icon-share"></i><span class="text">Share ›</span></a>
+<ul>
+<li class="twitter"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:twitter">Twitter</a></li>
+<li class="facebook"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:facebook">Facebook</a></li>
+<li class="link"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123540356">Link</a></li>
+</ul>
+</li>
+
+<li class="realtime" data-role="realtime-notification:2123540356">
+<span style="display:none;" class="realtime-replies"></span>
+<a style="display:none;" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="btn btn-small"></a>
+</li>
+
+</menu>
+</footer>
+</div>
+
+<div data-role="blacklist-form"></div>
+<div class="reply-form-container" data-role="reply-form"></div>
+</div>
+
+<ul data-role="children" class="children"></ul>
+
+</li><li class="post" id="post-2205025697"><div role="alert"></div>
+<div data-role="post-content" class="post-content">
+<ul class="post-menu dropdown" data-role="menu">
+<li class="collapse">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Collapse"><span>−</span></a>
+</li>
+<li class="expand">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Expand"><span>+</span></a>
+</li>
+
+<li class="" role="menu">
+<a class="dropdown-toggle" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="flag" data-role="flag" title="Flag as inappropriate">
+<i aria-hidden="true" class="icon icon-flag"></i>
+</a>
+</li>
+</ul>
+<div class="indicator"></div>
+
+<div class="avatar hovercard">
+<a href="https://disqus.com/by/craig_gibbons/" class="user" data-action="profile" data-username="craig_gibbons">
+<img data-role="user-avatar" data-user="120508134" src="noavatar92.png" alt="Avatar">
+</a>
+</div>
+<div class="post-body">
+<header>
+<span class="post-byline">
+<span class="author publisher-anchor-color"><a href="https://disqus.com/by/craig_gibbons/" data-action="profile" data-username="craig_gibbons" data-role="username">Craig Gibbons</a></span>
+
+</span>
+
+<span class="post-meta">
+<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+
+<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2205025697" data-role="relative-time" class="time-ago" title="Friday, August 21, 2015 1:22 AM">9 days ago</a>
+</span>
+
+</header>
+
+<div class="post-body-inner">
+<div class="post-message-container" data-role="message-container">
+<div class="publisher-anchor-color" data-role="message-content">
+<div class="post-message " data-role="message" dir="auto">
+<p>Really, really helpful. I hacked my way through the auth problems discussed in Part 2 and wish I had found this article at that time.</p>
+</div>
+
+<span class="post-media"><ul data-role="post-media-list"></ul></span>
+</div>
+</div>
+<a class="see-more hidden" title="see more" data-action="see-more">see more</a>
+</div>
+
+<footer>
+<menu>
+
+<li class="voting" data-role="voting">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+
+<span class="updatable count" data-role="likes">0</span>
+<span class="control"><i aria-hidden="true" class="icon icon-arrow-2"></i></span>
+</a>
+<span role="button" class="vote-down  count-0" data-action="downvote" title="Vote down">
+
+<span class="control"><i aria-hidden="true" class="icon icon-arrow"></i></span>
+</span>
+</li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="reply" data-role="reply-link">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="reply">
+<i class="icon icon-mobile icon-reply"></i><span class="text">Reply</span></a></li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="share">
+<a class="toggle"><i class="icon icon-mobile icon-share"></i><span class="text">Share ›</span></a>
+<ul>
+<li class="twitter"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:twitter">Twitter</a></li>
+<li class="facebook"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:facebook">Facebook</a></li>
+<li class="link"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2205025697">Link</a></li>
+</ul>
+</li>
+
+<li class="realtime" data-role="realtime-notification:2205025697">
+<span style="display:none;" class="realtime-replies"></span>
+<a style="display:none;" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="btn btn-small"></a>
+</li>
+
+</menu>
+</footer>
+</div>
+
+<div data-role="blacklist-form"></div>
+<div class="reply-form-container" data-role="reply-form"></div>
+</div>
+
+<ul data-role="children" class="children"></ul>
+
+</li><li class="post" id="post-2123742389"><div role="alert"></div>
+<div data-role="post-content" class="post-content">
+<ul class="post-menu dropdown" data-role="menu">
+<li class="collapse">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Collapse"><span>−</span></a>
+</li>
+<li class="expand">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Expand"><span>+</span></a>
+</li>
+
+<li class="" role="menu">
+<a class="dropdown-toggle" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="flag" data-role="flag" title="Flag as inappropriate">
+<i aria-hidden="true" class="icon icon-flag"></i>
+</a>
+</li>
+</ul>
+<div class="indicator"></div>
+
+<div class="avatar hovercard">
+<a href="https://disqus.com/by/ahmed_haque/" class="user" data-action="profile" data-username="ahmed_haque">
+<img data-role="user-avatar" data-user="100773414" src="noavatar92.png" alt="Avatar">
+</a>
+</div>
+<div class="post-body">
+<header>
+<span class="post-byline">
+<span class="author publisher-anchor-color"><a href="https://disqus.com/by/ahmed_haque/" data-action="profile" data-username="ahmed_haque" data-role="username">Ahmed Haque</a></span>
+
+</span>
+
+<span class="post-meta">
+<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+
+<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123742389" data-role="relative-time" class="time-ago" title="Thursday, July 9, 2015 12:47 AM">2 months ago</a>
+</span>
+
+</header>
+
+<div class="post-body-inner">
+<div class="post-message-container" data-role="message-container">
+<div class="publisher-anchor-color" data-role="message-content">
+<div class="post-message " data-role="message" dir="auto">
+<p>Hey guys! Looking forward to your comments. This is actually my first ever coding article. If you run into any issues feel free to shoot me a message!</p>
+</div>
+
+<span class="post-media"><ul data-role="post-media-list"></ul></span>
+</div>
+</div>
+<a class="see-more hidden" title="see more" data-action="see-more">see more</a>
+</div>
+
+<footer>
+<menu>
+
+<li class="voting" data-role="voting">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+
+<span class="updatable count" data-role="likes">0</span>
+<span class="control"><i aria-hidden="true" class="icon icon-arrow-2"></i></span>
+</a>
+<span role="button" class="vote-down  count-0" data-action="downvote" title="Vote down">
+
+<span class="control"><i aria-hidden="true" class="icon icon-arrow"></i></span>
+</span>
+</li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="reply" data-role="reply-link">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="reply">
+<i class="icon icon-mobile icon-reply"></i><span class="text">Reply</span></a></li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="share">
+<a class="toggle"><i class="icon icon-mobile icon-share"></i><span class="text">Share ›</span></a>
+<ul>
+<li class="twitter"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:twitter">Twitter</a></li>
+<li class="facebook"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:facebook">Facebook</a></li>
+<li class="link"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123742389">Link</a></li>
+</ul>
+</li>
+
+<li class="realtime" data-role="realtime-notification:2123742389">
+<span style="display:none;" class="realtime-replies"></span>
+<a style="display:none;" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="btn btn-small"></a>
+</li>
+
+</menu>
+</footer>
+</div>
+
+<div data-role="blacklist-form"></div>
+<div class="reply-form-container" data-role="reply-form"></div>
+</div>
+
+<ul data-role="children" class="children"><li class="post" id="post-2123933228"><div role="alert"></div>
+<div data-role="post-content" class="post-content">
+<ul class="post-menu dropdown" data-role="menu">
+<li class="collapse">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Collapse"><span>−</span></a>
+</li>
+<li class="expand">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Expand"><span>+</span></a>
+</li>
+
+<li class="" role="menu">
+<a class="dropdown-toggle" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="flag" data-role="flag" title="Flag as inappropriate">
+<i aria-hidden="true" class="icon icon-flag"></i>
+</a>
+</li>
+</ul>
+<div class="indicator"></div>
+
+<div class="avatar hovercard">
+<a href="https://disqus.com/by/disqus_JVmWamNPro/" class="user" data-action="profile" data-username="disqus_JVmWamNPro">
+<img data-role="user-avatar" data-user="105325782" src="noavatar92.png" alt="Avatar">
+</a>
+</div>
+<div class="post-body">
+<header>
+<span class="post-byline">
+<span class="author publisher-anchor-color"><a href="https://disqus.com/by/disqus_JVmWamNPro/" data-action="profile" data-username="disqus_JVmWamNPro" data-role="username">Mike Fisher</a></span>
+
+<span><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123742389" class="parent-link" data-role="parent-link"><i aria-hidden="true" class="icon-forward" title="in reply to"></i> Ahmed Haque</a></span>
+</span>
+
+<span class="post-meta">
+<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+
+<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123933228" data-role="relative-time" class="time-ago" title="Thursday, July 9, 2015 1:49 AM">2 months ago</a>
+</span>
+
+</header>
+
+<div class="post-body-inner">
+<div class="post-message-container" data-role="message-container">
+<div class="publisher-anchor-color" data-role="message-content">
+<div class="post-message " data-role="message" dir="auto">
+<p>Nice article. It would be nice to have a section on how to connect to EC2 on a Mac/Linux box</p>
+</div>
+
+<span class="post-media"><ul data-role="post-media-list"></ul></span>
+</div>
+</div>
+<a class="see-more hidden" title="see more" data-action="see-more">see more</a>
+</div>
+
+<footer>
+<menu>
+
+<li class="voting" data-role="voting">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="vote-up  count-1" data-action="upvote" title="">
+
+<span class="updatable count" data-role="likes">1</span>
+<span class="control"><i aria-hidden="true" class="icon icon-arrow-2"></i></span>
+</a>
+<span role="button" class="vote-down  count-0" data-action="downvote" title="Vote down">
+
+<span class="control"><i aria-hidden="true" class="icon icon-arrow"></i></span>
+</span>
+</li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="reply" data-role="reply-link">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="reply">
+<i class="icon icon-mobile icon-reply"></i><span class="text">Reply</span></a></li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="share">
+<a class="toggle"><i class="icon icon-mobile icon-share"></i><span class="text">Share ›</span></a>
+<ul>
+<li class="twitter"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:twitter">Twitter</a></li>
+<li class="facebook"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:facebook">Facebook</a></li>
+<li class="link"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123933228">Link</a></li>
+</ul>
+</li>
+
+<li class="realtime" data-role="realtime-notification:2123933228">
+<span style="display:none;" class="realtime-replies"></span>
+<a style="display:none;" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="btn btn-small"></a>
+</li>
+
+</menu>
+</footer>
+</div>
+
+<div data-role="blacklist-form"></div>
+<div class="reply-form-container" data-role="reply-form"></div>
+</div>
+
+<ul data-role="children" class="children"><li class="post" id="post-2123988074"><div role="alert"></div>
+<div data-role="post-content" class="post-content">
+<ul class="post-menu dropdown" data-role="menu">
+<li class="collapse">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Collapse"><span>−</span></a>
+</li>
+<li class="expand">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="collapse" title="Expand"><span>+</span></a>
+</li>
+
+<li class="" role="menu">
+<a class="dropdown-toggle" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="flag" data-role="flag" title="Flag as inappropriate">
+<i aria-hidden="true" class="icon icon-flag"></i>
+</a>
+</li>
+</ul>
+<div class="indicator"></div>
+
+<div class="avatar hovercard">
+<a href="https://disqus.com/by/ahmed_haque/" class="user" data-action="profile" data-username="ahmed_haque">
+<img data-role="user-avatar" data-user="100773414" src="noavatar92.png" alt="Avatar">
+</a>
+</div>
+<div class="post-body">
+<header>
+<span class="post-byline">
+<span class="author publisher-anchor-color"><a href="https://disqus.com/by/ahmed_haque/" data-action="profile" data-username="ahmed_haque" data-role="username">Ahmed Haque</a></span>
+
+<span><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123933228" class="parent-link" data-role="parent-link"><i aria-hidden="true" class="icon-forward" title="in reply to"></i> Mike Fisher</a></span>
+</span>
+
+<span class="post-meta">
+<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+
+<a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123988074" data-role="relative-time" class="time-ago" title="Thursday, July 9, 2015 2:07 AM">2 months ago</a>
+</span>
+
+</header>
+
+<div class="post-body-inner">
+<div class="post-message-container" data-role="message-container">
+<div class="publisher-anchor-color" data-role="message-content">
+<div class="post-message " data-role="message" dir="auto">
+<p>Thanks for the read-through. Actually, the process for Mac users is almost exactly the same. The only place where things would be different is instead of using PuTTY like I did -- you'd use the in-built terminal as your SSH client. This link is a good guide on how you'd do this: <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html" rel="nofollow">http://docs.aws.amazon.com/AWS...</a></p>
+</div>
+
+<span class="post-media"><ul data-role="post-media-list"></ul></span>
+</div>
+</div>
+<a class="see-more hidden" title="see more" data-action="see-more">see more</a>
+</div>
+
+<footer>
+<menu>
+
+<li class="voting" data-role="voting">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+
+<span class="updatable count" data-role="likes">0</span>
+<span class="control"><i aria-hidden="true" class="icon icon-arrow-2"></i></span>
+</a>
+<span role="button" class="vote-down  count-0" data-action="downvote" title="Vote down">
+
+<span class="control"><i aria-hidden="true" class="icon icon-arrow"></i></span>
+</span>
+</li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="reply" data-role="reply-link">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="reply">
+<i class="icon icon-mobile icon-reply"></i><span class="text">Reply</span></a></li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="share">
+<a class="toggle"><i class="icon icon-mobile icon-share"></i><span class="text">Share ›</span></a>
+<ul>
+<li class="twitter"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:twitter">Twitter</a></li>
+<li class="facebook"><a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="share:facebook">Facebook</a></li>
+<li class="link"><a href="https://scotch.io/tutorials/deploying-a-mean-app-to-amazon-ec2-part-1#comment-2123988074">Link</a></li>
+</ul>
+</li>
+
+<li class="realtime" data-role="realtime-notification:2123988074">
+<span style="display:none;" class="realtime-replies"></span>
+<a style="display:none;" href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" class="btn btn-small"></a>
+</li>
+
+</menu>
+</footer>
+</div>
+
+<div data-role="blacklist-form"></div>
+<div class="reply-form-container" data-role="reply-form"></div>
+</div>
+
+<ul data-role="children" class="children"></ul>
+
+</li></ul>
+
+</li></ul>
+
+</li></ul>
+
+<div class="load-more" data-role="more" style="display:none">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" data-action="more-posts" class="btn">Load more comments</a>
+</div>
+</div>
+
+</section>
+
+<div id="placement-bottom" data-tracking-area="discovery-south"><div class="post-list" style="height: auto; visibility: visible;"><div style="display: block; width: 100%;"><div id="discovery-main-c205" class="discovery-main">
+<div id="discovery-note" class="discovery-note">
+<div class="alert">
+<button class="close" data-action="discovery-help-close" title="Close this box">×</button>
+Disqus helps you find new and interesting content, discussions and products. Some sponsors and ecommerce sites may pay us for these recommendations and links. <a href="https://help.disqus.com/customer/portal/articles/666278-introducing-promoted-discovery-and-f-a-q-" target="_blank">Learn more</a>
+ or <a href="https://www.surveymonkey.com/s/GHK872T" target="_blank">
+give us feedback</a>.
+</div>
+</div>
+
+<div class="discovery-options">
+<button class="discovery-help" data-action="discovery-help">
+What's this?
+</button>
+</div>
+
+<section id="col-organic-c225" class="col-organic discovery-col-0 ">
+<header class="discovery-col-header">
+
+<h2>Also on <strong>Scotch</strong>
+</h2>
+
+
+</header>
+<ul class="discovery-posts" data-role="discovery-posts"><li class="discovery-post post-0" id="discovery-link-organic-3843917827" data-id="3843917827">
+<a href="http://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Fangularjs-form-validation-with-ngmessages%3AD27BhV5ljlCaejqV_v_o5ZEoYK8&imp=nocl95sbe7vj&prev_imp=nnpht323f0mh&forum_id=2328316&forum=scotchwebdevelopment&thread_id=3911071803&thread=3843917827&zone=thread&area=discovery" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="AngularJS Form Validation with ngMessages">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+AngularJS Form Validation with ngMessages
+</span>
+
+
+</h3>
+
+<ul class="meta">
+<li class="comments">
+10 comments
+</li>
+<li class="time">3 months ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Fangularjs-form-validation-with-ngmessages%3AD27BhV5ljlCaejqV_v_o5ZEoYK8&imp=nocl95sbe7vj&prev_imp=nnpht323f0mh&forum_id=2328316&forum=scotchwebdevelopment&thread_id=3911071803&thread=3843917827&zone=thread&area=discovery" class="top-comment" data-role="discovery-top-comment">
+<img data-src="//a.disquscdn.com/uploads/users/4765/2173/avatar92.jpg?1440666961" alt="Avatar" data-role="discovery-avatar">
+<p><span class="user" data-role="discovery-top-comment-author">Vanja</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3"> Validator does not throw an error because `info@email` is actually a valid email. Email validation is actually pretty complicated and the only way to 100% …</span></p>
+</a>
+
+</li>
+<li class="discovery-post post-1" id="discovery-link-organic-3813410894" data-id="3813410894">
+<a href="http://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Feasy-angularjs-forms-with-angular-formly%3AuA7fIyzq7I8b3mUHd9eG81lEiuQ&imp=nocl95sbe7vj&prev_imp=nnpht323f0mh&forum_id=2328316&forum=scotchwebdevelopment&thread_id=3911071803&thread=3813410894&zone=thread&area=discovery" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Easy AngularJS Forms with angular-formly">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Easy AngularJS Forms with angular-formly
+</span>
+
+
+</h3>
+
+<ul class="meta">
+<li class="comments">
+42 comments
+</li>
+<li class="time">3 months ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Feasy-angularjs-forms-with-angular-formly%3AuA7fIyzq7I8b3mUHd9eG81lEiuQ&imp=nocl95sbe7vj&prev_imp=nnpht323f0mh&forum_id=2328316&forum=scotchwebdevelopment&thread_id=3911071803&thread=3813410894&zone=thread&area=discovery" class="top-comment" data-role="discovery-top-comment">
+<img data-src="//a.disquscdn.com/uploads/users/12717/7894/avatar92.jpg?1435764600" alt="Avatar" data-role="discovery-avatar">
+<p><span class="user" data-role="discovery-top-comment-author">Alappin</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3"> "A common problem developers face when creating AngularJS applications is  that their HTML can tend to become bloated...."  I do full stack web development …</span></p>
+</a>
+
+</li>
+<li class="discovery-post post-2" id="discovery-link-organic-3798642532" data-id="3798642532">
+<a href="http://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Fbuilding-a-slack-clone-in-meteor-js-part-3-authentication-and-security%3AvoEDCOktsfuHU0qgAWvMHV6-7wE&imp=nocl95sbe7vj&prev_imp=nnpht323f0mh&forum_id=2328316&forum=scotchwebdevelopment&thread_id=3911071803&thread=3798642532&zone=thread&area=discovery" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Building a Slack Clone in Meteor.js (Part 3): Authentication and Security">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Building a Slack Clone in Meteor.js (Part 3): Authentication and Security
+</span>
+
+
+</h3>
+
+<ul class="meta">
+<li class="comments">
+34 comments
+</li>
+<li class="time">3 months ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Fbuilding-a-slack-clone-in-meteor-js-part-3-authentication-and-security%3AvoEDCOktsfuHU0qgAWvMHV6-7wE&imp=nocl95sbe7vj&prev_imp=nnpht323f0mh&forum_id=2328316&forum=scotchwebdevelopment&thread_id=3911071803&thread=3798642532&zone=thread&area=discovery" class="top-comment" data-role="discovery-top-comment">
+<img data-src="//a.disquscdn.com/uploads/users/15334/3760/avatar92.jpg?1428883219" alt="Avatar" data-role="discovery-avatar">
+<p><span class="user" data-role="discovery-top-comment-author">Jari Hanski</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3"> Hey Daniel. Really helpful tutorial to Meteor. There was one thing you forgot to mention. I didn't get the time stamp to show correctly and noticed that one step …</span></p>
+</a>
+
+</li>
+<li class="discovery-post post-3" id="discovery-link-organic-3910993811" data-id="3910993811">
+<a href="http://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Fuse-mongodb-with-a-node-application-on-heroku%3ADipcLsfosAcuCdfT9HFl_JIBQl0&imp=nocl95sbe7vj&prev_imp=nnpht323f0mh&forum_id=2328316&forum=scotchwebdevelopment&thread_id=3911071803&thread=3910993811&zone=thread&area=discovery" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Use MongoDB with a Node.js Application on Heroku">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Use MongoDB with a Node.js Application on Heroku
+</span>
+
+
+</h3>
+
+<ul class="meta">
+<li class="comments">
+15 comments
+</li>
+<li class="time">2 months ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Fuse-mongodb-with-a-node-application-on-heroku%3ADipcLsfosAcuCdfT9HFl_JIBQl0&imp=nocl95sbe7vj&prev_imp=nnpht323f0mh&forum_id=2328316&forum=scotchwebdevelopment&thread_id=3911071803&thread=3910993811&zone=thread&area=discovery" class="top-comment" data-role="discovery-top-comment">
+<img data-src="//a.disquscdn.com/uploads/users/16760/8930/avatar92.jpg?1439998961" alt="Avatar" data-role="discovery-avatar">
+<p><span class="user" data-role="discovery-top-comment-author">Kristján Þór Jónsson</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3"> Nice article. I will be trying this out. I think it would be good though to get someone to proof read your articles. Too many spelling or grammar errors imo. …</span></p>
+</a>
+
+</li>
+</ul>
+</section>
+
+</div>
+</div></div></div>
+
+<div id="footer" data-tracking-area="footer">
+<ul>
+<li class="logo"><a href="https://disqus.com/" rel="nofollow" title="Powered by Disqus">Powered by Disqus</a></li>
+<li id="thread-subscribe-button" class="email"> 
+<div class="default">
+<a href="https://disqus.com/embed/comments/?base=default&version=3aa223e9358fe29f29e60acc6f5afcd4&f=scotchwebdevelopment&t_u=https%3A%2F%2Fscotch.io%2Ftutorials%2Fdeploying-a-mean-app-to-amazon-ec2-part-1&t_d=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&t_t=%0A%09%09%09Deploying%20a%20MEAN%20App%20to%20Amazon%20EC2%20(Part%201)%09%09&s_o=default#" rel="nofollow" data-action="subscribe" title="Subscribe and get email updates from this discussion"><i aria-hidden="true" class="icon-mail"></i><span class="clip">Subscribe</span> <i aria-hidden="true" class="icon-checkmark"></i></a>
+</div>
+<div class="form">
+<div class="input-wrapper"><input id="thread-subscribe-email" type="email" placeholder="yourname@email.com"></div>
+</div>
+</li>
+<li class="install">
+<a href="https://publishers.disqus.com/engage?utm_source=scotchwebdevelopment&utm_medium=Disqus-Footer" rel="nofollow" target="_blank">
+<i aria-hidden="true" class="icon-disqus"></i>
+<span class="clip">Add Disqus to your site</span>
+</a>
+</li>
+<li class="privacy">
+<a href="https://help.disqus.com/customer/portal/articles/1657951?utm_source=disqus&utm_medium=embed-footer&utm_content=privacy-btn" rel="nofollow" target="_blank">
+<i aria-hidden="true" class="icon-lock"></i>
+<span class="clip">Privacy</span>
+</a>
+</li>
+</ul>
+</div>
+</div></body></html>
