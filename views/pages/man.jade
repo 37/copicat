@@ -1,0 +1,95 @@
+extends ../partials/skeleton
+
+block prescript
+	script(type='text/javascript', src='/scripts/formFunctions.js')
+	script(type='text/javascript', src='/scripts/getXrate.js')
+	script(type='text/javascript').
+		console.log(!{JSON.stringify(items)});
+
+
+block content
+
+	if user
+		#lightbox
+			.backdrop
+			.innerbox
+				form(class="view-product", action="#", role="form", method="POST")
+					i(class="material-icons exitbtn", onClick="showHideProduct()") &#xE14C;
+					.imagebox
+					.productbox
+					.submit
+						button(type='submit') Create product
+				.loading
+					h1 Loading...
+		.grid
+			.grid-nav
+				ul
+					li
+						a(data-category="H" class="active") Home
+					li
+						a(data-category="MS") Mens Shirts
+					li
+						a(data-category="MJ") Mens Jackets
+					li
+						a(data-category="MA") Mens Accessories
+					li
+						a(data-category="MW") Mens Watches
+
+			.building-roof
+				.bevel
+					.top
+					.bottom
+						.background
+						.left
+						.right
+						.skirt
+				.decal
+
+				.body
+				.foot
+			#grid-content.building-main.active(data-animation="hierarchical-display")
+				each item in items
+					.window(data-src="#{item.link}")
+						.bevel
+							.midsection
+							.top
+							.bottom
+								.background
+								.left
+								.right
+								.skirt
+							.center
+							.top
+							.bottom
+								.background
+								.left
+								.right
+								.skirt
+						.body
+							.leftsill
+								.inner
+							.centersill
+								if item.image
+									img.item-img(src="#{item.image}")
+								else
+									img.item-img(src="#{item.imagesrc}")
+								h3.item-price= item.price
+							.rightsill
+								.inner
+
+
+	else
+		.container
+			h1  Wanna fite m8?
+				p Log in first.
+				p
+					a.btn.btn-primary(href="/login") Login
+				p
+					span.small I don't have an account?
+					span &nbsp;
+					a.small(href="/register") Get 1337.
+
+block scripts
+	script(type='text/javascript').
+		// Update BODY for page - look pretty!
+		$('body').addClass('man');

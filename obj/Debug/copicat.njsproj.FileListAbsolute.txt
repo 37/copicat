@@ -1,0 +1,2 @@
+C:\code\node\development\personal\marque\obj\Debug\copicat.njsprojResolveAssemblyReference.cache
+C:\code\node\development\personal\marque\bin\Microsoft.NodejsTools.WebRole.dll

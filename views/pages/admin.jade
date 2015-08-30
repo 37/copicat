@@ -88,7 +88,7 @@ block scripts
 				// (TODO:) EDIT DOM HERE - clear old elements, add new & set loading animation
 				showHideGrid();
 
-				$.get( '/api', parameters, function(data) {
+				$.get( '/admin_api', parameters, function(data) {
 
 					// DATA returned!
 					console.log('new category data has been returned: ');
@@ -130,7 +130,7 @@ block scripts
 				getRate(function(usdAud) {
 					exchangeRate = usdAud;
 				});
-				$.get( '/api', parameters, function(data, usdAud) {
+				$.get( '/admin_api', parameters, function(data, usdAud) {
 					// DATA returned!
 					console.log(data);
 					// populate form

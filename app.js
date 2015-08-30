@@ -27,10 +27,10 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/', require('./routes/index')());
 app.use('/profile', require('./routes/profile')());
-app.use('/fight', require('./routes/fight')());
-app.use('/battle', require('./routes/battle')());
+app.use('/man', require('./routes/man')());
+app.use('/woman', require('./routes/woman')());
 app.use('/admin', require('./routes/admin')());
-app.use('/api', require('./routes/api')());
+app.use('/admin_api', require('./routes/admin_api')());
 
 app.set('port', (process.env.PORT || 8080));
 server.listen(app.get('port'), function() {

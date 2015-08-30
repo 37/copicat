@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{725b1753-8a87-4d3a-b96c-d44d3af656fb}</ProjectGuid>
+        <ProjectHome />
+        <ProjectView>ShowAllFiles</ProjectView>
+        <StartupFile>app.js</StartupFile>
+        <WorkingDirectory>.</WorkingDirectory>
+        <OutputPath>.</OutputPath>
+        <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+        <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+        <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+    <ItemGroup>
+        <Content Include="app.json" />
+        <Content Include="arguments.json" />
+        <Content Include="package.json" />
+        <Content Include="README.md" />
+        <Compile Include="app.js" />
+        <Compile Include="models\database.js" />
+        <Content Include="public\lang-logo.png" />
+        <Content Include="public\node.svg" />
+        <Content Include="resources\serverini.txt" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch.html" />
+        <Compile Include="routes\admin.js" />
+        <Compile Include="routes\admin_api.js" />
+        <Compile Include="routes\battle.js" />
+        <Compile Include="routes\fight.js" />
+        <Compile Include="routes\index.js" />
+        <Compile Include="routes\man.js" />
+        <Compile Include="routes\profile.js" />
+        <Compile Include="routes\woman.js" />
+        <Content Include="public\images\brick.png" />
+        <Content Include="public\images\cat-full.png" />
+        <Content Include="public\images\cat-head.png" />
+        <Content Include="public\images\man-dark.png" />
+        <Content Include="public\images\man-light.png" />
+        <Content Include="public\images\woman-dark.png" />
+        <Content Include="public\images\woman-light.png" />
+        <Content Include="public\images\preloader.gif" />
+        <Content Include="public\images\window-animation.gif" />
+        <Content Include="public\images\window.gif" />
+        <Compile Include="public\scripts\formFunctions.js" />
+        <Compile Include="public\scripts\getXrate.js" />
+        <Compile Include="public\scripts\jquery.zmd.hierarchical-display.min.js" />
+        <Content Include="public\stylesheets\main.css" />
+        <Content Include="public\stylesheets\zmd.hierarchical-display.min.css" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\saved_resource.html" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\theme.css" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\1-Forking-1200x148.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\10-RunningInstances.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\11-RunningInstance.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\12-SystemLog-1200x370.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\13-ExamplePassword.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\14-publicdns-1200x450.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\16-SavePrivateKey.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\18-PuTTY.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\19-PuTTYPPK.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\2-AWSConsoleEC2-1042x500.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\20-BitnamiEntrance.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\21-CheckFiles.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\21b-CheckFiles.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\22-TCPClosed.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\23-SecurityGroups-1111x500.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\25-CustomTCPRules.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\26-PostRules-1200x296.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\27-WorkingApp.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\28-LiveApp-1013x500.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\2a-Todoaholiclocal-1200x467.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\4-MEANBitnami.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\5-CreateKeyPair-1102x500.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\6-KeyPair.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\7-LaunchEC2.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\8-NoteKeyPairListing.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\9-CongratsEC2.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\first-node-app-small.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\invoicebus_300x250.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\marketing-ads-better-dev-campus-260x200-d.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\noavatar92.b677f9ddbee6f4bb22f473ae3bd61b85.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\noavatar92.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\scotch-box-sidebar.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\scotch-logo-small.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\scotch-panels-sidebar.png" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\scotch-stickers.jpg" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\loading.gif" />
+        <Content Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\digital.svg" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\analytics.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\cloudflare.min.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\common.bundle.b2afad436ae6cd3e780b3b68b2b7dfb3.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\config.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\count-data.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\discovery.bundle.c9ddb8122b13c76cab1bc60ddfec99ed.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\embed.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\event.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\ga.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\lounge.bundle.a42487daa805a0edb0193c3fdc4918d8.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\lounge.load.3aa223e9358fe29f29e60acc6f5afcd4.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\rocket.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\scripts.min.js" />
+        <Compile Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files\wp-emoji-release.min.js" />
+        <Content Include="views\pages\admin.jade" />
+        <Content Include="views\pages\index.jade" />
+        <Content Include="views\pages\man.jade" />
+        <Content Include="views\pages\profile.jade" />
+        <Content Include="views\pages\woman.jade" />
+        <Content Include="views\partials\skeleton.jade" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="models" />
+        <Folder Include="public" />
+        <Folder Include="public\images" />
+        <Folder Include="public\scripts" />
+        <Folder Include="public\stylesheets" />
+        <Folder Include="resources" />
+        <Folder Include="resources\Deploying a MEAN App to Amazon EC2 (Part 1) _ Scotch_files" />
+        <Folder Include="routes" />
+        <Folder Include="storm" />
+        <Folder Include="views" />
+        <Folder Include="views\pages" />
+        <Folder Include="views\partials" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+    <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+    <ProjectExtensions>
+        <VisualStudio>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+            <WebProjectProperties>
+              <UseIIS>False</UseIIS>
+              <AutoAssignPort>True</AutoAssignPort>
+              <DevelopmentServerPort>0</DevelopmentServerPort>
+              <DevelopmentServerVPath>/</DevelopmentServerVPath>
+              <IISUrl>http://localhost:48022/</IISUrl>
+              <NTLMAuthentication>False</NTLMAuthentication>
+              <UseCustomServer>True</UseCustomServer>
+              <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+              <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+            </WebProjectProperties>
+          </FlavorProperties>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+            <WebProjectProperties>
+              <StartPageUrl>
+              </StartPageUrl>
+              <StartAction>CurrentPage</StartAction>
+              <AspNetDebugging>True</AspNetDebugging>
+              <SilverlightDebugging>False</SilverlightDebugging>
+              <NativeDebugging>False</NativeDebugging>
+              <SQLDebugging>False</SQLDebugging>
+              <ExternalProgram>
+              </ExternalProgram>
+              <StartExternalURL>
+              </StartExternalURL>
+              <StartCmdLineArguments>
+              </StartCmdLineArguments>
+              <StartWorkingDirectory>
+              </StartWorkingDirectory>
+              <EnableENC>False</EnableENC>
+              <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+            </WebProjectProperties>
+          </FlavorProperties>
+        </VisualStudio>
+    </ProjectExtensions>
+</Project>

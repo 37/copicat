@@ -36,6 +36,7 @@ body.woman {
     background-position: 0px 220px;
     padding-bottom: 100px;
 }
+
 #mainbody .navbar {
   margin-top:60px;
   -moz-border-radius: 0;
@@ -85,6 +86,7 @@ body.woman {
   height: 50px;
   cursor: pointer;
 }
+
 
 img.maleshop {
     content:url("/images/man-light.png");
@@ -186,6 +188,9 @@ img.female.active {
     cursor: pointer;
 }
 
+.landingbox ul li img:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
 
 /* -------------------------------
   |<- Individual page styling
@@ -576,6 +581,317 @@ img.female.active {
         left: 5%;
     }
 }
+
+/* -------------------------------
+  |<- man display page styling
+--------------------------------*/
+
+.building-roof {
+width: 100%;
+position: relative;
+float: left;
+}
+
+.building-roof .bevel {
+    width: calc(100% + 200px);
+    margin-left: -100px;
+}
+
+.building-roof .bevel .top{
+    width: 100%;
+    float: left;
+    height: 30px;
+    background-color: white;
+    border: 10px solid #444;
+}
+
+.building-roof .bevel .bottom{
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+.building-roof .bevel .bottom .left{
+    width: 15px;
+    height: 30px;
+    float: left;
+    margin-left: 15px;
+    -webkit-transform: skew(45deg);
+    -moz-transform: skew(45deg);
+    -o-transform: skew(45deg);
+    background: #444;
+}
+
+.building-roof .bevel .bottom .background {
+    width: 100%;
+    height: 30px;
+    float: left;
+    position:absolute;
+    border-top: 30px solid white;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+}
+
+.building-roof .bevel .bottom .right{
+    width: 15px;
+    height: 30px;
+    float: right;
+    margin-right: 15px;
+    -webkit-transform: skew(-45deg);
+    -moz-transform: skew(-45deg);
+    -o-transform: skew(-45deg);
+    background: #444;
+}
+
+.building-roof .bevel .bottom .skirt {
+    float: left;
+    width: calc(100% - 60px);
+    border-bottom: 10px solid #444;
+    margin-left: 30px;
+    -webkit-border-bottom-right-radius: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    -moz-border-radius-bottomright: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+
+.building-roof .decal {
+    float: left;
+    width: 100%;
+    border: 10px solid #444;
+    border-top: none;
+    border-bottom: none;
+    background: url("/images/building-roof-decal.png") #fff;
+    background-size: 125px 60px;
+    background-repeat: repeat-x;
+    background-position: 0 10px;
+    height: 60px;
+}
+
+.building-roof .body {
+    width: 100%;
+    height: 50px;
+    float: left;
+    background-color: lightblue;
+    border-top: 10px solid #444;
+    border-left: 10px solid #444;
+    border-right: 10px solid #444;
+}
+
+.building-roof .foot {
+    width: 100%;
+    height: 30px;
+    float: left;
+    background-color: white;
+    border-top: 10px solid #444;
+    border-left: 10px solid #444;
+    border-right: 10px solid #444;
+}
+
+.building-main {
+    border: 10px solid #444;
+    padding: 0 50px;
+    background: url("/images/brick.png") #E7E1D6;
+    background-size: 70px 70px;
+}
+
+.building-main .window {
+    width: 25%;
+    float: left;
+    margin: 30px 0;
+    padding: 0 10px;
+}
+
+.building-main .window:first-child,
+.building-main .window:nth-child(3n + 4) {
+    width: 50%;
+}
+
+.building-main .window .bevel {
+    width: 100%;
+    float: left;
+}
+
+.building-main .window .bevel .midsection {
+    display: none;
+}
+
+.building-main .window .bevel .top{
+    width: 100%;
+    float: left;
+    height: 20px;
+    background-color: white;
+    border: 5px solid #444;
+}
+
+.building-main .window .bevel .bottom{
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+.building-main .window .bevel .bottom .left{
+    width: 7px;
+    height: 10px;
+    float: left;
+    margin-left: 5px;
+    -webkit-transform: skew(45deg);
+    -moz-transform: skew(45deg);
+    -o-transform: skew(45deg);
+    background: #444;
+}
+
+.building-main .window .bevel .bottom .background {
+    width: 100%;
+    height: 10px;
+    float: left;
+    position:absolute;
+    border-top: 10px solid white;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.building-main .window .bevel .bottom .right{
+    width: 7px;
+    height: 10px;
+    float: right;
+    margin-right: 5px;
+    -webkit-transform: skew(-45deg);
+    -moz-transform: skew(-45deg);
+    -o-transform: skew(-45deg);
+    background: #444;
+}
+
+.building-main .window .bevel .bottom .skirt {
+    float: left;
+    width: calc(100% - 20px);
+    border-bottom: 5px solid #444;
+    margin: 0 10px;
+}
+
+.building-main .window .bevel > .center {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    height: 30px;
+    float: left;
+    background-color: lightblue;
+    border-top: none;
+    border-left: 5px solid #444;
+    border-right: 5px solid #444;
+}
+
+.building-main .window .bevel > .foot {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    height: 30px;
+    float: left;
+    background-color: white;
+    border-top: 5px solid #444;
+    border-left: 5px solid #444;
+    border-right: 5px solid #444;
+}
+
+.building-main .window .body .body {
+    width: 100%;
+    float: left;
+}
+
+.building-main .window .body .centersill {
+    width: calc(100% - 20px);
+    float: left;
+    margin: 20px 10px 0 10px;
+
+    border: 5px solid #444;
+    background-color: white;
+}
+
+.building-main .window .body .leftsill,
+.building-main .window .body .rightsill {
+    display: none;
+}
+
+.building-main .window .body .centersill > img {
+    float: left;
+    width: calc(100% - 20px);
+    margin: 10px;
+    border: 5px solid #444;
+}
+
+.building-main .window .body .leftsill .inner,
+.building-main .window .body .rightsill .inner {
+    height: 185.438px;
+    float: left;
+    width: calc(100% - 20px);
+    margin: 10px;
+    border: 5px solid #444;
+}
+
+/* 1st and 3n + 4 child windows */
+
+.building-main .window:first-child,
+.building-main .window:nth-child(3n + 4) {
+    width: 50%;
+}
+
+.building-main .window:first-child .bevel,
+.building-main .window:nth-child(3n + 4) .bevel {
+    width: 100%;
+    float: left;
+}
+
+.building-main .window:first-child .bevel .midsection,
+.building-main .window:nth-child(3n + 4) .bevel .midsection {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 20%;
+    width: 60%;
+    height: 100px;
+    border: 5px solid #444;
+    z-index:10;
+}
+
+.building-main .window:first-child .body .leftsill,
+.building-main .window:nth-child(3n + 4) .body .leftsill,
+.building-main .window:first-child .body .rightsill,
+.building-main .window:nth-child(3n + 4) .body .rightsill {
+    display: block;
+    float: left;
+    width: calc(20% - 10px);
+    border: 5px solid #444;
+    background-color: white;
+    height: 251px;
+}
+
+.building-main .window:first-child .body .leftsill,
+.building-main .window:nth-child(3n + 4) .body .leftsill {
+    margin: 20px 0 0 10px;
+}
+
+.building-main .window:first-child .body .rightsill,
+.building-main .window:nth-child(3n + 4) .body .rightsill {
+    margin: 20px 10px 0 0px;
+}
+
+.building-main .window:first-child .body .centersill ,
+.building-main .window:nth-child(3n + 4) .body .centersill {
+    width: calc(50% - 30px);
+    float: left;
+    margin: 20px calc(5% + 15px) 0 calc(5% + 15px);
+    border: 5px solid #444;
+    background-color: white;
+}
+
+.building-main .window:first-child .body .centersill > img,
+.building-main .window:nth-child(3n + 4)  .body .centersill > img {
+    float: left;
+    width: calc(100% - 20px);
+    margin: 10px;
+    border: 5px solid #444;
+}
+
 
 
 /* end */
