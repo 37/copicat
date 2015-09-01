@@ -121,7 +121,7 @@ function populateForm(data, rate, link) {
 
     // Set up variables
     var images = (data.imagePrimary).concat(data.imageSecondary), select = data.select, tagsdata = data.tags;
-    var options = '', imageGrid = '', tags = '', price, category = '';
+    var options = '', imageGrid = '', tags = '', price, category = '', sex = '';
 
     // Set up element containers
     var productElements = document.createElement('div');
@@ -196,11 +196,11 @@ function populateForm(data, rate, link) {
                 }
 
                 if (select[i].options[l].labelSize) {
-                    size = '<input type="text" name="option[' + i + ']" value="' + select[i].options[l].labelSize + '"></input>';
+                    size = '<input type="text" name="option[' + i + '][' + l + ']" value="' + select[i].options[l].labelSize + '"></input>';
                 }
 
                 if (select[i].options[l].labelColor) {
-                    color = '<input type="text" name="option[' + i + ']" value="' + select[i].options[l].labelColor + '"></input>';
+                    color = '<input type="text" name="option[' + i + '][' + l + ']" value="' + select[i].options[l].labelColor + '"></input>';
                 }
 
                 optionValues += '<div class="option" id="option-line-' + i + '-' + l + '">' +
@@ -208,7 +208,7 @@ function populateForm(data, rate, link) {
                                     color +
                                     size +
                                     '<i class="material-icons delete-option" onClick="deleteElement(\'#option-line-' + i + '-' + l + '\')">&#xE872;</i>' +
-                                    '<input type="hidden" name="option[' + i + ']" value="[\'' + id + '\', \'' + imagedata + '\']">' +
+                                    '<input type="hidden" name="option[' + i + '][' + l + ']" value="[\'' + id + '\', \'' + imagedata + '\']">' +
                                  '</div>';
             }
         } else if ((optionType.indexOf('Size') != -1) || (optionType.indexOf('size') != -1)) {
@@ -306,17 +306,19 @@ function populateForm(data, rate, link) {
             break;
     }
 
+    sex +=
+    '<select name="sex">' +
+        '<option value="man" ' + IFMS + IFMJ + IFMA + IFMW + '>Man</option>' +
+        '<option value="woman" ' + IFWS +  IFWD + IFWJ + IFWA + IFWW + '>Woman</option>' +
+    '</select>';
+
     category +=
     '<select name="category">' +
-        '<option value="Mens > Shirts" ' + IFMS + '>Mens > Shirts</option>' +
-        '<option value="Mens > Jackets" ' + IFMJ + '>Mens > Jackets</option>' +
-        '<option value="Mens > Accessories" ' + IFMA + '>Mens > Accessories</option>' +
-        '<option value="Mens > Watches" ' + IFMW + '>Mens > Watches</option>' +
-        '<option value="Womens > Shirts" ' + IFWS + '>Womens > Shirts</option>' +
-        '<option value="Womens > Jackets" ' + IFWJ + '>Womens > Jackets</option>' +
-        '<option value="Womens > Dresses" ' + IFWD + '>Womens > Dresses</option>' +
-        '<option value="Womens > Accessories" ' + IFWA + '>Womens > Accessories</option>' +
-        '<option value="Womens > Watches" ' + IFWW + '>Womens > Watches</option>' +
+        '<option value="Dresses" ' + IFWD + '>Dresses</option>' +
+        '<option value="Shirts" ' + IFMS +  IFWS +'>Shirts</option>' +
+        '<option value="Jackets" ' + IFMJ +  IFWJ +'>Jackets</option>' +
+        '<option value="Accessories" ' + IFMA +  IFWA +'>Accessories</option>' +
+        '<option value="Watches" ' + IFMW +  IFWW +'>Watches</option>' +
     '</select>';
 
 
@@ -338,6 +340,7 @@ function populateForm(data, rate, link) {
      '<div class="product-highlights">' +
         '<input name="price" class="product-price" value="$' + Math.round(price * 100) / 100 + '" />' +
         '<input name="rating" class="product-rating" value="' + data.rating + '" />' +
+         sex +
          category +
      '</div>';
 

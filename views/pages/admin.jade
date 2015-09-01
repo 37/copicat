@@ -12,7 +12,8 @@ block content
 		#lightbox
 			.backdrop
 			.innerbox
-				form(class="view-product", action="#", role="form", method="POST")
+				form(class="view-product", method="POST", role="form")
+					input(name='_csrf', type='hidden', value=csrfToken)
 					i(class="material-icons exitbtn", onClick="showHideProduct()") &#xE14C;
 					.imagebox
 					.productbox

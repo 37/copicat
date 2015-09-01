@@ -1,0 +1,92 @@
+extends ../partials/skeleton
+
+block prescript
+	script(type='text/javascript', src='/scripts/formFunctions.js')
+	script(type='text/javascript', src='/scripts/getXrate.js')
+	script(type='text/javascript').
+
+block content
+
+	#product
+		.Wallop.Wallop--fade
+			.Wallop-pagination
+				each image in items.images
+					if image == image[1]
+						button.Wallop-dot.Wallop-dot--current
+					else
+						button.Wallop-dot
+			.Wallop-list
+				each image in items.images
+					if image == image[0]
+						.Wallop-item.Wallop-item--current
+							img(src="#{image}")
+					else
+						.Wallop-item
+							img(src="#{image}")
+			i.material-icons.Wallop-nav.Wallop-buttonNext navigate_next
+			i.material-icons.Wallop-nav.Wallop-buttonPrevious navigate_before
+
+
+		form(class="view-product", action="#", role="form", method="POST")
+			p #{items.sex} > #{items.category}
+			h1 #{items.title}
+
+			each tag in items.tags
+				.tag
+					p #{tag}
+
+			.clear
+			p.rating Average rating: #{(items.rating).replace('%', '') * .10} / 10
+
+			h2.price #{items.price}
+
+			each selection in items.option
+				select(name="option")
+					each option in selection
+						option(value="#{option[0]}") #{option[0]}
+				.clear
+			button(class="purchase", type="submit") Order
+
+block scripts
+	script(type='text/javascript').
+		$('body').addClass('product man');
+
+		// Update DOM functions | Looking pretty
+
+		// WALLOP
+		var wallopEl = document.querySelector('.Wallop');
+		var wallop = new Wallop(wallopEl);
+
+		var paginationDots = Array.prototype.slice.call(document.querySelectorAll('.Wallop-dot'));
+
+		/*
+		Attach click listener on the dots
+		*/
+		paginationDots.forEach(function (dotEl, index) {
+		  dotEl.addEventListener('click', function() {
+		    wallop.goTo(index);
+		  });
+		});
+
+		/*
+		Listen to wallop change and update classes
+		*/
+		wallop.on('change', function(event) {
+		  removeClass(document.querySelector('.Wallop-dot--current'), 'Wallop-dot--current');
+		  addClass(paginationDots[event.detail.currentItemIndex], 'Wallop-dot--current');
+		});
+
+		// Helpers
+		function addClass(element, className) {
+		  if (!element) { return; }
+		  element.className = element.className.replace(/\s+$/gi, '') + ' ' + className;
+		}
+
+		function removeClass(element, className) {
+		  if (!element) { return; }
+		  element.className = element.className.replace(className, '');
+		}
+
+		$('.Wallop-nav').css({
+			top: ($('.Wallop-list').height() / 2)
+		});

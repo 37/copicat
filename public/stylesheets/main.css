@@ -12,29 +12,37 @@ body {
     -o-transition: background-color 200ms linear;
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear;
+    background-color: #9C9C9C;
 }
 
 body.landing {
-    /* background-color: rgb(22, 34, 33); */
-    background: url("/images/brick.png");
-    background-color: #EAEAEA;
-    background-size: 180px;
+    background-color: rgb(236,235,240);
+    padding: 50px;
+    float: left;
+    width: 100%;
 }
 
 body.man {
-    background-color: rgb(0, 181, 236);
+    background-color: rgb(117,212,218);
 }
 
 body.woman {
     background-color: rgb(234, 76, 137);
 }
 
+body.product {
+
+}
+
 .landing #mainbody {
-    background: url("/images/window-animation.gif") no-repeat;
     float: left;
     width: 100%;
-    background-position: 0px 220px;
-    padding-bottom: 100px;
+    background: url("/images/model1.png") no-repeat;
+    background-color: rgb(117,212,218);
+    background-position: 70% 100%;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 0px 20px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 0px 20px 0px rgba(50, 50, 50, 0.5);
 }
 
 #mainbody .navbar {
@@ -72,11 +80,6 @@ body.woman {
   z-index: 0;
 }
 
-.logobox p {
-  font-size:50px;
-  position:relative;
-  z-index:10;
-}
 
 .navbar-right li {
     margin-left: 10px;
@@ -136,30 +139,61 @@ img.female.active {
   padding: 0 10px;
 }
 
+.logobox p {
+    position: absolute;
+    font-size: 250px;
+    line-height: 200px;
+}
+
+
 /* -------------------------------
   |<- Landing page styling
 --------------------------------*/
 
 .landingbox{
     width: 800px;
-    margin: 0 calc(45% - 400px) 0 calc(55% - 400px);
+    margin: 100px 0 0 100px;
     float: left;
-    background-color: rgba(0,0,0,0.9);
-    padding: 50px;
 }
 
-.landingbox .slogan > p{
+.landingbox .slogan > .feature {
+    border-bottom: 2px solid yellow;
+    float: left;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.landingbox .slogan > .feature p {
+    color: yellow;
+    line-height: 20px;
+    font-size: 20px;
+}
+
+.landingbox .slogan > .logo {
+    font-size: 250px;
+    line-height: 200px;
+}
+
+.landingbox .slogan > h1 {
     color: white;
     font-size: 50px;
+    line-height:30px;
+    letter-spacing: 3px;
     float: left;
 }
 
-.landingbox .slogan > p.feature {
-    color: yellow;
+.landingbox .slogan > p {
+    color: white;
+    font-size: 24px;
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .landingbox ul {
     padding: 0;
+    float: left;
+    border: 2px solid yellow;
 }
 
 .landingbox ul li {
@@ -189,7 +223,15 @@ img.female.active {
 }
 
 .landingbox ul li img:hover{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: yellow;
+}
+
+.landingbox ul li img.femaleshop:hover{
+    content: url("/images/woman-dark.png");
+}
+
+.landingbox ul li img.maleshop:hover{
+    content: url("/images/man-dark.png");
 }
 
 /* -------------------------------
@@ -198,8 +240,8 @@ img.female.active {
 
 /* Admin page */
 .grid {
-    width: 60%;
-    margin: 0 20%;
+    width: 80%;
+    margin: 0 10%;
     float: left;
 }
 
@@ -227,7 +269,7 @@ img.female.active {
 
 .grid-nav ul li a {
     color: rgba(255,255,255,0.7);
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer
 }
 
@@ -262,9 +304,8 @@ img.female.active {
     position: absolute;
     right: 0px;
     width: 100px;
-    top: 20px;
+    top: -20px;
     padding: 10px;
-    background-color: rgba(255, 255, 18, 0.75);
     color: #333;
 }
 
@@ -586,312 +627,89 @@ img.female.active {
   |<- man display page styling
 --------------------------------*/
 
-.building-roof {
-width: 100%;
-position: relative;
-float: left;
+
+/* -------------------------------
+  |<- product display page styling
+--------------------------------*/
+
+body.product .logobox p {
+    line-height: 34px;
+    font-size: 80px;
 }
 
-.building-roof .bevel {
-    width: calc(100% + 200px);
-    margin-left: -100px;
+body.product #mainbody .navbar {
+    margin-top: 5px;
 }
 
-.building-roof .bevel .top{
-    width: 100%;
-    float: left;
-    height: 30px;
-    background-color: white;
-    border: 10px solid #444;
-}
-
-.building-roof .bevel .bottom{
-    width: 100%;
-    float: left;
+body.product #maincontent {
     position: relative;
-}
-
-.building-roof .bevel .bottom .left{
-    width: 15px;
-    height: 30px;
-    float: left;
-    margin-left: 15px;
-    -webkit-transform: skew(45deg);
-    -moz-transform: skew(45deg);
-    -o-transform: skew(45deg);
-    background: #444;
-}
-
-.building-roof .bevel .bottom .background {
-    width: 100%;
-    height: 30px;
-    float: left;
-    position:absolute;
-    border-top: 30px solid white;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-}
-
-.building-roof .bevel .bottom .right{
-    width: 15px;
-    height: 30px;
-    float: right;
-    margin-right: 15px;
-    -webkit-transform: skew(-45deg);
-    -moz-transform: skew(-45deg);
-    -o-transform: skew(-45deg);
-    background: #444;
-}
-
-.building-roof .bevel .bottom .skirt {
-    float: left;
-    width: calc(100% - 60px);
-    border-bottom: 10px solid #444;
-    margin-left: 30px;
-    -webkit-border-bottom-right-radius: 15px;
-    -webkit-border-bottom-left-radius: 15px;
-    -moz-border-radius-bottomright: 15px;
-    -moz-border-radius-bottomleft: 15px;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-}
-
-
-.building-roof .decal {
-    float: left;
-    width: 100%;
-    border: 10px solid #444;
-    border-top: none;
-    border-bottom: none;
-    background: url("/images/building-roof-decal.png") #fff;
-    background-size: 125px 60px;
-    background-repeat: repeat-x;
-    background-position: 0 10px;
-    height: 60px;
-}
-
-.building-roof .body {
-    width: 100%;
-    height: 50px;
-    float: left;
-    background-color: lightblue;
-    border-top: 10px solid #444;
-    border-left: 10px solid #444;
-    border-right: 10px solid #444;
-}
-
-.building-roof .foot {
-    width: 100%;
-    height: 30px;
-    float: left;
+    z-index: 20;
     background-color: white;
-    border-top: 10px solid #444;
-    border-left: 10px solid #444;
-    border-right: 10px solid #444;
 }
 
-.building-main {
-    border: 10px solid #444;
-    padding: 0 50px;
-    background: url("/images/brick.png") #E7E1D6;
-    background-size: 70px 70px;
+#product {
+    max-width: 1150px;
+    margin: 0 auto;
+    background-color: white;
 }
-
-.building-main .window {
-    width: 25%;
+.view-product {
     float: left;
-    margin: 30px 0;
+    width: 50%;
+    padding: 100px;
+}
+
+#product .Wallop {
+    margin-top:30px;
+}
+#product .tag {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
     padding: 0 10px;
+    background-color: #efefef;
 }
 
-.building-main .window:first-child,
-.building-main .window:nth-child(3n + 4) {
-    width: 50%;
+#product .rating {
+    margin: 10px 5px;
 }
 
-.building-main .window .bevel {
-    width: 100%;
+#product select {
+    padding: 5px 20px;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+#product button.purchase {
+    padding: 5px 20px;
+    width: 200px;
+    text-align: center;
+}
+
+
+/* -------------------------------
+  |<- General element styling
+--------------------------------*/
+
+.clear {
+    clear:both;
+}
+
+.Wallop {
     float: left;
 }
-
-.building-main .window .bevel .midsection {
-    display: none;
+.Wallop-nav {
+    z-index:999;
+    cursor: pointer;
+    font-size: 30px;
 }
-
-.building-main .window .bevel .top{
-    width: 100%;
-    float: left;
-    height: 20px;
-    background-color: white;
-    border: 5px solid #444;
-}
-
-.building-main .window .bevel .bottom{
-    width: 100%;
-    float: left;
-    position: relative;
-}
-
-.building-main .window .bevel .bottom .left{
-    width: 7px;
-    height: 10px;
-    float: left;
-    margin-left: 5px;
-    -webkit-transform: skew(45deg);
-    -moz-transform: skew(45deg);
-    -o-transform: skew(45deg);
-    background: #444;
-}
-
-.building-main .window .bevel .bottom .background {
-    width: 100%;
-    height: 10px;
-    float: left;
-    position:absolute;
-    border-top: 10px solid white;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-}
-
-.building-main .window .bevel .bottom .right{
-    width: 7px;
-    height: 10px;
-    float: right;
-    margin-right: 5px;
-    -webkit-transform: skew(-45deg);
-    -moz-transform: skew(-45deg);
-    -o-transform: skew(-45deg);
-    background: #444;
-}
-
-.building-main .window .bevel .bottom .skirt {
-    float: left;
-    width: calc(100% - 20px);
-    border-bottom: 5px solid #444;
-    margin: 0 10px;
-}
-
-.building-main .window .bevel > .center {
-    width: calc(100% - 20px);
-    margin: 0 10px;
-    height: 30px;
-    float: left;
-    background-color: lightblue;
-    border-top: none;
-    border-left: 5px solid #444;
-    border-right: 5px solid #444;
-}
-
-.building-main .window .bevel > .foot {
-    width: calc(100% - 20px);
-    margin: 0 10px;
-    height: 30px;
-    float: left;
-    background-color: white;
-    border-top: 5px solid #444;
-    border-left: 5px solid #444;
-    border-right: 5px solid #444;
-}
-
-.building-main .window .body .body {
-    width: 100%;
-    float: left;
-}
-
-.building-main .window .body .centersill {
-    width: calc(100% - 20px);
-    float: left;
-    margin: 20px 10px 0 10px;
-
-    border: 5px solid #444;
-    background-color: white;
-}
-
-.building-main .window .body .leftsill,
-.building-main .window .body .rightsill {
-    display: none;
-}
-
-.building-main .window .body .centersill > img {
-    float: left;
-    width: calc(100% - 20px);
-    margin: 10px;
-    border: 5px solid #444;
-}
-
-.building-main .window .body .leftsill .inner,
-.building-main .window .body .rightsill .inner {
-    height: 185.438px;
-    float: left;
-    width: calc(100% - 20px);
-    margin: 10px;
-    border: 5px solid #444;
-}
-
-/* 1st and 3n + 4 child windows */
-
-.building-main .window:first-child,
-.building-main .window:nth-child(3n + 4) {
-    width: 50%;
-}
-
-.building-main .window:first-child .bevel,
-.building-main .window:nth-child(3n + 4) .bevel {
-    width: 100%;
-    float: left;
-}
-
-.building-main .window:first-child .bevel .midsection,
-.building-main .window:nth-child(3n + 4) .bevel .midsection {
+.Wallop-buttonPrevious {
     position: absolute;
-    display: block;
-    top: 0;
-    left: 20%;
-    width: 60%;
-    height: 100px;
-    border: 5px solid #444;
-    z-index:10;
+    left: 0;
 }
 
-.building-main .window:first-child .body .leftsill,
-.building-main .window:nth-child(3n + 4) .body .leftsill,
-.building-main .window:first-child .body .rightsill,
-.building-main .window:nth-child(3n + 4) .body .rightsill {
-    display: block;
-    float: left;
-    width: calc(20% - 10px);
-    border: 5px solid #444;
-    background-color: white;
-    height: 251px;
+.Wallop-buttonNext {
+    position: absolute;
+    right: 0;
 }
-
-.building-main .window:first-child .body .leftsill,
-.building-main .window:nth-child(3n + 4) .body .leftsill {
-    margin: 20px 0 0 10px;
-}
-
-.building-main .window:first-child .body .rightsill,
-.building-main .window:nth-child(3n + 4) .body .rightsill {
-    margin: 20px 10px 0 0px;
-}
-
-.building-main .window:first-child .body .centersill ,
-.building-main .window:nth-child(3n + 4) .body .centersill {
-    width: calc(50% - 30px);
-    float: left;
-    margin: 20px calc(5% + 15px) 0 calc(5% + 15px);
-    border: 5px solid #444;
-    background-color: white;
-}
-
-.building-main .window:first-child .body .centersill > img,
-.building-main .window:nth-child(3n + 4)  .body .centersill > img {
-    float: left;
-    width: calc(100% - 20px);
-    margin: 10px;
-    border: 5px solid #444;
-}
-
-
-
 /* end */

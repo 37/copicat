@@ -4,92 +4,40 @@ block prescript
 	script(type='text/javascript', src='/scripts/formFunctions.js')
 	script(type='text/javascript', src='/scripts/getXrate.js')
 	script(type='text/javascript').
-		console.log(!{JSON.stringify(items)});
-
+		var data = '{ "title": "Dank-ass leather bag", "price": "$60", "images": [ "http://i00.i.aliimg.com/wsphoto/v3/32224932756_1/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg", "http://i00.i.aliimg.com/wsphoto/v3/32224932756_2/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg", "http://i00.i.aliimg.com/wsphoto/v3/32224932756_3/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg", "http://i00.i.aliimg.com/wsphoto/v3/32224932756_4/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg", "http://i00.i.aliimg.com/wsphoto/v3/32224932756_5/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg" ], "sex": "woman", "category": "Accessories", "tags": [ "Handbag", "Interior Slot Pocket", "Zip Pocket", "Cell Phone Pocket", "Soft Leather", "Vintage", "Versatile", "Cow split leather", "Zipper", "700g", "30cm x 40cm x 20cm" ], "option": [ [ [ "Black", "['sku-1-193', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_193/Black-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Brown", "['sku-1-365458', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_365458/Brown-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Dark Coffee", "['sku-1-200004890', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_200004890/Dark-Grey-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Deep Green", "['sku-1-175', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_175/Green-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Wine Red", "['sku-1-10', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_10/Red-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Dark Blue", "['sku-1-173', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_173/Blue-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Rose Red", "['sku-1-200002984', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_200002984/Burgundy-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ] ] ], "rating": "100.0%" }';
 
 block content
 
-	if user
-		#lightbox
-			.backdrop
-			.innerbox
-				form(class="view-product", action="#", role="form", method="POST")
-					i(class="material-icons exitbtn", onClick="showHideProduct()") &#xE14C;
-					.imagebox
-					.productbox
-					.submit
-						button(type='submit') Create product
-				.loading
-					h1 Loading...
-		.grid
-			.grid-nav
-				ul
-					li
-						a(data-category="H" class="active") Home
-					li
-						a(data-category="MS") Mens Shirts
-					li
-						a(data-category="MJ") Mens Jackets
-					li
-						a(data-category="MA") Mens Accessories
-					li
-						a(data-category="MW") Mens Watches
+	.grid
+		.grid-nav
+			ul
+				li
+					a(data-category="H" class="active") Home
+				li
+					a(data-category="MS") Mens Shirts
+				li
+					a(data-category="MJ") Mens Jackets
+				li
+					a(data-category="MA") Mens Accessories
+				li
+					a(data-category="MW") Mens Watches
 
-			.building-roof
-				.bevel
-					.top
-					.bottom
-						.background
-						.left
-						.right
-						.skirt
-				.decal
+		#grid-content.active(data-animation="hierarchical-display")
+			each item in items
+				a(href="/man/products/cool-shirt")
+					.item(data-src="#{item.link}")
+						if item.image
+							img.item-img(src="#{item.image}")
+						else
+							img.item-img(src="#{item.imagesrc}")
+						h3.item-price= item.price
 
-				.body
-				.foot
-			#grid-content.building-main.active(data-animation="hierarchical-display")
-				each item in items
-					.window(data-src="#{item.link}")
-						.bevel
-							.midsection
-							.top
-							.bottom
-								.background
-								.left
-								.right
-								.skirt
-							.center
-							.top
-							.bottom
-								.background
-								.left
-								.right
-								.skirt
-						.body
-							.leftsill
-								.inner
-							.centersill
-								if item.image
-									img.item-img(src="#{item.image}")
-								else
-									img.item-img(src="#{item.imagesrc}")
-								h3.item-price= item.price
-							.rightsill
-								.inner
-
-
-	else
-		.container
-			h1  Wanna fite m8?
-				p Log in first.
-				p
-					a.btn.btn-primary(href="/login") Login
-				p
-					span.small I don't have an account?
-					span &nbsp;
-					a.small(href="/register") Get 1337.
 
 block scripts
 	script(type='text/javascript').
-		// Update BODY for page - look pretty!
 		$('body').addClass('man');
+
+		// Update DOM functions | Looking pretty
+		$(document).ready(function() {
+			squareImages();
+		});

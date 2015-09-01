@@ -13,8 +13,15 @@ var x = Xray().driver(phantom());
 // A render function that will render our page and provide the values of the
 // fields, as well as any situation-specific Locals.
 
-function renderForm (data, req, res, locals){
+function product(data, req, res, locals){
+	res.render('pages/product', extend({
+		title: 'Copicat',
+		items: data,
+		csrfToken: req.csrfToken()
+	}, locals || {} ));
+}
 
+function category (data, req, res, locals){
 	res.render('pages/man', extend({
 		title: 'Admin',
 		items: data,
@@ -28,11 +35,11 @@ module.exports = function loader(){
 
 	router.use(csurf({ sessionKey: 'stormpathSession' }));
 
-	// LOAD PAGE -	renderForm (req, res);
+	// LOAD PAGE -	category (req, res);
 	// Capture all parametised requests, the form library will regotiate between them
 
 	//DEFAULT LOAD
-	router.all ('/', stormpath.loginRequired, function(req, res){
+	router.all ('/', function(req, res){
 
 		url = 'http://www.aliexpress.com/af/category/200000668.html?site=glo&g=n&SortType=total_tranpro_desc&tag=&isFavorite=y&isAffiliate=y&shipCountry=AU&needQuery=n&isFreeShip=y';
 
@@ -52,10 +59,17 @@ module.exports = function loader(){
             } else {
                 // IF no error, return data back to page
                 var data = result;
-                renderForm (data, req, res);
+                category(data, req, res);
             }
         });
 	});
+
+	router.all ('/product/:id', function(req, res){
+		console.log('Loading product: '+ req.params.id);
+		data = { "title": "Dank-ass leather bag", "price": "$60", "images": [ "http://i00.i.aliimg.com/wsphoto/v3/32224932756_1/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg", "http://i00.i.aliimg.com/wsphoto/v3/32224932756_2/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg", "http://i00.i.aliimg.com/wsphoto/v3/32224932756_3/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg", "http://i00.i.aliimg.com/wsphoto/v3/32224932756_4/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg", "http://i00.i.aliimg.com/wsphoto/v3/32224932756_5/Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg" ], "sex": "woman", "category": "Accessories", "tags": [ "Handbag", "Interior Slot Pocket", "Zip Pocket", "Cell Phone Pocket", "Soft Leather", "Vintage", "Versatile", "Cow split leather", "Zipper", "700g", "30cm x 40cm x 20cm" ], "option": [ [ [ "Black", "['sku-1-193', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_193/Black-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Brown", "['sku-1-365458', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_365458/Brown-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Dark Coffee", "['sku-1-200004890', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_200004890/Dark-Grey-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Deep Green", "['sku-1-175', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_175/Green-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Wine Red", "['sku-1-10', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_10/Red-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Dark Blue", "['sku-1-173', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_173/Blue-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ], [ "Rose Red", "['sku-1-200002984', 'http://i00.i.aliimg.com/wsphoto/sku/v3/32224932756/32224932756_200002984/Burgundy-Hot-Genuine-Leather-Ladies-Bag-New-Style-Oil-Wax-Women-Handbag-Fashion-2015-Women-Leather-Handbag.jpg_50x50.jpg']" ] ] ], "rating": "100.0%" };
+		product(data, req, res);
+	});
+
 
 
 	// This is an error handler for this router
@@ -68,7 +82,7 @@ module.exports = function loader(){
 			if (req.user){
 				// session token is invalid or expired.
 				// render the form anyway but tell them what happened.
-				renderForm(req, res, {
+				category(req, res, {
 					errors: [{error: 'Your form has expired, please try again.'}]
 				});
 			} else {

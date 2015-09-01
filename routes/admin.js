@@ -10,6 +10,31 @@ var phantom = require('x-ray-phantom');
 var Xray = require('x-ray');
 var x = Xray().driver(phantom());
 
+//Declare the schema of form:
+
+var newProduct = forms.create({
+	title: forms.fields.string({
+		required: true
+	}),
+	price: forms.fields.string({
+		required: true
+	}),
+	images: forms.fields.array({
+		required: true
+	}),
+	sex: forms.fields.string({
+		required: true
+	}),
+	category: forms.fields.string({
+		required: true
+	}),
+	tags: forms.fields.array(),
+	option: forms.fields.array(),
+	rating: forms.fields.string({
+		required: true
+	})
+});
+
 // A render function that will render our page and provide the values of the
 // fields, as well as any situation-specific Locals.
 
@@ -33,36 +58,75 @@ module.exports = function loader(){
 
 	//DEFAULT LOAD
 	router.all ('/', stormpath.loginRequired, function(req, res){
+		newProduct.handle(req, {
+			success: function (form) {
+				// The form library calls this success method if the form
+				// is being POSTED and does not have errors.
 
-		url = 'http://superdeals.aliexpress.com/en?spm=2114.11010108.21.1.9F0sCN';
+				if (isEmpty(form.data)){
+					console.log ('Form data is empty');
+				}
+				else {
+					console.log('Form delivered:');
+					var title = form.data.title;
+					var price = form.data.price;
+					var images = form.data.images;
+					var sex = form.data.sex;
+					var category = form.data.category;
+					var tags = form.data.tags;
+					var option = form.data.option;
+					var rating = form.data.rating;
 
-		console.log('begin scraping!');
+					console.log(JSON.stringify(form.data));
 
-		x(url, '.list-items', [
-			{
-				name: '.pro-msg .pro-name',
-				image: '.pro-msg .pro-img img@src',
-				price: '.pro-msg .pro-price b',
-				link: '.pro-msg .pro-name@href'
-			}
-		]) ( function(err, result) {
-			if (err){
-		  		console.log('error: ' + err);
-			} else {
-				console.log('checking data:');
-				var data = result;
-				console.log('data collected.');
+				}
+			},
+			error: function (form) {
+				// The form library calls this method if the form
+				// has validation errors.  We will collect the errors
+				// and render the form again, showing the errors
+				// to the user
+				renderForm(req, res, {
+					errors: collectFormErrors(form)
+				});
+			},
+			empty: function (){
 
-				var items = 'blank';
+				// The form library calls this method if the method
+				// is GET - thus we just need to render the form.
 
-				//for (i=0; i < data.length; i++){
-				//	var item = data[i];
-				//	console.log(item.link);
+				// load page
+				url = 'http://superdeals.aliexpress.com/en?spm=2114.11010108.21.1.9F0sCN';
 
-					// Crawl the individual page links, this is going to take a F#CKLOAD of time.
-				//}
+				console.log('begin scraping!');
 
-				renderForm (data, req, res);
+				x(url, '.list-items', [
+					{
+						name: '.pro-msg .pro-name',
+						image: '.pro-msg .pro-img img@src',
+						price: '.pro-msg .pro-price b',
+						link: '.pro-msg .pro-name@href'
+					}
+				]) ( function(err, result) {
+					if (err){
+				  		console.log('error: ' + err);
+					} else {
+						console.log('checking data:');
+						var data = result;
+						console.log('data collected.');
+
+						var items = 'blank';
+
+						//for (i=0; i < data.length; i++){
+						//	var item = data[i];
+						//	console.log(item.link);
+
+							// Crawl the individual page links, this is going to take a F#CKLOAD of time.
+						//}
+
+						renderForm (data, req, res);
+					}
+				});
 			}
 		});
 	});
@@ -84,6 +148,7 @@ module.exports = function loader(){
 			} else {
 				// The user's cookies have been deleted, we don't know their
 				// intention. Send them back to the home page!
+				console.log('Who the fk is this kid?');
 				res.redirect('/');
 			}
 		} else {
@@ -92,4 +157,8 @@ module.exports = function loader(){
 		}
 	});
 	return router;
+}
+
+function isEmpty(str) {
+	return (!str || 0 === str.length);
 }
