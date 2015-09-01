@@ -1,0 +1,35 @@
+@media (min-width: 1200px) {
+	body.landing {
+		background-color: rgb(236,235,240);
+		padding: 50px;
+		float: left;
+		width: 100%;
+	}
+
+	.landing #mainbody {
+	    height: calc(100vh - 100px);
+	}
+
+	.landingbox {
+	    padding: 50px 100px;
+	    float: left;
+	}
+
+	.landingbox .slogan {
+		background-color: transparent;
+		padding: 0;
+	}
+
+	.landingbox .slogan > .logo {
+	    font-size: 250px;
+	    line-height: 200px;
+	}
+
+	.landingbox .slogan > h1 {
+	    color: white;
+	    font-size: 50px;
+	    line-height:30px;
+	    letter-spacing: 3px;
+	    float: left;
+	}
+}

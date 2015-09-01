@@ -1,0 +1,19 @@
+@media (max-width: 780px) {
+
+    ul.gotoshop {
+        padding: 0;
+        float: left;
+        width: 100%;
+        border: 2px solid yellow;
+    }
+
+    ul.gotoshop::after {
+        content: "shop";
+        line-height: 90px;
+        font-size: 50px;
+        color: yellow;
+        float: right;
+        margin-right: 20px;
+    }
+
+}

@@ -17,7 +17,6 @@ body {
 
 body.landing {
     background-color: rgb(236,235,240);
-    padding: 50px;
     float: left;
     width: 100%;
 }
@@ -37,9 +36,10 @@ body.product {
 .landing #mainbody {
     float: left;
     width: 100%;
+    height: auto;
     background: url("/images/model1.png") no-repeat;
     background-color: rgb(117,212,218);
-    background-position: 70% 100%;
+    background-position: -25% 100%;
     -webkit-box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.5);
     -moz-box-shadow:    0px 0px 20px 0px rgba(50, 50, 50, 0.5);
     box-shadow:         0px 0px 20px 0px rgba(50, 50, 50, 0.5);
@@ -151,16 +151,26 @@ img.female.active {
 --------------------------------*/
 
 .landingbox{
-    width: 800px;
-    margin: 100px 0 0 100px;
     float: left;
+    width: 100%;
+    padding: 10px;
+}
+
+.landingbox .slogan {
+    float: left;
+    background-color: rgba(0,0,0,0.3);
+    padding: 20px;
+}
+
+.landingbox .slogan > .logo {
+    font-size: 80px;
 }
 
 .landingbox .slogan > .feature {
     border-bottom: 2px solid yellow;
     float: left;
-    margin-top:50px;
-    margin-bottom:50px;
+    margin-top:30px;
+    margin-bottom:0px;
 }
 
 .landingbox .slogan > .feature p {
@@ -169,28 +179,24 @@ img.female.active {
     font-size: 20px;
 }
 
-.landingbox .slogan > .logo {
-    font-size: 250px;
-    line-height: 200px;
-}
 
 .landingbox .slogan > h1 {
     color: white;
-    font-size: 50px;
-    line-height:30px;
-    letter-spacing: 3px;
+    font-size: 30px;
+    line-height:20px;
     float: left;
 }
 
 .landingbox .slogan > p {
-    color: white;
-    font-size: 24px;
     float: left;
+    max-width: 480px;
     margin-top: 30px;
     margin-bottom: 30px;
+    color: white;
+    font-size: 24px;
 }
 
-.landingbox ul {
+.landingbox ul.gotoshop {
     padding: 0;
     float: left;
     border: 2px solid yellow;
@@ -673,37 +679,27 @@ body.product .logobox p {
     background-color: white;
 }
 
-#product #imagebox {
+#product #leftside {
     width: 50%;
     float: left;
 }
 
-.view-product {
-    float: left;
+#product  #rightside {
     width: 50%;
-    padding: 200px 100px;
+    float: left;
+    padding: 150px 100px;
+}
+
+.view-product {
 }
 
 #product .tags {
     max-width: 500px;
     float: left;
 }
-#product #imagebox .Wallop {
-    float:right;
-    position: relative;
-}
 
-#product .Wallop-pagination {
-    padding-top: 10px;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 99;
-}
-
-#product .Wallop-list {
-    margin: 0;
+#product .price {
+    color: #75D4DA;
 }
 
 #product .tag {
@@ -726,12 +722,62 @@ body.product .logobox p {
 }
 
 #product button.purchase {
-    padding: 5px 20px;
     width: 200px;
+    color: #444;
+    background-color: #fff;
+    padding: 5px 20px;
+    border: 2px solid #444;
+    font-size: 20px;
     text-align: center;
 }
 
+#product #leftside .Wallop {
+    float:right;
+    position: relative;
+}
 
+#product .Wallop-pagination {
+    padding-top: 10px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+#product .Wallop-list {
+    margin: 0;
+}
+
+.transactionprogress p,
+.transactionprogress i {
+    display: inline-block;
+    float: left;
+    line-height: 20px;
+}
+
+.transactionprogress a {
+    cursor: pointer;
+}
+
+#checkout {
+    margin-top: 20px;
+    width: 400px;
+    overflow: hidden;
+}
+
+#checkout #payment-form {
+    margin-bottom: 20px;
+}
+#checkout input[type="submit"] {
+    width: 200px;
+    color: #444;
+    background-color: #fff;
+    padding: 5px 20px;
+    border: 2px solid #444;
+    font-size: 20px;
+    text-align: center;
+}
 /* -------------------------------
   |<- General element styling
 --------------------------------*/
@@ -757,4 +803,16 @@ body.product .logobox p {
     position: absolute;
     right: 0;
 }
+
+
+/* -------------------------------
+  |<- CSS MEDIA QUERIES -
+    YAY RESPONSIVENESS!
+--------------------------------*/
+@media (max-width: 600px) {
+  .facet_sidebar {
+    display: none;
+  }
+}
+
 /* end */

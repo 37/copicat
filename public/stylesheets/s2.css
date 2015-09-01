@@ -1,0 +1,19 @@
+@media (min-width: 780px) {
+
+	.landing #mainbody {
+	    background: url("/images/model1.png") no-repeat;
+	    background-position: 90% 75%;
+		background-color: rgb(117,212,218);
+	}
+
+	.landingbox{
+        padding: 50px;
+        float: left;
+    }
+
+	.landingbox .slogan > .logo {
+	    font-size: 80px;
+	    line-height: 80px;
+	}
+
+}
