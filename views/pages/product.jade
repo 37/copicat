@@ -8,32 +8,35 @@ block prescript
 block content
 
 	#product
-		.Wallop.Wallop--fade
-			.Wallop-pagination
-				each image in items.images
-					if image == image[1]
-						button.Wallop-dot.Wallop-dot--current
-					else
-						button.Wallop-dot
-			.Wallop-list
-				each image in items.images
-					if image == image[0]
-						.Wallop-item.Wallop-item--current
-							img(src="#{image}")
-					else
-						.Wallop-item
-							img(src="#{image}")
-			i.material-icons.Wallop-nav.Wallop-buttonNext navigate_next
-			i.material-icons.Wallop-nav.Wallop-buttonPrevious navigate_before
-
+		a(href="/categories/")
+			i.material-icons.back-btn arrow_back
+		#imagebox
+			.Wallop.Wallop--fade
+				.Wallop-pagination
+					each image in items.images
+						if image == image[1]
+							button.Wallop-dot.Wallop-dot--current
+						else
+							button.Wallop-dot
+				.Wallop-list
+					each image in items.images
+						if image == image[0]
+							.Wallop-item.Wallop-item--current
+								img(src="#{image}")
+						else
+							.Wallop-item
+								img(src="#{image}")
+				i.material-icons.Wallop-nav.Wallop-buttonNext navigate_next
+				i.material-icons.Wallop-nav.Wallop-buttonPrevious navigate_before
 
 		form(class="view-product", action="#", role="form", method="POST")
 			p #{items.sex} > #{items.category}
 			h1 #{items.title}
 
-			each tag in items.tags
-				.tag
-					p #{tag}
+			.tags
+				each tag in items.tags
+					.tag
+						p #{tag}
 
 			.clear
 			p.rating Average rating: #{(items.rating).replace('%', '') * .10} / 10
@@ -90,3 +93,7 @@ block scripts
 		$('.Wallop-nav').css({
 			top: ($('.Wallop-list').height() / 2)
 		});
+
+		$('.Wallop-item img').css({
+			height: $('#product').height()
+		})

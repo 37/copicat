@@ -1,36 +1,30 @@
-# node-js-getting-started
+# Welcome to Copicat.co
+This should serve as an insight into the current state of development.
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+# TODO checklist
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+Please provide URLs for webpages that contain the following information:
 
-## Running Locally
+# Business name with ABN
+The Home or Contact Us page of your website should clearly show your company name along with your ABN.
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+# Contact Details
+Your business phone number must be a physical (eg. 038641xxxx) or registered (eg. 1300/1800) landline number, and not IP phone or mobile phone.
 
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
+# Product/service descriptions
+Your website must clearly show the products or services you offer, including accurate pricing & currency information. Filler text of service descriptions not accepted. Unless you are applying for a multi-currency service, all prices must be denoted in AUD.
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+# Refund/return policy information
+Your website must clearly display your refund and returns policy for the products or services you offer. It should detail how a cardholder can dispute a payment, refund options, and any limits you impose on returns (e.g. 30 days to return)
 
-## Deploying to Heroku
+# Delivery timeframe
+Your website should clearly displays your complete Delivery Instructions and Timeframes. It should include how long a customer should expect to wait for delivery after purchasing.
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
+# Privacy Policy
+Your website should show your complete Privacy Policy, with an accurate description of how you gather, secure and protect cardholder information.
 
-## Documentation
+# Indication that this is an Australian business
+Your website should clearly indicate that you are an Australian Business.
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
-
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+# Checkout/Payment process
+Visitors to your website should be able to view and assess the entire payment process before committing to the purchase. This includes the entire customer experience, from selecting the product or service, to entering credit card information, to the final payment button.
