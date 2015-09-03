@@ -14,8 +14,7 @@ function renderForm (data, req, res, locals){
 
 	res.render('pages/woman', extend({
 		title: 'Admin',
-		items: data,
-		csrfToken: req.csrfToken()
+		items: data
 	}, locals || {} ));
 }
 

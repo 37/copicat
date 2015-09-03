@@ -1,9 +1,6 @@
 var express = require('express');
-
 var forms = require('forms');
-
 var extend = require('xtend');
-
 var url = require('url');
 var phantom = require('x-ray-phantom');
 var Xray = require('x-ray');

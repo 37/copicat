@@ -10,8 +10,7 @@ var url = require('url');
 function renderForm (req, res, locals){
 
 	res.render('pages/index', extend({
-		title: 'Black Marque',
-		csrfToken: req.csrfToken(),
+		title: 'Copicat'
 	}, locals || {} ));
 }
 
