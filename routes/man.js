@@ -1,8 +1,7 @@
 var express = require('express');
-var stormpath = require('express-stormpath');
+
 var forms = require('forms');
-var csurf = require('csurf');
-var collectFormErrors = require('express-stormpath/lib/helpers').collectFormErrors;
+
 var extend = require('xtend');
 
 var url = require('url');
@@ -16,24 +15,20 @@ var x = Xray().driver(phantom());
 function product(data, req, res, locals){
 	res.render('pages/product', extend({
 		title: 'Copicat',
-		items: data,
-		csrfToken: req.csrfToken()
+		items: data
 	}, locals || {} ));
 }
 
 function category (data, req, res, locals){
 	res.render('pages/man', extend({
 		title: 'Admin',
-		items: data,
-		csrfToken: req.csrfToken()
+		items: data
 	}, locals || {} ));
 }
 
 //Export a function which will create the router and return it:
 module.exports = function loader(){
 	var router = express.Router();
-
-	router.use(csurf({ sessionKey: 'stormpathSession' }));
 
 	// LOAD PAGE -	category (req, res);
 	// Capture all parametised requests, the form library will regotiate between them

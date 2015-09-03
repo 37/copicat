@@ -1,8 +1,6 @@
 var express = require('express');
-var stormpath = require('express-stormpath');
 var forms = require('forms');
-var csurf = require('csurf');
-var collectFormErrors = require('express-stormpath/lib/helpers').collectFormErrors;
+
 var extend = require('xtend');
 var url = require('url');
 
@@ -20,8 +18,6 @@ function renderForm (req, res, locals){
 //Export a function which will create the router and return it:
 module.exports = function loader(){
 	var router = express.Router();
-
-	router.use(csurf({ sessionKey: 'stormpathSession' }));
 
 
 	// Capture all parametised requests, the form library will regotiate between them

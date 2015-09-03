@@ -1,30 +1,25 @@
-var express = require('express');
-var stormpath = require('express-stormpath');
-var app = express();
-var server = require('http').Server(app);
+// DECLARE APP DEPENDANCIES
+var express =      require('express'),
+    app =          express(),
+    server =       require('http').Server(app),
+    config =       require('./config');
 
-// game and room management
-var gameCount = 0;
-var balancer = true;
-var roomhistory = [];
-var gameClients = [];
-var currentRoom;
+// Configure Logging
+config.log(app);
 
+// Configure templates
+config.template(app);
 
-var stormpathMiddleware = stormpath.init(app, {
-  apiKeyFile: './storm/apiKey.properties',
-  application: 'https://api.stormpath.com/v1/applications/7GhZzyjSP2k4YtPHPCYhVL',
-  secretKey: 'keaton_candice_eliza_unihack',
-	expandCustomData: true,
-	enableForgotPassword: true
-});
+// Configure session
+config.session(app);
 
-app.set('views', './views');
-app.set('view engine', 'jade');
+// Configure passport
+config.passport(app);
 
-app.use(stormpathMiddleware);
-app.use(express.static(__dirname + '/public'));
+// Configure static folders
+config.static(app);
 
+// Configure routes
 app.use('/', require('./routes/index')());
 app.use('/profile', require('./routes/profile')());
 app.use('/man', require('./routes/man')());
@@ -32,6 +27,10 @@ app.use('/woman', require('./routes/woman')());
 app.use('/admin', require('./routes/admin')());
 app.use('/admin_api', require('./routes/admin_api')());
 
+// LOGIN MECHANISMS
+app.use('/loginAPI', require('./routes/middleware/login')());
+
+// INITIALISE SERVER
 app.set('port', (process.env.PORT || 8080));
 server.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

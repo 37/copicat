@@ -664,10 +664,11 @@ body.product .logobox p {
 
 .back-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 50px;
+    right: 50px;
     color: #444;
     font-size: 30px;
+    cursor: pointer;
 }
 
 
@@ -687,7 +688,7 @@ body.product .logobox p {
 #product  #rightside {
     width: 50%;
     float: left;
-    padding: 150px 100px;
+    padding: 50px 70px;
 }
 
 .view-product {

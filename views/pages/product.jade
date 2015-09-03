@@ -1,16 +1,15 @@
 extends ../partials/skeleton
 
 block prescript
-	link(rel='stylesheet', href='/stylesheets/checkout.css')
+	script(type='text/javascript', src='https://cdn.auth0.com/js/lock-7.5.min.js')
 	script(type='text/javascript', src='/scripts/formFunctions.js')
 	script(type='text/javascript', src='/scripts/getXrate.js')
+	link(rel='stylesheet', href='/stylesheets/checkout.css')
 	script(type='text/javascript').
 
 block content
 
 	#product
-		a(href="/categories/")
-			i.material-icons.back-btn arrow_back
 		#leftside
 			.Wallop.Wallop--fade
 				.Wallop-pagination
@@ -31,7 +30,9 @@ block content
 				i.material-icons.Wallop-nav.Wallop-buttonPrevious navigate_before
 		#rightside.com
 			.browse.com__section
-				.container.animate.slideInRight
+				.animate.slideInRight
+					a(href="/categories/")
+						i.material-icons.back-btn arrow_back
 					form(class="view-product", action="#", role="form", method="POST")
 						p #{items.sex} > #{items.category}
 						h1 #{items.title}
@@ -53,20 +54,27 @@ block content
 							.clear
 						button(class="purchase com__nav-link", data-index="1", type="button") Order
 			.ship.com__section
-				.container.animate.slideInRight
+				.animate.slideInRight
+					a(class="com__nav-link", data-index="0")
+						i.material-icons.back-btn arrow_back
 					.transactionprogress
 						a(class="com__nav-link", data-index="0")
 							p Order
 						i(class="material-icons") navigate_next
 						p Shipping Details
 						.clear
-
-					h1 Login or register
-					h3 Gimme yo deets m9.
-					p Forms will go here, once logged in the button below will become visible and selectable.
+					if user
+						h1 User is logged in.
+						p Forms will go here, once logged in the button below will become visible and selectable.
+					else
+						div(id="loginbox", style="width: 280px; margin: 40px auto; padding: 10px; ")
+							embeded area
+						h3 Gimme yo deets m9.
 					button(class="purchase com__nav-link", data-index="2", type="button") Checkout
 			.checkout.com__section
-				.container.animate.slideInRight
+				.animate.slideInRight
+					a(class="com__nav-link", data-index="1")
+						i.material-icons.back-btn arrow_back
 					.transactionprogress
 						a(class="com__nav-link", data-index="0")
 							p Order
@@ -94,6 +102,18 @@ block scripts
 
 		// Update DOM | Looking pretty
 		$('body').addClass('product man');
+
+		// ~~~~~~~~~~~~~~~~~ AUTH0 CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		var lock = new Auth0Lock('aDP9vhLVwnXkCUXCUXebeU6g6Y15tX6p', 'copicat.auth0.com');
+		lock.show({
+			container: 'loginbox',
+			callbackURL: 'http://ec2-54-206-83-33.ap-southeast-2.compute.amazonaws.com:8080/loginAPI',
+			responseType: 'code',
+			authParams: {
+				scope: 'openid profile'
+			}
+		});
+		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	script(type='text/javascript', src='/scripts/checkout-animations.js')
 	script(type='text/javascript', src='/scripts/product-wallop.js')

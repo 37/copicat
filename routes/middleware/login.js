@@ -1,32 +1,28 @@
 var express = require('express');
-
 var forms = require('forms');
-
 var extend = require('xtend');
-var url = require('url');
+var forms = require('forms');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-// A render function that will render our page and provide the values of the
-// fields, as well as any situation-specific Locals.
-
-function renderPage(req, res, locals){
-
-	res.render('pages/profile', extend({
-		title: 'User!',
-		user: req.user
-	}, locals || {} ));
-}
 
 //Export a function which will create the router and return it:
 module.exports = function loader(){
 	var router = express.Router();
 
 	// Capture all parametised requests, the form library will regotiate between them
-	router.all ('/', function (req, res) {
-		renderPage(req, res);
+
+	router.get('/', passport.authenticate('auth0', {
+		failureRedirect: '/oshitdawg' }),
+		function(req, res) {
+			if (!req.user) {
+				throw new Error('user null');
+			}
+			res.send('Your login deets are dank.');
 	});
 
-	// This is an error handler for this router
 
+	// This is an error handler for this router
 	router.use(function (err, req, res, next) {
 		// This handler catches errors for this router
 		if (err.code ==='EBADCSRFTOKEN'){

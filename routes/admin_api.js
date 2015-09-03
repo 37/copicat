@@ -1,6 +1,5 @@
 var express = require('express');
-var stormpath = require('express-stormpath');
-var csurf = require('csurf');
+
 var phantom = require('x-ray-phantom');
 var Xray = require('x-ray');
 
@@ -9,14 +8,14 @@ var x = Xray().driver(phantom());
 module.exports = function loader(){
 	var router = express.Router();
 
-	router.use(csurf({ sessionKey: 'stormpathSession' }));
+
 
 	// LOAD PAGE -	renderForm (req, res);
 	// Capture all parametised requests, the form library will regotiate between them
 
 	//DEFAULT LOAD
 
-    router.get('/', stormpath.loginRequired, function(req, res){
+    router.get('/', function(req, res){
         var url, mode = req.query.url;
 
 		// IF loading listpage (not individual) for category
