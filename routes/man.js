@@ -2,9 +2,10 @@ var express = require('express');
 var forms = require('forms');
 var extend = require('xtend');
 var url = require('url');
-var phantom = require('x-ray-phantom');
-var Xray = require('x-ray');
-var x = Xray().driver(phantom());
+
+// DATABASE DEPENDENCIES
+var products = require('../models/product');
+
 
 // A render function that will render our page and provide the values of the
 // fields, as well as any situation-specific Locals.
@@ -16,7 +17,7 @@ function product(data, req, res, locals){
 	}, locals || {} ));
 }
 
-function category (data, req, res, locals){
+function category(data, req, res, locals){
 	res.render('pages/man', extend({
 		title: 'Admin',
 		items: data
@@ -33,27 +34,22 @@ module.exports = function loader(){
 	//DEFAULT LOAD
 	router.all ('/', function(req, res){
 
-		url = 'http://www.aliexpress.com/af/category/200000668.html?site=glo&g=n&SortType=total_tranpro_desc&tag=&isFavorite=y&isAffiliate=y&shipCountry=AU&needQuery=n&isFreeShip=y';
+		products.find({}, function(err, result) {
+			if (err) throw err;
+			// object of all the users returned in result variable
+			console.log(result);
+			category(result, req, res);
+		});
+	});
 
-		console.log('begin scraping!');
-        x(url, '.list-item', [
-            {
-                name: '.detail a.product',
-                image: '.img .picRind img@src',
-                imagesrc: '.img .picRind img@image-src',
-                price: '.price .value',
-                link: '.detail .product@href'
-            }
-        ]) ( function(err, result) {
-            if (err){
-                // IF ERRORS
-                console.log('error: ' + err);
-            } else {
-                // IF no error, return data back to page
-                var data = result;
-                category(data, req, res);
-            }
-        });
+	router.all ('/:category', function(req, res){
+		console.log('Loading category: ' + req.params.category);
+		products.find({}, function(err, result) {
+			if (err) throw err;
+			// object of all the users returned in result variable
+			console.log(result);
+			category(result, req, res);
+		});
 	});
 
 	router.all ('/products/:id', function(req, res){

@@ -139,3 +139,16 @@ block scripts
 		$(document).ready(function() {
 			squareImages();
 		});
+
+		// Set default Image
+		$('#mainbody').on('click', '.image-line', function() {
+			// Outline selection
+			$('.image-line').removeClass('active');
+			$(this).addClass('active');
+
+			// Get selection value
+			var link = $(this).find('img').attr('src');
+
+			// Set value
+			$('#defaultImage').attr('value', link);
+		});
