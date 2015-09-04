@@ -132,6 +132,16 @@ img.female.active {
   color: #fff;
 }
 
+.navbar-right li a{
+    padding: 0;
+}
+
+.navbar-right li a:hover,
+.navbar-right li a:focus {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 5px;
+}
+
 .navbar-nav p {
   line-height: 50px;
   font-size: 50px;
@@ -438,6 +448,10 @@ img.female.active {
     float: left;
     padding: 2px;
     position: relative;
+}
+
+.imagebox .image-line.active {
+    border: 5px solid yellow;
 }
 
 .imagebox .image-line i.delete-option {
@@ -759,6 +773,18 @@ body.product .logobox p {
 
 .transactionprogress a {
     cursor: pointer;
+}
+
+.ship {}
+
+.ship input[type="checkbox"] {
+    /* margin-right: 5px; */
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin-right:10px;
+    margin-bottom:5px;
+    margin-top:0px;
 }
 
 #checkout {

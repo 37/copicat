@@ -1,1 +1,7 @@
 ec2-54-206-83-33.ap-southeast-2.compute.amazonaws.com
+
+user:
+application
+Kinetikx37&&
+
+db: copicat

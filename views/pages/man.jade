@@ -1,30 +1,31 @@
 extends ../partials/skeleton
 
 block prescript
-
+	script(type='text/javascript').
+		console.log(!{JSON.stringify(items)});
 block content
 	.grid
 		.grid-nav
 			ul
 				li
-					a(data-category="H" class="active") Home
+					a(href="/man/", class="active") Home
 				li
-					a(data-category="MS") Mens Shirts
+					a(href="/man/shirts") Mens Shirts
 				li
-					a(data-category="MJ") Mens Jackets
+					a(href="/man/jackets") Mens Jackets
 				li
-					a(data-category="MA") Mens Accessories
+					a(href="/man/accessories") Mens Accessories
 				li
-					a(data-category="MW") Mens Watches
+					a(href="/man/watches") Mens Watches
 
 		#grid-content.active(data-animation="hierarchical-display")
 			each item in items
 				a(href="/man/products/cool-shirt")
-					.item(data-src="#{item.link}")
-						if item.image
-							img.item-img(src="#{item.image}")
+					.item
+						if item.defaultimage
+							img.item-img(src="#{item.defaultimage}")
 						else
-							img.item-img(src="#{item.imagesrc}")
+							img.item-img(src="#{item.images[0]}")
 						h3.item-price= item.price
 
 

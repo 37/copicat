@@ -308,8 +308,8 @@ function populateForm(data, rate, link) {
 
     sex +=
     '<select name="sex">' +
-        '<option value="man" ' + IFMS + IFMJ + IFMA + IFMW + '>Man</option>' +
-        '<option value="woman" ' + IFWS +  IFWD + IFWJ + IFWA + IFWW + '>Woman</option>' +
+        '<option value="Man" ' + IFMS + IFMJ + IFMA + IFMW + '>Man</option>' +
+        '<option value="Woman" ' + IFWS +  IFWD + IFWJ + IFWA + IFWW + '>Woman</option>' +
     '</select>';
 
     category +=
@@ -336,6 +336,7 @@ function populateForm(data, rate, link) {
      '</div>';
 
      imageElements.innerHTML =
+     '<input name="defaultimage" type="hidden" id="defaultImage" value="" />' +
      imageGrid +
      '<div class="product-highlights">' +
         '<input name="price" class="product-price" value="$' + Math.round(price * 100) / 100 + '" />' +

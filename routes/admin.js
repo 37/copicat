@@ -1,20 +1,26 @@
+// CORE PAGE DEPENDENCIES
 var express = require('express');
 var forms = require('forms');
-
 var extend = require('xtend');
 
+// SCRAPE DEPENDENCIES
 var url = require('url');
 var phantom = require('x-ray-phantom');
 var Xray = require('x-ray');
 var x = Xray().driver(phantom());
 
-//Declare the schema of form:
+// DATABASE DEPENDENCIES
+var product = require('../models/product');
 
+//Declare the schema of form:
 var newProduct = forms.create({
 	title: forms.fields.string({
 		required: true
 	}),
 	price: forms.fields.string({
+		required: true
+	}),
+	defaultimage: forms.fields.string({
 		required: true
 	}),
 	images: forms.fields.array({
@@ -64,18 +70,34 @@ module.exports = function loader(){
 					console.log ('Form data is empty');
 				}
 				else {
-					console.log('Form delivered:');
-					var title = form.data.title;
-					var price = form.data.price;
-					var images = form.data.images;
-					var sex = form.data.sex;
-					var category = form.data.category;
-					var tags = form.data.tags;
-					var option = form.data.option;
-					var rating = form.data.rating;
 
-					console.log(JSON.stringify(form.data));
+					// create a new user called chris
+					var newProduct = new product({
+						name : form.data.title,
+    					price : form.data.price,
+						sales : 0,
+						defaultimage : form.data.defaultimage,
+    					images : form.data.images,
+    					sex : form.data.sex,
+    					category : form.data.category,
+    					tags : form.data.tags,
+    					options : form.data.option,
+    					rating : form.data.rating
+					});
 
+					// Take product and generate ID
+					console.log('Product created: ' + JSON.stringify(newProduct));
+					newProduct.generateId(function(err, id) {
+						if (err) throw err;
+						console.log('The new product ID is: ' + id);
+					});
+
+					// Call save method to commit product to database;
+					newProduct.save(function(err) {
+						if (err) throw err;
+						console.log('Product saved successfully!');
+						res.send('success');
+					});
 				}
 			},
 			error: function (form) {
