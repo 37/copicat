@@ -17,7 +17,10 @@
     "morgan": "^1.6.1",
     "passport": "^0.3.0",
     "passport-auth0": "^0.5.0",
+    "passport-local": "^1.0.0",
     "pg": "4.x",
+    "x-ray": "^2.0.2",
+    "x-ray-phantom": "^1.0.1",
     "xtend": "^4.0.0"
   },
   "engines": {
