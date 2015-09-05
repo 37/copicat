@@ -129,7 +129,7 @@ block scripts
 		var lock = new Auth0Lock('aDP9vhLVwnXkCUXCUXebeU6g6Y15tX6p', 'copicat.auth0.com');
 		lock.show({
 			container: 'loginbox',
-			callbackURL: 'http://ec2-54-206-83-33.ap-southeast-2.compute.amazonaws.com:8080/login',
+			callbackURL: 'http://ec2-54-206-83-33.ap-southeast-2.compute.amazonaws.com:8080/login?redir=/#{root}?stage=2',
 			responseType: 'code',
 			authParams: {
 				scope: 'openid profile'

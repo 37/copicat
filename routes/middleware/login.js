@@ -18,7 +18,12 @@ module.exports = function loader(){
 			if (!req.user) {
 				throw new Error('user null');
 			}
-			res.send('Your login deets are dank.');
+
+			if (req.query.redir) {
+				res.redirect(req.query.redir);
+			} else {
+				res.send('Your login deets are dank.');
+			}
 	});
 
 
