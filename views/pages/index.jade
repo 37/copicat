@@ -13,6 +13,7 @@ html
 		link(rel='stylesheet', href='/stylesheets/s3.css')
 		script(type='text/javascript', src='//code.jquery.com/jquery-2.1.4.min.js')
 		script(type='text/javascript', src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js')
+		script(type='text/javascript', src='https://cdn.auth0.com/js/lock-7.5.min.js')
 		script(type='text/javascript', src='/scripts/jquery.zmd.hierarchical-display.min.js')
 
 	body.landing
@@ -37,19 +38,30 @@ html
 					.clear
 					ul.gotoshop
 						li.nav-btn
-							a(href="/man")
+							a(href="#", onClick="signin('man')")
 								img(class="maleshop")
 						li.nav-btn
-							a(href="/woman")
+							a(href="#", onClick="signin('woman')")
 								img(class="femaleshop")
 					.placeholder
 
 
 
 		script(type='text/javascript').
+			// ~~~~~~~~~~~~~~~~~ AUTH0 CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			var lock = new Auth0Lock('aDP9vhLVwnXkCUXCUXebeU6g6Y15tX6p', 'copicat.auth0.com');
+			function signin(shop) {
+				lock.show({
+					callbackURL: 'http://ec2-54-206-83-33.ap-southeast-2.compute.amazonaws.com:8080/login?redir=/' + shop,
+					responseType: 'code',
+					authParams: {
+						scope: 'openid profile'
+					}
+				});
+			}
+			// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 			$(document).ready(function(){
-
 				$("li.nav-btn img").hover(function(){
 					if ($(this).hasClass('maleshop')) {
 						$('body').css("background-color", "rgb(0, 181, 236)");
