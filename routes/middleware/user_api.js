@@ -1,7 +1,7 @@
 module.exports = function loader(){
 var express 	= require('express'),
 	router 		= express.Router(),
-	postal 		= require('../models/product');
+	postage 	= require('../../models/postage');
 
 //DEFAULT LOAD
 router.all ('/:user_id', function(req, res){
@@ -9,7 +9,7 @@ router.all ('/:user_id', function(req, res){
 	if (req.query.pass == 'sneakypassword') {
 		var user_id = req.params.user_id;
 		console.log('query : ' + cat);
-		postal.find({ uid: user_id}, function(err, result) {
+		postage.find({ uid: user_id}, function(err, result) {
 			if (err) throw err;
 			// object of all the users returned in result variable
 			res.send(result);
