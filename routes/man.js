@@ -13,7 +13,8 @@ var products = require('../models/product');
 function product(data, req, res, locals){
 	res.render('pages/product', extend({
 		title: 'Copicat',
-		items: data
+		items: data,
+		user: req.user,
 	}, locals || {} ));
 }
 
@@ -37,17 +38,34 @@ module.exports = function loader(){
 		products.find({}, function(err, result) {
 			if (err) throw err;
 			// object of all the users returned in result variable
-			console.log(result);
 			category(result, req, res);
 		});
 	});
 
 	router.all ('/:category', function(req, res){
 		console.log('Loading category: ' + req.params.category);
-		products.find({}, function(err, result) {
+
+		switch (req.params.category) {
+			case 'shirts':
+				var cat = 'Shirts';
+				break;
+			case 'jackets':
+				var cat = 'Jackets';
+				break;
+			case 'accessories':
+				var cat = 'Accessories';
+				break;
+			case 'watches':
+				var cat = 'Watches';
+				break;
+		}
+		var sex = 'man';
+
+		console.log('query : ' + cat);
+
+		products.find({ sex: sex, category: cat }, function(err, result) {
 			if (err) throw err;
 			// object of all the users returned in result variable
-			console.log(result);
 			category(result, req, res);
 		});
 	});

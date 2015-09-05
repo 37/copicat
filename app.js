@@ -26,9 +26,10 @@ app.use('/man', require('./routes/man')());
 app.use('/woman', require('./routes/woman')());
 app.use('/admin', require('./routes/admin')());
 app.use('/admin_api', require('./routes/admin_api')());
+app.use('/404', require('./routes/404')());
 
 // LOGIN MECHANISMS
-app.use('/loginAPI', require('./routes/middleware/login')());
+app.use('/login', require('./routes/middleware/login')());
 
 // INITIALISE SERVER
 app.set('port', (process.env.PORT || 8080));

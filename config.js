@@ -30,7 +30,7 @@ exports.passport = function(app) {
 	  domain:       'copicat.auth0.com',
       clientID:     'aDP9vhLVwnXkCUXCUXebeU6g6Y15tX6p',
       clientSecret: 'ngvaY4oQAox1w-EmizzSKzLqO4spihPhBvcgAXZOBh5jDslIlegSbJB0P48Qm7kp',
-      callbackURL:  'http://localhost:8080/login'
+      callbackURL:  '/login'
   }, function(accessToken, refreshToken, profile, done) {
     //Some tracing info
     console.log('profile is', profile);
