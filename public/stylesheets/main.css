@@ -173,6 +173,10 @@ img.female.active {
   |<- Landing page styling
 --------------------------------*/
 
+.landing  #a0-lock.a0-theme-default .a0-panel button.a0-primary {
+    background-color: #75D4DA;
+}
+
 .landingbox{
     float: left;
     width: 100%;
@@ -263,9 +267,6 @@ img.female.active {
     content: url("/images/man-dark.png");
 }
 
-.landingbox  #a0-lock.a0-theme-default .a0-panel button.a0-primary {
-    background-color: #75D4DA;
-}
 
 /* -------------------------------
   |<- Individual page styling
