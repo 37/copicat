@@ -21,12 +21,19 @@ var switchTab = function() {
 
 link.on('click', switchTab);
 
-function activeFirst() {
-	section.first().addClass('active');
-	section.first().find('*').css({
-		transform: 'none',
-		opacity: 1
-	});
+function activeFirst(stage) {
+	if (stage && stage < 4) {
+		console.log(stage);
+		$(section[stage - 1]).addClass('active');
+		$(section[stage - 1]).find('*').css({
+			transform: 'none',
+			opacity: 1
+		});
+	} else {
+		section.first().addClass('active');
+		section.first().find('*').css({
+			transform: 'none',
+			opacity: 1
+		});
+	}
 }
-
-activeFirst();

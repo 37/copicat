@@ -788,8 +788,6 @@ body.product .logobox p {
     cursor: pointer;
 }
 
-.ship {}
-
 .ship input[type="checkbox"] {
     /* margin-right: 5px; */
     float: left;
@@ -800,6 +798,78 @@ body.product .logobox p {
     margin-top:0px;
 }
 
+.ship #add-address{
+    float: left;
+}
+
+#add-address input,
+#add-address .chosen-container {
+    float: left;
+    padding: 5px;
+    line-height:20px;
+    margin: 2.5px;
+    border: 2px solid #444;
+    font-size: 16px;
+}
+
+#add-address .chosen-container {
+    width: calc(100% - 5px);
+    padding: 0;
+    border-radius:0;
+}
+
+#add-address label{
+    width: calc(100% - 5px);
+    float: left;
+    margin: 2.5px;
+}
+
+#add-address input.full{ width: calc(100% - 5px); }
+#add-address input.half{ width: calc(50% - 5px); }
+#add-address input.quarter{ width: calc(25% - 5px); }
+#add-address select {
+    display: none;
+}
+
+#add-address .chosen-container .chosen-single {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    background-color: white;
+    border: none;
+    height:30px;
+}
+#add-address .chosen-container .chosen-single span {
+    float: left;
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    line-height:20px;
+}
+
+#add-address .chosen-container .chosen-choices > li {
+    padding: 5px;
+    margin: 0;
+    background-color: white;
+    border: 0;
+    line-height: 20px;
+    background-image: none;
+    box-shadow: none;
+    float: left;
+}
+
+#add-address button {
+    float: left;
+    width: 200px;
+    margin: 2.5px;
+    padding: 5px 0;
+    border: 2px solid #444;
+    background-color: white;
+    font-size: 20px;
+    text-align: center;
+}
 #checkout {
     margin-top: 20px;
     width: 400px;

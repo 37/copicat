@@ -4,7 +4,9 @@ block prescript
 	script(type='text/javascript', src='https://cdn.auth0.com/js/lock-7.5.min.js')
 	script(type='text/javascript', src='/scripts/formFunctions.js')
 	script(type='text/javascript', src='/scripts/getXrate.js')
+	script(type='text/javascript', src='/scripts/chosen.jquery.js')
 	link(rel='stylesheet', href='/stylesheets/checkout.css')
+	link(rel='stylesheet', href='/stylesheets/chosen.css')
 	script(type='text/javascript').
 
 block content
@@ -53,24 +55,7 @@ block content
 									option(value="#{option[0]}") #{option[0]}
 							.clear
 						button(class="purchase com__nav-link", data-index="1", type="button") Order
-			.account.com__section
-				.animate.slideInRight
-					a(class="com__nav-link", data-index="0")
-						i.material-icons.back-btn arrow_back
-					.transactionprogress
-						a(class="com__nav-link", data-index="0")
-							p Order
-						i(class="material-icons") navigate_next
-						p Shipping Details
-						.clear
-					if user
-						h1 User is logged in.
-						p Forms will go here, once logged in the button below will become visible and selectable.
-					else
-						div(id="loginbox", style="width: 280px; margin: 40px auto; padding: 10px; ")
-							embeded area
-						h3 Gimme yo deets m9.
-					button(class="purchase com__nav-link", data-index="2", type="button") Checkout
+
 			.ship.com__section
 				.animate.slideInRight
 					a(class="com__nav-link", data-index="0")
@@ -79,36 +64,51 @@ block content
 						a(class="com__nav-link", data-index="0")
 							p Order
 						i(class="material-icons") navigate_next
-						a(class="com__nav-link", data-index="0")
-							p Account
-						i(class="material-icons") navigate_next
 						p Shipping
 						.clear
-					h1 Shipping, yay!
-					label(for="express") Express shipping ($15)
-					input(type="checkbox" name="shipping" value="express")
-					p Our standard shipping often takes around 30 days, this is partly how we've manage to keep prices so low! Slowest shipping available = lower costs. Optionally, you can pay $15 for express shipping (~7 days).
-					h3 Pay me m9.
-					button(class="purchase com__nav-link", data-index="3", type="button") Checkout
+					if !user
+						h1 Shipping time.
+						h3 What address should we ship to?
+						p You don't seem to have any saved addresses. Let's create one!
+						#add-address
+							include ../partials/address-form
+						.clear
+						h3 Go express?
+						.express
+							label(for="express") Express shipping ($15)
+							input(type="checkbox" name="shipping" value="express")
+							p Our standard shipping often takes around 30 days. This is partly how we manage to keep our prices down, slower shipping = lower costs. Alternatively, feel free to pay $15 for express shipping (5 - 10 days).
+							h3 Almost done.
+						button(class="purchase com__nav-link", data-index="2", type="button") Checkout
+					else
+						h1 Hold up!
+						h3="Please "
+							a(href="#", onClick="signin()")="log in "
+							span to continue.
+
 			.checkout.com__section
 				.animate.slideInRight
-					a(class="com__nav-link", data-index="2")
+					a(class="com__nav-link", data-index="1")
 						i.material-icons.back-btn arrow_back
 					.transactionprogress
 						a(class="com__nav-link", data-index="0")
 							p Order
-						i(class="material-icons") navigate_next
-						a(class="com__nav-link", data-index="1")
-							p Account
 						i(class="material-icons") navigate_next
 						a(class="com__nav-link", data-index="2")
 							p Shipping
 						i(class="material-icons") navigate_next
 						p Checkout
 						.clear
-					form(id="checkout", method="post", action="/checkout")
-						#payment-form
-						input(type="submit", value="Pay #{items.price}")
+					if user
+						form(id="checkout", method="post", action="/checkout")
+							#payment-form
+							input(type="submit", value="Pay #{items.price}")
+
+					else
+						h1 How did you get here?!
+						h3="Please "
+							a(href="#", onClick="signin()")="log in "
+							span to continue.
 block scripts
 	script(type='text/javascript').
 		// ~~~~~~~~~~~~~~~~~ BRAINTREE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -124,18 +124,24 @@ block scripts
 
 		// Update DOM | Looking pretty
 		$('body').addClass('product man');
+		$(".multiple-select").chosen({max_selected_options: 1});
 
 		// ~~~~~~~~~~~~~~~~~ AUTH0 CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		var lock = new Auth0Lock('aDP9vhLVwnXkCUXCUXebeU6g6Y15tX6p', 'copicat.auth0.com');
-		lock.show({
-			container: 'loginbox',
-			callbackURL: 'http://ec2-54-206-83-33.ap-southeast-2.compute.amazonaws.com:8080/login?redir=/#{root}?stage=2',
-			responseType: 'code',
-			authParams: {
-				scope: 'openid profile'
-			}
-		});
+		function signin() {
+			lock.show({
+				callbackURL: 'http://ec2-54-206-83-33.ap-southeast-2.compute.amazonaws.com:8080/login?redir=/#{root}?stage=1',
+				responseType: 'code',
+				authParams: {
+					scope: 'openid profile'
+				}
+			});
+		}
 		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	script(type='text/javascript', src='/scripts/checkout-animations.js')
 	script(type='text/javascript', src='/scripts/product-wallop.js')
+
+	// Init checkout
+	script(type='text/javascript').
+		activeFirst(#{stage});
