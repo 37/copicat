@@ -1,7 +1,9 @@
 form(id="new-address", action="/user_api/postage/new", role="form", method="POST")
 	label(for="contactName") Name
 	input(id="contactName", name="contactName", class="half", type="text", placeholder="Full name", maxlength="128")
-	input(id="contactId", name="contactName", type="hidden" value="#{user.id}")
+
+	if user
+		input(id="contactId", name="contactName", type="hidden" value="#{user.id}")
 
 	input(id="contactNumber", name="contactNumber", class="half", type="text", placeholder="Phone", maxlength="16")
 
