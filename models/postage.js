@@ -25,7 +25,8 @@ var postalAddressSchema = new Schema({
   state: { type: String, required: true },
   zip: String,
   country: { type: String, required: true },
-  date: Date
+  date: Date,
+  default: Boolean
 });
 
 // Generate date method

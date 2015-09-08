@@ -28,7 +28,7 @@ var newAddress = forms.create({
 });
 
 //DEFAULT LOAD
-router.get('/:user_id', function(req, res){
+router.all ('/:user_id', function(req, res){
 	console.log('Loading user data for: ' + req.params.user_id);
 	if (req.query.pass == 'sneakypassword') {
 		var user_id = req.params.user_id;
@@ -43,7 +43,7 @@ router.get('/:user_id', function(req, res){
 	}
 });
 
-router.post('/postage/:user_id', function(req, res){
+router.all ('/postage/:user_id', function(req, res){
 	newProduct.handle(req, {
 		success: function (form) {
 			if (isEmpty(form.data)){

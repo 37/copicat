@@ -12,7 +12,7 @@ var x = Xray().driver(phantom());
 // DATABASE DEPENDENCIES
 var product = require('../models/product');
 
-//Declare the schema of form:
+//Declare the schema of new address form:
 var newProduct = forms.create({
 	title: forms.fields.string({
 		required: true

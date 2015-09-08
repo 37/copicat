@@ -884,6 +884,7 @@ body.product .logobox p {
 #checkout #payment-form {
     margin-bottom: 20px;
 }
+
 #checkout input[type="submit"] {
     width: 200px;
     color: #444;
@@ -893,6 +894,26 @@ body.product .logobox p {
     font-size: 20px;
     text-align: center;
 }
+
+
+/* -------------------------------
+  |<- Add address styling
+--------------------------------*/
+.add-address-button {
+    width: 200px;
+    color: #444;
+    background-color: #fff;
+    padding: 5px 20px;
+    border: 2px solid #444;
+    font-size: 20px;
+    text-align: center;
+}
+
+#add-address {
+    display: none;
+}
+
+
 /* -------------------------------
   |<- General element styling
 --------------------------------*/
