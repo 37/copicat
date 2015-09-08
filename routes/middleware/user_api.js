@@ -27,6 +27,7 @@ var newAddress = forms.create({
 	})
 });
 
+
 //DEFAULT LOAD
 router.get('/:user_id', function(req, res){
 	console.log('Loading user data for: ' + req.params.user_id);
@@ -52,7 +53,7 @@ router.post('/postage/:user_id', function(req, res){
 			else {
 				// create a new user called chris
 				var postalAddress = new postal({
-					uid : 		req.user.user_id,
+					uid : 		req.user.id,
 					name : 		form.data.contactName,
 					phone : 	form.data.contactNumber,
 					address1 : 	form.data.address1,
@@ -73,7 +74,7 @@ router.post('/postage/:user_id', function(req, res){
 			}
 		},
 		error: function (form) {
-			res.send('Errors: ' + collectFormErrors(form));
+			res.send('Errors: !!');
 		},
 		empty: function (){
 			res.send('Form is empty');
@@ -103,5 +104,10 @@ router.use(function (err, req, res, next) {
         return next(err);
     }
 });
+
 return router;
+}
+
+function isEmpty(str) {
+	return (!str || 0 === str.length);
 }
