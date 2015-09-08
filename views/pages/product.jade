@@ -71,7 +71,13 @@ block content
 						h3 What address should we ship to?
 						if addresses
 							each address in addresses
-								p address here!
+								.address-container
+									h3 #{address.name}
+									p #{address.address1}
+									p #{address.city}
+
+							p Want to use a different address?
+							button.add-address-button New address
 						else
 							p You don't seem to have any saved addresses. Let's create one!
 							button.add-address-button New address
