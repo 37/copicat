@@ -44,14 +44,14 @@ router.get('/:user_id', function(req, res){
 });
 
 router.post('/postage/:user_id', function(req, res){
-	newProduct.handle(req, {
+	newAddress.handle(req, {
 		success: function (form) {
 			if (isEmpty(form.data)){
 				console.log ('Form data is empty');
 			}
 			else {
 				// create a new user called chris
-				var newAddress = new postal({
+				var postalAddress = new postal({
 					uid : 		req.user.user_id,
 					name : 		form.data.contactName,
 					phone : 	form.data.contactNumber,
@@ -65,7 +65,7 @@ router.post('/postage/:user_id', function(req, res){
 				});
 
 				// Call save method to commit product to database;
-				newAddress.save(function(err) {
+				postalAddress.save(function(err) {
 					if (err) throw err;
 					console.log('New postal address saved successfully!');
 					res.send('success');
