@@ -10,6 +10,9 @@ var newAddress = forms.create({
 	contactName: forms.fields.string({
 		required: true
 	}),
+	contactId: forms.fields.string({
+		required: true
+	}),
 	contactNumber: forms.fields.string(),
 	address1: forms.fields.string({
 		required: true
@@ -53,7 +56,7 @@ router.post('/postage/:user_id', function(req, res){
 			else {
 				// create a new user called chris
 				var postalAddress = new postal({
-					uid : 		req.user.id,
+					uid : 		form.data.contactId,
 					name : 		form.data.contactName,
 					phone : 	form.data.contactNumber,
 					address1 : 	form.data.address1,
