@@ -35,20 +35,62 @@ html
 							li
 								p Shop
 							li
-								a(href="/man/")
+								a(class="nav-button", data-shop="man")
 									img(class="maleshop")
 							li
-								a(href="/man/")
+								a(class="nav-button", data-shop="woman")
 									img(class="femaleshop")
 							li
 								input.site-search
 								i#search-button.material-icons search
 			#maincontent
+				.grid-nav.man
+					ul
+						li
+							a(href="/man/", class="active") Home
+						li
+							a(href="/man/shirts") Mens Shirts
+						li
+							a(href="/man/jackets") Mens Jackets
+						li
+							a(href="/man/accessories") Mens Accessories
+						li
+							a(href="/man/watches") Mens Watches
+				.grid-nav.woman
+					ul
+						li
+							a(href="/woman/", class="active") Home
+						li
+							a(href="/woman/shirts") Womens Shirts
+						li
+							a(href="/woman/jackets") Womens Jackets
+						li
+							a(href="/woman/dresses") Womens Dresses
+						li
+							a(href="/woman/accessories") Womens Accessories
+						li
+							a(href="/woman/watches") Womens Watches
 				block content
 
 		block scripts
 
 		script(type='text/javascript').
+
+			$(document).on('click', '.nav-button', function() {
+				var button = $(this);
+				var shop = '.grid-nav.' + $(button).attr('data-shop');
+				var navigation = $(shop);
+				if ($(button).hasClass('active')) {
+					$(navigation).slideUp( "medium", function() {});
+					$(button).removeClass('active');
+				} else {
+					$('.grid-nav').slideUp( "medium", function() {});
+					$('.nav-button').removeClass('active');
+					$(navigation).slideDown( "medium", function() {});
+					$(button).addClass('active');
+				}
+			});
+
 			$(document).on('click', '#search-button', function() {
 				var button = $(this);
 				var searchbox = $('.site-search');

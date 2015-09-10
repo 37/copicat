@@ -74,10 +74,28 @@ body.product {
 
 
 #maincontent {
-  float: left;
-  padding-bottom: 50px;
-  width: 100%;
+    position: relative;
+    z-index: 20;
+    float: left;
+    padding-bottom: 0px;
 }
+
+#mainbody .navbar {
+    position: relative;
+    z-index: 40;
+    height: 220px;
+    width: 100%;
+    margin: 0;
+    -webkit-box-shadow: 0px 3px 8px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 3px 8px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 3px 8px 0px rgba(50, 50, 50, 0.5);
+    overflow:hidden;
+}
+
+.logobox p {
+    line-height: 160px;
+}
+
 
 .logobox,
 .logobox img,
@@ -93,9 +111,17 @@ body.product {
   z-index: 0;
 }
 
+ul.navbar-right {
+    background-color: rgba(117,212,218,0.8);
+    position: relative;
+    right: -20px;
+    padding-right: 20px;
+}
 
 .navbar-right li {
     margin-left: 10px;
+    float: none;
+    text-align: center;
 }
 
 .navbar-right li img{
@@ -105,11 +131,11 @@ body.product {
 
 
 img.maleshop {
-    content:url("/images/man-light.png");
+    content:url("/images/man-light-heavy.png");
 }
 
 img.femaleshop {
-    content:url("/images/woman-light.png");
+    content:url("/images/woman-light-heavy.png");
 }
 
 img.maleshop.active {
@@ -147,12 +173,19 @@ img.female.active {
 
 .navbar-right li a{
     padding: 0;
+    border-radius: 5px;
+    margin: 2.5px 0;
 }
 
-.navbar-right li a:hover,
-.navbar-right li a:focus {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 5px;
+.navbar-right li a[data-shop="man"]:hover,
+.navbar-right li a[data-shop="man"]:focus,
+.navbar-right li a[data-shop="man"].active {
+    background-color: #00B5EC;
+}
+.navbar-right li a[data-shop="woman"]:hover,
+.navbar-right li a[data-shop="woman"]:focus,
+.navbar-right li a[data-shop="woman"].active {
+    background-color: #EA4C89;
 }
 
 .navbar-nav p {
@@ -165,7 +198,7 @@ img.female.active {
 .logobox p {
     position: absolute;
     font-size: 250px;
-    line-height: 200px;
+    line-height: 160px;
 }
 
 
@@ -286,8 +319,19 @@ img.female.active {
     position: relative;
 }
 
+#grid-content {
+    background-color: #fff;
+    padding: 20px;
+}
 .grid-nav {
-    z-index: 8;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 50px;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 50;
 }
 
 /* Grid nav stling */
@@ -322,9 +366,17 @@ img.female.active {
     margin: 10px;
     position: relative;
     cursor: pointer;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
-    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.5);
+}
+
+#grid-content .item:hover {
+    margin-top: 0;
+    margin-bottom:20px;
+    -webkit-box-shadow: 0px 15px 25px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 15px 25px 0px rgba(50, 50, 50, 0.5);
+    box-shadow: 0px 15px 25px 0px rgba(50, 50, 50, 0.5);
 }
 
 #grid-content .loading {
@@ -682,16 +734,12 @@ body.product #mainbody .navbar {
     z-index: 40;
     height: 220px;
     width: 100%;
-    padding: 60px 10% 0 10%;
     margin: 0;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
     overflow:hidden;
 }
 
 body.product .logobox p {
-    line-height: 80px;
+    line-height: 160px;
 }
 
 .back-btn {
@@ -713,12 +761,12 @@ body.product .logobox p {
 }
 
 #product #leftside {
-    width: 50%;
+    width: 100%;
     float: left;
 }
 
 #product  #rightside {
-    width: 50%;
+    width: 100%;
     float: left;
     padding: 50px 70px;
 }
@@ -765,9 +813,10 @@ body.product .logobox p {
 }
 
 #product #leftside .Wallop {
-    float:right;
     position: relative;
 }
+
+#leftside .Wallop-item img { max-height: 500px; }
 
 #product .Wallop-pagination {
     padding-top: 10px;
@@ -805,6 +854,39 @@ body.product .logobox p {
 
 .ship #add-address{
     float: left;
+}
+
+#shipto {
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+#shipto .address-container {
+    float: left;
+    width: calc(50% - 20px);
+    padding: 10px;
+    background-color: #efefef;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.5);
+}
+
+#shipto .new-container {
+    float: left;
+    width: calc(50% - 20px);
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.address-container.active {
+    background-color: rgb(255, 101, 46)!important;
+    color: white;
 }
 
 #add-address input,
@@ -875,6 +957,8 @@ body.product .logobox p {
     font-size: 20px;
     text-align: center;
 }
+
+
 #checkout {
     margin-top: 20px;
     width: 400px;
@@ -922,9 +1006,7 @@ body.product .logobox p {
     clear:both;
 }
 
-.Wallop {
-    float: left;
-}
+
 .Wallop-nav {
     z-index:999;
     cursor: pointer;

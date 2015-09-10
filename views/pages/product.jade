@@ -7,7 +7,6 @@ block prescript
 	script(type='text/javascript', src='/scripts/chosen.jquery.js')
 	link(rel='stylesheet', href='/stylesheets/checkout.css')
 	link(rel='stylesheet', href='/stylesheets/chosen.css')
-	script(type='text/javascript').
 
 block content
 
@@ -66,25 +65,29 @@ block content
 						i(class="material-icons") navigate_next
 						p Shipping
 						.clear
-					if user
+					if !user
 						h1 Shipping time.
 						h3 What address should we ship to?
-						if addresses
-							each address in addresses
-								.address-container
-									h3 #{address.name}
-									p #{address.address1}
-									p #{address.city}
+						#shipto
+							input(id="shippingAddress", type="hidden", name="shippingAddress")
+							if postage
+								each address in postage
+									.address-container(data-id="#{address._id}")
+										h3 #{address.name}
+										p #{address.address1}
+										p #{address.city}
 
-							p Want to use a different address?
-							button.add-address-button New address
-						else
-							p You don't seem to have any saved addresses. Let's create one!
-							button.add-address-button New address
-							#add-address
-								h3 New address:
-								include ../partials/address-form
-							.clear
+								.new-container
+									h3 Want to use a different address?
+									button.add-address-button New address
+							else
+								p You don't seem to have any saved addresses. Let's create one!
+								button.add-address-button New address
+								#add-address
+									h3 New address:
+									include ../partials/address-form
+								.clear
+
 						h3 Go express?
 						.express
 							label(for="express") Express shipping ($15)
@@ -187,6 +190,18 @@ block scripts
 			});
 		});
 
+		// Set default Image
+		$('#shipto').on('click', '.address-container', function() {
+			// Outline selection
+			$('.address-container').removeClass('active');
+			$(this).addClass('active');
+
+			// Get selection value
+			var postal_id = $(this).attr('data-id');
+
+			// Set value
+			$('#shippingAddress').attr('value', postal_id);
+		});
 
 	script(type='text/javascript', src='/scripts/checkout-animations.js')
 	script(type='text/javascript', src='/scripts/product-wallop.js')

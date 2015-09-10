@@ -4,29 +4,16 @@ block prescript
 	script(type='text/javascript').
 		console.log(!{JSON.stringify(items)});
 block content
-	.grid
-		.grid-nav
-			ul
-				li
-					a(href="/man/", class="active") Home
-				li
-					a(href="/man/shirts") Mens Shirts
-				li
-					a(href="/man/jackets") Mens Jackets
-				li
-					a(href="/man/accessories") Mens Accessories
-				li
-					a(href="/man/watches") Mens Watches
 
-		#grid-content.active(data-animation="hierarchical-display")
-			each item in items
-				a(href="/man/products/cool-shirt")
-					.item
-						if item.defaultimage
-							img.item-img(src="#{item.defaultimage}")
-						else
-							img.item-img(src="#{item.images[0]}")
-						h3.item-price= item.price
+	#grid-content.active(data-animation="hierarchical-display")
+		each item in items
+			a(href="/man/products/cool-shirt")
+				.item
+					if item.defaultimage
+						img.item-img(src="#{item.defaultimage}")
+					else
+						img.item-img(src="#{item.images[0]}")
+					h3.item-price= item.price
 
 
 block scripts

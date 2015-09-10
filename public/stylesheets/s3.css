@@ -1,3 +1,15 @@
+@media (min-width: 1250px) {
+	 ul.navbar-right {
+		margin-top: 75px;
+		right: 0;
+		padding-right: 0;
+	}
+
+	.navbar-right li {
+		float: left;
+	}
+}
+
 @media (min-width: 1200px) {
 	body.landing {
 		background-color: rgb(236,235,240);
