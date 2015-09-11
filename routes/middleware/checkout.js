@@ -19,12 +19,27 @@ module.exports = function loader(){
 	router.post("/", function (req, res) {
 		var nonce = req.body.nonce;
 		console.log(nonce);
-		// Use payment method nonce here
+		var brain_id = (req.user.user_id).replace('|', '');
 
+		// Create payment method
+		gateway.paymentMethod.create({
+			customerId: brain_id,
+			paymentMethodNonce: nonce,
+			options: {
+				makeDefault: true,
+				failOnDuplicatePaymentMethod: true
+				//verifyCard: true
+			},
+			deviceData: req.body.device_data
+		}, function (err, result) {
+			console.log(result);
+		});
+
+		// Complete transaction
 		gateway.transaction.sale({
 			amount: '10.00',
-			amount: '10.00',
 			paymentMethodNonce: nonce,
+			deviceData: req.body.device_data
 		}, function (err, result) {
 			if (err) {
 				res.send(err);
