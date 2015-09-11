@@ -50,14 +50,14 @@ exports.passport = function(app) {
             if (err) console.log(err);
             // if braintree customer exists
             if (customer) {
-                console.log(customer);
                 console.log('User already registered with braintree.');
             } else { // else create braintree customer
                 console.log('User not registered with braintree.');
                 gateway.customer.create({
                     id: brain_id,
                     firstName: profile.name.givenName,
-                    lastName: profile.name.familyName
+                    lastName: profile.name.familyName,
+                    paymentMethodNonce: nonceFromTheClient
                 }, function (err, result) {
                     if (err) console.log(err);
                     console.log('braintree result: ' + result.success);

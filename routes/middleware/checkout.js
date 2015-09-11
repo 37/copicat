@@ -36,19 +36,6 @@ module.exports = function loader(){
 			console.log(result);
 		});
 
-		// Complete transaction
-		gateway.transaction.sale({
-			amount: '10.00',
-			paymentMethodNonce: nonce,
-			deviceData: req.body.device_data
-		}, function (err, result) {
-			if (err) {
-				res.send(err);
-			} else {
-				console.log('success!');
-				res.send(result);
-			}
-		});
 	});
 
 	return router;
