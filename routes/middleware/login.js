@@ -1,10 +1,17 @@
-var express = require('express');
-var forms = require('forms');
-var extend = require('xtend');
-var forms = require('forms');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+var express 		= require('express'),
+ 	forms 			= require('forms')
+ 	extend 			= require('xtend'),
+ 	forms 			= require('forms'),
+	braintree 		= require('braintree'),
+ 	passport 		= require('passport'),
+ 	LocalStrategy 	= require('passport-local').Strategy;
 
+var gateway = braintree.connect({
+	environment: braintree.Environment.Sandbox,
+	merchantId: "qrbb4ynf6p6v2hvk",
+	publicKey: "d3t9t4pw2jzm4gr3",
+	privateKey: "f5021d4aa8d7932b8778c341ae3a793e"
+});
 
 //Export a function which will create the router and return it:
 module.exports = function loader(){

@@ -7,4 +7,4 @@ var gateway = braintree.connect({
 	privateKey: "f5021d4aa8d7932b8778c341ae3a793e"
 });
 
-return gateway;
+module.exports = gateway;

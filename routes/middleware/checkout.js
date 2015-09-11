@@ -6,7 +6,7 @@ module.exports = function loader(){
 
 	router.use(bodyParser.json());       // to support JSON-encoded bodies
 	router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-	  extended: true
+		extended: true
 	}));
 
 	var gateway = braintree.connect({
