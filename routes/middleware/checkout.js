@@ -18,9 +18,9 @@ module.exports = function loader(){
 
 	router.post("/", function (req, res) {
 		var nonce = req.body.nonce;
-		console.log(req.user);
-		console.log(nonce);
-		var brain_id = (req.user.user_id).replace('|', '');
+		console.log('payment req body: ' + req.body);
+		console.log('braintree payment nonce: ' + nonce);
+		var brain_id = (req.user.id).replace('|', '');
 
 		// Create payment method
 		gateway.paymentMethod.create({

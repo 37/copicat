@@ -136,7 +136,12 @@ block scripts
 		$.get("/client_token/", function(data, error){
 			var clientToken = data;
 			braintree.setup(clientToken, "dropin", {
-				container: "payment-form"
+				container: "payment-form",
+				onPaymentMethodReceived: function (obj) {
+					// Do some logic in here.
+					// When you're ready to submit the form:
+					$('#checkout').submit();
+				}
 			});
 		});
 
