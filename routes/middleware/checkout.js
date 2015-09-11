@@ -17,7 +17,7 @@ module.exports = function loader(){
 	});
 
 	router.post("/", function (req, res) {
-		var nonce = req.body.nonce;
+		var nonce = req.body.payment_method_nonce;
 		console.log('payment req body: ' + JSON.parse(req.body));
 		console.log('braintree payment nonce: ' + nonce);
 		var brain_id = (req.user.id).replace('|', '');
