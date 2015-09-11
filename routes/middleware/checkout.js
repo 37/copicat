@@ -37,6 +37,7 @@ module.exports = function loader(){
 		});
 
 		gateway.transaction.sale({
+			customerId: brain_id,
 			amount: '10.00',
 			paymentMethodNonce: 'fake-valid-nonce',
 		}, function (err, result) {
