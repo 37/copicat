@@ -1,13 +1,23 @@
 module.exports = function loader(){
 var express 	= require('express'),
+	braintree 	= require("braintree"),
 	router 		= express.Router(),
 	forms 		= require('forms'),
 	postal	 	= require('../../models/postage');
 
+	var gateway = braintree.connect({
+	  environment: braintree.Environment.Sandbox,
+	  merchantId: "qrbb4ynf6p6v2hvk",
+	  publicKey: "d3t9t4pw2jzm4gr3",
+	  privateKey: "f5021d4aa8d7932b8778c341ae3a793e"
+	});
 
 //DECLAR SCHEMA OF NEW ADDRESS FORM:
 var newAddress = forms.create({
 	contactName: forms.fields.string({
+		required: true
+	}),
+	contactId: forms.fields.string({
 		required: true
 	}),
 	contactNumber: forms.fields.string(),
@@ -50,6 +60,21 @@ router.all ('/postage/:user_id', function(req, res){
 				console.log ('Form data is empty');
 			}
 			else {
+				var brain_id = $(req.user.user_id).replace('|', '');
+				gateway.address.create({
+					customerId: brain_id,
+					firstName: form.data.contactName,
+					streetAddress: form.data.address1,
+					extendedAddress: form.data.address2,
+					locality: form.data.postalCity,
+					region: form.data.postalState,
+					postalCode: form.data.postalZip,
+					countryCodeAlpha2: form.data.postalCountry
+				}, function (err, result) {
+					console.log('New address saved to Braintree');
+				});
+
+				// MONGODB ---------------------
 				// create a new user called chris
 				var newAddress = new postal({
 					uid : 		req.user.user_id,

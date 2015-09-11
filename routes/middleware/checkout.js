@@ -17,11 +17,12 @@ module.exports = function loader(){
 	});
 
 	router.post("/", function (req, res) {
-		console.log(req.body);
 		var nonce = req.body.nonce;
-
+		console.log(nonce);
 		// Use payment method nonce here
+
 		gateway.transaction.sale({
+			amount: '10.00',
 			amount: '10.00',
 			paymentMethodNonce: nonce,
 		}, function (err, result) {

@@ -83,10 +83,10 @@ block content
 							else
 								p You don't seem to have any saved addresses. Let's create one!
 								button.add-address-button New address
-								#add-address
-									h3 New address:
-									include ../partials/address-form
-								.clear
+							#add-address
+								h3 New address:
+								include ../partials/address-form
+							.clear
 
 						h3 Go express?
 						.express
@@ -179,7 +179,7 @@ block scripts
 			/* Send the data using post */
 			var submission = 	$.post( url, {
 				contactName: 	$('#contactName').val(),
-				contactId: 	$('#contactId').val(),
+				contactId: 		$('#contactId').val(),
 				contactNumber: 	$('#contactNumber').val(),
 				address1: 		$('#address1').val(),
 				address2: 		$('#address2').val(),

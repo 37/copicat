@@ -57,7 +57,8 @@ exports.passport = function(app) {
                 gateway.customer.create({
                     id: brain_id,
                     firstName: profile.name.givenName,
-                    lastName: profile.name.familyName
+                    lastName: profile.name.familyName,
+                    paymentMethodNonce: nonceFromTheClient
                 }, function (err, result) {
                     if (err) console.log(err);
                     console.log('braintree result: ' + result.success);
