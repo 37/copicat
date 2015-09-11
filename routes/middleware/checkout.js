@@ -18,6 +18,7 @@ module.exports = function loader(){
 
 	router.post("/", function (req, res) {
 		var nonce = req.body.nonce;
+		console.log(req.user);
 		console.log(nonce);
 		var brain_id = (req.user.user_id).replace('|', '');
 
