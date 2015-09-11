@@ -27,8 +27,8 @@ module.exports = function loader(){
 			paymentMethodNonce: 'fake-valid-nonce',
 			options: {
 				makeDefault: true,
-				failOnDuplicatePaymentMethod: true
-				//verifyCard: true
+				failOnDuplicatePaymentMethod: true,
+				verifyCard: true
 			},
 			deviceData: req.body.device_data
 		}, function (err, result) {
@@ -42,7 +42,11 @@ module.exports = function loader(){
 			paymentMethodNonce: 'fake-valid-nonce',
 		}, function (err, result) {
 			if (err) console.log (err);
-			console.log('transaction final' + nonce);
+			if (result.success == true) {
+				res.send('success');
+			} else {
+				res.send('failed');
+			}
 		});
 	});
 

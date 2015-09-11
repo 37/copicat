@@ -66,7 +66,9 @@ body.product {
   border-radius: 0;
 }
 
-
+nav {
+    background-color: transparent;
+}
 #mainbody .navbar-icon {
   font-weight: 600;
   display: inline-block;
@@ -389,9 +391,10 @@ img.female.active {
 .item .item-price{
     position: absolute;
     right: 0px;
-    width: 100px;
+    width: 100%;
     top: -20px;
-    padding: 10px;
+    padding: 10px 20px;
+    text-align: right;
     color: #333;
 }
 
@@ -889,20 +892,11 @@ body.product .logobox p {
     color: white;
 }
 
-#add-address input,
-#add-address .chosen-container {
-    float: left;
-    padding: 5px;
-    line-height:20px;
-    margin: 2.5px;
-    border: 2px solid #444;
-    font-size: 16px;
-}
-
 #add-address .chosen-container {
     width: calc(100% - 5px);
     padding: 0;
     border-radius:0;
+    margin-bottom:20px;
 }
 
 #add-address label{
@@ -926,7 +920,10 @@ body.product .logobox p {
     border-radius: 0px;
     background-color: white;
     border: none;
-    height:30px;
+    height: 35px;
+    line-height: 40px;
+    color: #DADADA;
+    border-bottom: 1px solid #9A9A9A;
 }
 #add-address .chosen-container .chosen-single span {
     float: left;
@@ -948,16 +945,12 @@ body.product .logobox p {
 }
 
 #add-address button {
-    float: left;
-    width: 200px;
-    margin: 2.5px;
-    padding: 5px 0;
-    border: 2px solid #444;
-    background-color: white;
-    font-size: 20px;
-    text-align: center;
+    margin-right: 10px;
 }
 
+.ship .express {
+    float: left;
+}
 
 #checkout {
     margin-top: 20px;
@@ -983,15 +976,7 @@ body.product .logobox p {
 /* -------------------------------
   |<- Add address styling
 --------------------------------*/
-.add-address-button {
-    width: 200px;
-    color: #444;
-    background-color: #fff;
-    padding: 5px 20px;
-    border: 2px solid #444;
-    font-size: 20px;
-    text-align: center;
-}
+
 
 #add-address {
     display: none;

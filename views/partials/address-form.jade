@@ -1,5 +1,4 @@
 form(id="new-address", action="/user_api/postage/new", role="form", method="POST")
-	label(for="contactName") Name
 	input(id="contactName", name="contactName", class="half", type="text", placeholder="Full name", maxlength="128")
 
 	if user
@@ -7,7 +6,6 @@ form(id="new-address", action="/user_api/postage/new", role="form", method="POST
 
 	input(id="contactNumber", name="contactNumber", class="half", type="text", placeholder="Phone", maxlength="16")
 
-	label(for="streetAddress") Address:
 	input(id="address1", name="address1", class="full", type="text", maxlength="256", placeholder="Address line 1")
 
 	input(id="address2", name="address2", class="full", type="text", maxlength="256", placeholder="Address line 2")
@@ -291,7 +289,7 @@ form(id="new-address", action="/user_api/postage/new", role="form", method="POST
 		option(value="ZW") Zimbabwe
 
 	.clear
-	button(id="add-address-submit" type="submit") Save
-	button(type="button") Cancel
+	button(class="waves-effect waves-light btn", id="add-address-submit" type="submit") Save
+	button(class="waves-effect waves-light btn", type="button") Cancel
 
 #add-address-confirm

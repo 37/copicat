@@ -53,8 +53,9 @@ block content
 								each option in selection
 									option(value="#{option[0]}") #{option[0]}
 							.clear
-						button(class="purchase com__nav-link", data-index="1", type="button") Order
-
+						button.com__nav-link.waves-effect.waves-light.btn-large(type="button", data-index="1")
+							i.material-icons.left shopping_cart
+							span Order
 			.ship.com__section
 				.animate.slideInRight
 					a(class="com__nav-link", data-index="0")
@@ -65,7 +66,7 @@ block content
 						i(class="material-icons") navigate_next
 						p Shipping
 						.clear
-					if user
+					if !user
 						h1 Shipping time.
 						h3 What address should we ship to?
 						#shipto
@@ -73,13 +74,15 @@ block content
 							if postage
 								each address in postage
 									.address-container(data-id="#{address._id}")
-										h3 #{address.name}
+										h4 #{address.name}
 										p #{address.address1}
 										p #{address.city}
 
 								.new-container
-									h3 Want to use a different address?
-									button.add-address-button New address
+									h5 Want to use a different address?
+									button.add-address-button.waves-effect.waves-light.btn(type="button", data-index="2")
+										i.material-icons.left home
+										span New address
 							else
 								p You don't seem to have any saved addresses. Let's create one!
 								button.add-address-button New address
@@ -88,13 +91,15 @@ block content
 								include ../partials/address-form
 							.clear
 
-						h3 Go express?
 						.express
+							h3 Go express?
 							label(for="express") Express shipping ($15)
 							input(type="checkbox" name="shipping" value="express")
 							p Our standard shipping often takes around 30 days. This is partly how we manage to keep our prices down, slower shipping = lower costs. Alternatively, feel free to pay $15 for express shipping (5 - 10 days).
 							h3 Almost done.
-						button(class="purchase com__nav-link", data-index="2", type="button") Checkout
+						button.com__nav-link.waves-effect.waves-light.btn-large(type="button", data-index="2")
+							i.material-icons.left payment
+							span Checkout
 					else
 						h1 Hold up!
 						h3="Please "
@@ -114,12 +119,16 @@ block content
 						i(class="material-icons") navigate_next
 						p Checkout
 						.clear
-					if user
+					if !user
 						h1 Checkout time.
 						h3 How would you like to pay?
 						form(id="checkout", method="post", action="/checkout")
 							#payment-form
-							input(type="submit", value="Pay #{items.price}")
+							button.waves-effect.waves-light.btn-large(type="submit")
+								i.material-icons.left thumb_up
+								Pay #{items.price}
+
+
 
 					else
 						h1 How did you get here?!
