@@ -138,6 +138,7 @@ block scripts
 			braintree.setup(clientToken, "dropin", {
 				container: "payment-form",
 				onPaymentMethodReceived: function (obj) {
+					console.log(obj);
 					// Do some logic in here.
 					// When you're ready to submit the form:
 					$('#checkout').submit();

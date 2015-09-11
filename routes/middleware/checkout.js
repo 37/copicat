@@ -19,12 +19,12 @@ module.exports = function loader(){
 	router.post("/", function (req, res) {
 		var nonce = req.body.payment_method_nonce;
 		console.log('braintree payment nonce: ' + nonce);
-		var brain_id = (req.user.id).replace('|', '');
 
+		var brain_id = (req.user.id).replace('|', '');
 		// Create payment method
 		gateway.paymentMethod.create({
 			customerId: brain_id,
-			paymentMethodNonce: nonce,
+			paymentMethodNonce: fake-valid-nonce,
 			options: {
 				makeDefault: true,
 				failOnDuplicatePaymentMethod: true
@@ -32,9 +32,17 @@ module.exports = function loader(){
 			},
 			deviceData: req.body.device_data
 		}, function (err, result) {
+			if (err) console.log (err);
 			console.log(result);
 		});
 
+		gateway.transaction.sale({
+			amount: '10.00',
+			paymentMethodNonce: fake-valid-nonce,
+		}, function (err, result) {
+			if (err) console.log (err);
+			console.log('transaction final' + nonce);
+		});
 	});
 
 	return router;
