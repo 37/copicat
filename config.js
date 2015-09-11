@@ -4,7 +4,15 @@ var passport =      require('passport')
     express =       require('express'),
     Auth0Strategy = require('passport-auth0');
     cookieParser =  require('cookie-parser'),
-    session =       require('express-session');
+    session =       require('express-session'),
+	braintree =     require('braintree');
+
+    var gateway = braintree.connect({
+        environment: braintree.Environment.Sandbox,
+        merchantId: "qrbb4ynf6p6v2hvk",
+        publicKey: "d3t9t4pw2jzm4gr3",
+        privateKey: "f5021d4aa8d7932b8778c341ae3a793e"
+    });
 
 exports.template = function(app) {
   app.set('view engine', 'jade');
@@ -26,12 +34,13 @@ exports.static = function(app) {
 }
 
 exports.passport = function(app) {
-  var strategy = new Auth0Strategy({
-	  domain:       'copicat.auth0.com',
-      clientID:     'aDP9vhLVwnXkCUXCUXebeU6g6Y15tX6p',
-      clientSecret: 'ngvaY4oQAox1w-EmizzSKzLqO4spihPhBvcgAXZOBh5jDslIlegSbJB0P48Qm7kp',
-      callbackURL:  '/login'
-  }, function(accessToken, refreshToken, profile, done) {
+
+    var strategy = new Auth0Strategy({
+        domain:       'copicat.auth0.com',
+        clientID:     'aDP9vhLVwnXkCUXCUXebeU6g6Y15tX6p',
+        clientSecret: 'ngvaY4oQAox1w-EmizzSKzLqO4spihPhBvcgAXZOBh5jDslIlegSbJB0P48Qm7kp',
+        callbackURL:  '/login'
+    }, function(accessToken, refreshToken, profile, done) {
     //Some tracing info
     console.log('Login || Register complete, registering handshake with braintree.');
     if (profile) {
@@ -59,7 +68,7 @@ exports.passport = function(app) {
     }
     //save the profile
     return done(null, profile);
-  });
+    });
 
   passport.use(strategy);
 
