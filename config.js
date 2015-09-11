@@ -33,7 +33,30 @@ exports.passport = function(app) {
       callbackURL:  '/login'
   }, function(accessToken, refreshToken, profile, done) {
     //Some tracing info
-    console.log('profile is', profile);
+    console.log('Login || Register complete, registering handshake with braintree.');
+    if (profile) {
+        console.log('User has id: ' + profile.id);
+        var brain_id = (profile.id).replace('|', '');
+        gateway.customer.find(brain_id, function(err, customer) {
+            if (err) return err;
+            // if braintree customer exists
+            if (customer) {
+                console.log('User already registered with braintree.');
+            } else { // else create braintree customer
+                gateway.customer.create({
+                    id: brain_id,
+                    firstName: profile.name.givenName,
+                    lastName: profile.name.familyName
+                }, function (err, result) {
+                    console.log('braintree result: ' + result.success);
+                    // true
+                    console.log('created user with id: ' + result.customer.id);
+                    // e.g. 494019
+                });
+            }
+        });
+
+    }
     //save the profile
     return done(null, profile);
   });
