@@ -24,7 +24,7 @@ module.exports = function loader(){
 		// Create payment method
 		gateway.paymentMethod.create({
 			customerId: brain_id,
-			paymentMethodNonce: fake-valid-nonce,
+			paymentMethodNonce: 'fake-valid-nonce',
 			options: {
 				makeDefault: true,
 				failOnDuplicatePaymentMethod: true
@@ -38,7 +38,7 @@ module.exports = function loader(){
 
 		gateway.transaction.sale({
 			amount: '10.00',
-			paymentMethodNonce: fake-valid-nonce,
+			paymentMethodNonce: 'fake-valid-nonce',
 		}, function (err, result) {
 			if (err) console.log (err);
 			console.log('transaction final' + nonce);
