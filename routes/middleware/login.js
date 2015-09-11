@@ -18,6 +18,33 @@ module.exports = function loader(){
 			if (!req.user) {
 				throw new Error('user null');
 			}
+			if (req.user.id) {
+				console.log(req.user.id);
+				var brain_id = (req.user.id).replace('|', '');
+				gateway.customer.find(brain_id, function(err, customer) {
+					if (err) return err;
+					if (customer) { // if braintree customer exists
+						console.log('User registered with braintree.');
+					} else { // else create braintree customer
+						gateway.customer.create({
+							firstName: "Jen",
+							lastName: "Smith",
+							company: "Braintree",
+							email: "jen@example.com",
+							phone: "312.555.1234",
+							fax: "614.555.5678",
+							website: "www.example.com"
+						}, function (err, result) {
+							result.success;
+							// true
+
+							result.customer.id;
+							// e.g. 494019
+						});
+					}
+				});
+
+			}
 
 			if (req.query.redir) {
 				res.redirect(req.query.redir);

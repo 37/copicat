@@ -29,6 +29,8 @@ app.use('/admin', require('./routes/admin')());
 // API routes
 app.use('/admin_api', require('./routes/admin_api')());
 app.use('/user_api', require('./routes/middleware/user_api')());
+app.use('/client_token', require('./routes/middleware/client_token')());
+app.use('/checkout', require('./routes/middleware/checkout')());
 app.use('/404', require('./routes/404')());
 
 // LOGIN MECHANISMS

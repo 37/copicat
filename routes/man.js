@@ -2,6 +2,7 @@ var express = require('express');
 var forms = require('forms');
 var extend = require('xtend');
 var url = require('url');
+var gateway = require('../models/braintree');
 
 // DATABASE DEPENDENCIES
 var products = require('../models/product'),
