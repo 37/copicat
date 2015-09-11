@@ -47,7 +47,7 @@ exports.passport = function(app) {
         console.log('User has id: ' + profile.id);
         var brain_id = (profile.id).replace('|', '');
         gateway.customer.find(brain_id, function(err, customer) {
-            if (err) return err;
+            if (err) console.log(err);
             // if braintree customer exists
             if (customer) {
                 console.log('User already registered with braintree.');
