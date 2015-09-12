@@ -66,7 +66,7 @@ block content
 						i(class="material-icons") navigate_next
 						p Shipping
 						.clear
-					if !user
+					if user
 						h1 Shipping time.
 						h3 What address should we ship to?
 						#shipto
@@ -119,7 +119,7 @@ block content
 						i(class="material-icons") navigate_next
 						p Checkout
 						.clear
-					if !user
+					if user
 						h1 Checkout time.
 						h3 How would you like to pay?
 						form(id="checkout", method="post", action="/checkout")
