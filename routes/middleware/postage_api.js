@@ -44,9 +44,13 @@ router.all ('/:user_id', function(req, res){
 		var user_id = req.params.user_id;
 		console.log('query : ' + cat);
 		postage.find({ uid: user_id}, function(err, result) {
-			if (err) throw err;
-			// object of all the users returned in result variable
-			res.send(result);
+			if (err) {
+				res.send('none');
+				throw err;
+			} else {
+				// object of all the users returned in result variable
+				res.send(result);
+			}
 		});
 	} else {
 		res.send('Nice try Morty.');

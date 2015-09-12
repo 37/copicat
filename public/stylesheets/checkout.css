@@ -5,7 +5,7 @@
 .com__section {
 	height: 0;
     postition: relative;
-    overflow: hidden;
+    float: left;
 	-webkit-flex-flow: column wrap;
 	  -ms-flex-flow: column wrap;
 	      flex-flow: column wrap;

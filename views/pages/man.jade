@@ -7,13 +7,13 @@ block content
 
 	#grid-content.active(data-animation="hierarchical-display")
 		each item in items
-			a(href="/man/products/cool-shirt")
+			a(href="/man/products/#{(item.name).split(' ').join('-')}")
 				.item
 					if item.defaultimage
 						img.item-img(src="#{item.defaultimage}")
 					else
 						img.item-img(src="#{item.images[0]}")
-					h3.item-price= item.price
+					h4.item-price= item.price
 
 
 block scripts

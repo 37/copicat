@@ -5866,9 +5866,12 @@ button.btn-floating {
 
 .btn-large {
   height: 54px;
-  line-height: 56px; }
-  .btn-large i {
-    font-size: 1.6rem; }
+  line-height: 56px;
+  margin-top: 20px;
+}
+
+.btn-large i {
+font-size: 1.6rem; }
 
 .btn-block {
   display: block; }
@@ -5878,7 +5881,7 @@ button.btn-floating {
   margin: 0;
   display: none;
   min-width: 100px;
-  max-height: 650px;
+  max-height: 400px;
   overflow-y: auto;
   opacity: 0;
   position: absolute;
@@ -5896,7 +5899,7 @@ button.btn-floating {
       background-color: #eee; }
     .dropdown-content li > a, .dropdown-content li > span {
       font-size: 1.2rem;
-      color: #26a69a;
+      color: #444;
       display: block;
       padding: 1rem 1rem; }
     .dropdown-content li > a > i {
@@ -6187,7 +6190,7 @@ button:focus {
 
 label {
   font-size: 0.8rem;
-  color: #9e9e9e; }
+  color: #444; }
 
 /***************************
    Text Inputs + Textarea

@@ -77,7 +77,8 @@
   height: 12px;
   padding: 0;
   margin: 5px;
-  background-color: #ccc;
+  background-color: #F7F7F7;
+  border: 1px solid #444;
   -webkit-appearance: none;
 }
 

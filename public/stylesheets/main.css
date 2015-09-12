@@ -361,7 +361,7 @@ img.female.active {
 
 /* Grid content styling */
 #grid-content .item {
-    width: calc(25% - 20px);
+    width: calc(100% - 20px);
     background-color: #fff;
     float: left;
     padding: 50px;
@@ -747,7 +747,7 @@ body.product .logobox p {
 
 .back-btn {
     position: absolute;
-    top: 50px;
+    top: 40px;
     right: 50px;
     color: #444;
     font-size: 30px;
@@ -827,7 +827,7 @@ body.product .logobox p {
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 99;
+    z-index: 49;
 }
 
 #product .Wallop-list {
@@ -867,10 +867,13 @@ body.product .logobox p {
 
 #shipto .address-container {
     float: left;
-    width: calc(50% - 20px);
+    width: 200px;
     padding: 10px;
     background-color: #efefef;
-    margin: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
     cursor: pointer;
     text-align: center;
     -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5);
@@ -879,17 +882,30 @@ body.product .logobox p {
 }
 
 #shipto .new-container {
+    margin: 20px 0;
     float: left;
-    width: calc(50% - 20px);
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
-    text-align: center;
 }
 
-.address-container.active {
-    background-color: rgb(255, 101, 46)!important;
-    color: white;
+#shipto .new-container .btn {
+    background-color: #EFEFEF;
+    color: #333;
+}
+
+.new-container .loading {
+    display: none;
+}
+
+.new-container .loading.active {
+    display: block;
+}
+
+#shipto .address-container.active {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    -webkit-box-shadow: 0px 13px 15px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 13px 15px 0px rgba(50, 50, 50, 0.5);
+    box-shadow: 0px 13px 15px 0px rgba(50, 50, 50, 0.5);
+    border: 2px solid orange;
 }
 
 #add-address .chosen-container {
@@ -905,12 +921,14 @@ body.product .logobox p {
     margin: 2.5px;
 }
 
-#add-address input.full{ width: calc(100% - 5px); }
-#add-address input.half{ width: calc(50% - 5px); }
-#add-address input.quarter{ width: calc(25% - 5px); }
-#add-address select {
-    display: none;
+.add-address-button {
+    cursor: pointer;
 }
+
+#add-address input.full{ width: 100%; }
+#add-address input.half{ width: 50%; }
+#add-address input.quarter{ width: 25%; }
+
 
 #add-address .chosen-container .chosen-single {
     font-family: 'Roboto', sans-serif;
@@ -925,6 +943,7 @@ body.product .logobox p {
     color: #DADADA;
     border-bottom: 1px solid #9A9A9A;
 }
+
 #add-address .chosen-container .chosen-single span {
     float: left;
     width: 100%;
@@ -991,6 +1010,9 @@ body.product .logobox p {
     clear:both;
 }
 
+.caret {
+    border: none;
+}
 
 .Wallop-nav {
     z-index:999;

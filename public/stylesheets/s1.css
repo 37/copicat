@@ -17,3 +17,9 @@
     }
 
 }
+
+@media (min-width: 500px) {
+    #grid-content .item {
+	    width: calc(50% - 20px);
+	}
+}
