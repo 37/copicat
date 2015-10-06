@@ -336,6 +336,12 @@ img.female.active {
     z-index: 50;
 }
 
+.admin .grid .grid-nav {
+    display: block;
+    position: relative;
+    z-index: 0;
+}
+
 /* Grid nav stling */
 .grid-nav ul {
     padding: 0;
@@ -610,7 +616,7 @@ img.female.active {
     height: 40px;
     line-height: 40px;
     float: left;
-    width:calc(100% - 80px);
+    width:calc(100% - 90px);
 }
 
 .productbox .option-line .option i {
@@ -640,7 +646,7 @@ img.female.active {
     float: left;
     padding: 5px;
     margin: 2.5px;
-    background-color: #FFFF67;
+    background-color: #DAECEF;
     border-radius: 5px;
 }
 
@@ -648,7 +654,6 @@ img.female.active {
     display: none;
     float: right;
     line-height: 30px;
-    margin: 0 5px;
 }
 
 .tag-line:hover i {
@@ -857,6 +862,7 @@ body.product .logobox p {
 
 .ship #add-address{
     float: left;
+    max-width: 800px;
 }
 
 #shipto {
@@ -1006,6 +1012,7 @@ body.product .logobox p {
   |<- General element styling
 --------------------------------*/
 
+
 .clear {
     clear:both;
 }
@@ -1017,8 +1024,15 @@ body.product .logobox p {
 .Wallop-nav {
     z-index:999;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 50px;
+    color: #EF6A1A;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    background-color: white;
+    z-index:48;
 }
+
 .Wallop-buttonPrevious {
     position: absolute;
     left: 0;

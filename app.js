@@ -37,6 +37,7 @@ app.use('/404', require('./routes/404')());
 app.use('/login', require('./routes/middleware/login')());
 
 // INITIALISE SERVER
+app.set('case sensitive routing', false);
 app.set('port', (process.env.PORT || 8080));
 server.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

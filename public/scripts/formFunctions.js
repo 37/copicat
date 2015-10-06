@@ -183,7 +183,8 @@ function populateForm(data, rate, link) {
         var optionType = select[i].type;
         // CHECK FOR TYPE AND CREATE OPTIONS
         if ((optionType.indexOf('Color') > -1) || (optionType.indexOf('color') != -1)){
-
+            // Add option name
+            optionValues += '<input type="hidden" name="option[' + i + '][0]" value="Color">';
             for (l=0; l < select[i].options.length; l++) {
 
                 var id = select[i].options[l].id;
@@ -196,11 +197,11 @@ function populateForm(data, rate, link) {
                 }
 
                 if (select[i].options[l].labelSize) {
-                    size = '<input type="text" name="option[' + i + '][' + l + ']" value="' + select[i].options[l].labelSize + '"></input>';
+                    size = '<input type="text" name="option[' + i + '][1][' + l + ']" value="' + select[i].options[l].labelSize + '"></input>';
                 }
 
                 if (select[i].options[l].labelColor) {
-                    color = '<input type="text" name="option[' + i + '][' + l + ']" value="' + select[i].options[l].labelColor + '"></input>';
+                    color = '<input type="text" name="option[' + i + '][1][' + l + ']" value="' + select[i].options[l].labelColor + '"></input>';
                 }
 
                 optionValues += '<div class="option" id="option-line-' + i + '-' + l + '">' +
@@ -208,19 +209,20 @@ function populateForm(data, rate, link) {
                                     color +
                                     size +
                                     '<i class="material-icons delete-option" onClick="deleteElement(\'#option-line-' + i + '-' + l + '\')">&#xE872;</i>' +
-                                    '<input type="hidden" name="option[' + i + '][' + l + ']" value="[\'' + id + '\', \'' + imagedata + '\']">' +
+                                    '<input type="hidden" name="option[' + i + '][1][' + l + ']" value="[\'' + id + '\', \'' + imagedata + '\']">' +
                                  '</div>';
             }
         } else if ((optionType.indexOf('Size') != -1) || (optionType.indexOf('size') != -1)) {
+            optionValues += '<input type="hidden" name="option[' + i + '][0]" value="Size">';
             for (l=0; l < select[i].options.length; l++) {
                 var id = select[i].options[l].id;
                 var rawSize = cleanSpaces(select[i].options[l].labelSize);
                 var size = adjustSize(rawSize);
                 // call adjustment function
                 optionValues += '<div class="option" id="option-line-' + i + '-' + l + '">' +
-                                    '<input type="text" name="option[' + i + ']" value="' + size + '"></input>' +
+                                    '<input type="text" name="option[' + i + '][1]" value="' + size + '"></input>' +
                                     '<i class="material-icons delete-option" onClick="deleteElement(\'#option-line-' + i + '-' + l + '\')">&#xE872;</i>' +
-                                    '<input type="hidden" name="option[' + i + ']" value="[\'' + id + '\']">' +
+                                    '<input type="hidden" name="option[' + i + '][1]" value="' + id + '">' +
                                  '</div>';
             }
         } else {

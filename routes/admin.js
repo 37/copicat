@@ -54,8 +54,6 @@ function renderForm (data, req, res, locals){
 module.exports = function loader(){
 	var router = express.Router();
 
-
-
 	// LOAD PAGE -	renderForm (req, res);
 	// Capture all parametised requests, the form library will regotiate between them
 
@@ -105,6 +103,7 @@ module.exports = function loader(){
 				// has validation errors.  We will collect the errors
 				// and render the form again, showing the errors
 				// to the user
+				console.log('form: ' + JSON.stringify(form));
 				renderForm(req, res, {
 					errors: collectFormErrors(form)
 				});

@@ -38,11 +38,10 @@ var newAddress = forms.create({
 });
 
 //DEFAULT LOAD
-router.all ('/:user_id', function(req, res){
-	console.log('Loading user data for: ' + req.params.user_id);
-	if (req.query.pass == 'sneakypassword') {
+router.all ('/:user_id/:password', function(req, res){
+	if(req.params.password == 'sneakybeaky') {
+		console.log('Loading user data for: ' + req.params.user_id);
 		var user_id = req.params.user_id;
-		console.log('query : ' + cat);
 		postage.find({ uid: user_id}, function(err, result) {
 			if (err) {
 				res.send('none');
@@ -53,7 +52,7 @@ router.all ('/:user_id', function(req, res){
 			}
 		});
 	} else {
-		res.send('Nice try Morty.');
+		res.send('Nice try Morty. Enjoy the poisened pikachu packets nUb >:D');
 	}
 });
 
@@ -64,24 +63,12 @@ router.all ('/postage/:user_id', function(req, res){
 				console.log ('Form data is empty');
 			}
 			else {
-				var brain_id = $(req.user.user_id).replace('|', '');
-				gateway.address.create({
-					customerId: brain_id,
-					firstName: form.data.contactName,
-					streetAddress: form.data.address1,
-					extendedAddress: form.data.address2,
-					locality: form.data.postalCity,
-					region: form.data.postalState,
-					postalCode: form.data.postalZip,
-					countryCodeAlpha2: form.data.postalCountry
-				}, function (err, result) {
-					console.log('New address saved to Braintree');
-				});
+				var cleaned_id = req.params.user_id);
 
 				// MONGODB ---------------------
 				// create a new user called chris
 				var newAddress = new postal({
-					uid : 		req.user.user_id,
+					uid : 		cleaned_id,
 					name : 		form.data.contactName,
 					phone : 	form.data.contactNumber,
 					address1 : 	form.data.address1,

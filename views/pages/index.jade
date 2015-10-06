@@ -38,28 +38,16 @@ html
 					.clear
 					ul.gotoshop
 						li.nav-btn
-							a(href="#", onClick="signin('man')")
+							a(href="man", onClick="signin('man')")
 								img(class="maleshop")
 						li.nav-btn
-							a(href="#", onClick="signin('woman')")
+							a(href="woman", onClick="signin('woman')")
 								img(class="femaleshop")
 					.placeholder
 
 
 
 		script(type='text/javascript').
-			// ~~~~~~~~~~~~~~~~~ AUTH0 CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			var lock = new Auth0Lock('aDP9vhLVwnXkCUXCUXebeU6g6Y15tX6p', 'copicat.auth0.com');
-			function signin(shop) {
-				lock.show({
-					callbackURL: 'http://ec2-54-206-83-33.ap-southeast-2.compute.amazonaws.com:8080/login?redir=/' + shop,
-					responseType: 'code',
-					authParams: {
-						scope: 'openid profile'
-					}
-				});
-			}
-			// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 			$(document).ready(function(){
 				$("li.nav-btn img").hover(function(){

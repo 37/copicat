@@ -7,7 +7,7 @@ block content
 
 	#grid-content.active(data-animation="hierarchical-display")
 		each item in items
-			a(href="/man/products/#{(item.name).split(' ').join('-')}")
+			a(href="/man/products/#{(item.name).split('/').join('').split(',').join('').split(' ').join('-')}")
 				.item
 					if item.defaultimage
 						img.item-img(src="#{item.defaultimage}")

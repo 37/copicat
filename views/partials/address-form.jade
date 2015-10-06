@@ -1,22 +1,22 @@
-form(id="newAddress", action="/user_api/postage/new", role="form", method="POST")
-	input(id="contactName", name="contactName", class="half", type="text", placeholder="Full name", maxlength="128")
+form(id="newAddress", action="/user_api/postage/#{user.id}", role="form", method="POST")
+	input(id="contactName", name="contactName", class="half", type="text", placeholder="Full name", maxlength="128" required)
 
 	if user
-		input(id="contactId", name="contactId", type="hidden" value="#{user.id}")
+		input(id="contactId", name="contactId", type="hidden" value="#{user.id}" required)
 
-	input(id="contactNumber", name="contactNumber", class="half", type="text", placeholder="Phone", maxlength="16")
+	input(id="contactNumber", name="contactNumber", class="half", type="text", placeholder="Phone", maxlength="16" required)
 
-	input(id="address1", name="address1", class="full", type="text", maxlength="256", placeholder="Address line 1")
+	input(id="address1", name="address1", class="full", type="text", maxlength="256", placeholder="Address line 1" required)
 
 	input(id="address2", name="address2", class="full", type="text", maxlength="256", placeholder="Address line 2")
 
-	input(id="postalCity", name="postalCity", class="half", type="text", autocomplete="off", placeholder="City", data-widget-cid="widget-9", maxlength="64")
+	input(id="postalCity", name="postalCity", class="half", type="text", autocomplete="off", placeholder="City", data-widget-cid="widget-9", maxlength="64" required)
 
-	input(id="postalState", name="postalState", class="quarter", type="text", autocomplete="off", placeholder="State/Region:", data-widget-cid="widget-7", maxlength="64")
+	input(id="postalState", name="postalState", class="quarter", type="text", autocomplete="off", placeholder="State/Region:", data-widget-cid="widget-7", maxlength="64" required)
 
 	input(id="postalZip", name="postalZip", class="quarter", type="text", placeholder="zip code", maxlength="15")
 	.input-field
-		select
+		select(name="postalCountry" required)
 			option(value="", disabled, selected) Choose your country
 			option(value="US") United States
 			option(value="AU") Australia
@@ -323,21 +323,34 @@ script(type="text/javascript").
 		});
 	});
 
-	// New address form submitted <- FIX VALIDATION
-	$('#newAddress').validate({
+	function closeForm(status){
+		$( "#add-address" ).slideUp( "medium", function() {
+			//Finished animation
+			switch(status){
+				case 'loading':
+					// code
+					preload__('#add-address');
+					break;
+				case 'success':
+					preload__('#add-address');
+					break;
+			}
+		});
+	}
 
-		submitHandler: function(form) {
+	function openForm(){
+		$( "#add-address" ).slideDown( "medium", function() {
+			//Finished animation
+		});
+	}
 
-			$('#newAddress').slideUp(medium, function(){
-				$('#shipto .loading').addClass('active');
-			});
-
-			// get some values from elements on the page:
-			var $form = $(this),
-				url = $form.attr('action');
-
-			// Send the data using post
-			var submission = {
+	$(document).ready(function(){
+		$('#newAddress').submit(function(event) {
+			// stop the form from submitting the normal way and refreshing the page
+			event.preventDefault();
+			closeForm('loading');
+			//get the form data
+			var formData = {
 				contactName: 	$('#contactName').val(),
 				contactId: 		$('#contactId').val(),
 				contactNumber: 	$('#contactNumber').val(),
@@ -346,27 +359,30 @@ script(type="text/javascript").
 				postalCity: 	$('#postalCity').val(),
 				postalState: 	$('#postalState').val(),
 				postalZip: 		$('#postalZip').val(),
-				postalCountry: 	$('#postalCountry').val()
+				postalCountry: 	$('.select-dropdown > li.active span').text()
 			};
 
+			// process the form
 			$.ajax({
-	            url: url,
-	            type: 'POST',
-	            data: submission
-	        }).done(function(data) {
-				// Hide form show loading icon
-				$('#shipto .loading').removeClass('active');
-				$('.add-address-button').css({
-					display: 'block'
-				});
-				$('.add-address-title').css({
-					display: 'block'
-				});
-			}).fail(function(data) {
-				// Hide form show loading icon
-				$( "#add-address" ).slideDown( "medium", function() {
-					$('#shipto .loading').removeClass('active');
-				});
+				type		: 'POST',
+				url			: $('#newAddress').attr('action'),
+				data		: formData,
+				dataType	: 'json',
+				encode		: true
+			})
+			// using the done promise callback
+			.done(function(response) {
+
+				// log data to the console so we can see
+				console.log(response);
+				//SUCCESS
+				closeForm(reponse);
+			})
+			.fail(function(response) {
+				// log data to the console so we can see
+				console.log(response);
+				// FAILS
+				openForm();
 			});
-	    }
+		});
 	});
