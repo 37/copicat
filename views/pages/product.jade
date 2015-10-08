@@ -43,11 +43,12 @@ block content
 						.clear
 						if items.options
 							h5 Options:
-						each selection in items.options
-							.input-field
-								select(name="option")
-									each option in selection
-										option(value="#{option}") #{option}
+							each option in items.options
+								.input-field
+									select(name="#{option[0]}")
+										option(value="", disabled, selected) #{option[0]}
+										each item in option[1]
+											option(value="#{item.label}") #{item.label}
 							.clear
 
 						h4.price #{items.price}
@@ -122,11 +123,12 @@ block content
 					if user
 						h3 Checkout time.
 						h4 How would you like to pay?
-						form(id="checkout", method="post", action="/checkout")
+						form(id="checkout", method="post", action="/checkout/#{items._id}")
 							#payment-form
 							button.waves-effect.waves-light.btn-large(type="submit")
 								i.material-icons.left thumb_up
-								Pay #{items.price}
+								| go
+								
 
 					else
 						h3 How did you get here?!
@@ -176,6 +178,8 @@ block scripts
 		$(document).ready(function() {
 			$('select').material_select();
 		});
+
+
 
 		// Update DOM | Looking pretty
 		$('body').addClass('product man');

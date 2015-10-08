@@ -25,6 +25,11 @@
 	visibility: visible;
 }
 
+.com__nav-link.wait {
+    background-color: #efefef;
+    box-shadow: none;
+    cursor: default;
+}
 
 /* animation classes */
 .animate {

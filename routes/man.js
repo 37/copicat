@@ -14,14 +14,12 @@ var products = require('../models/product'),
 function product(product, ref, stage, req, res, locals){
 	if (req.user) {
 		var user_id = req.user.id;
-		console.log('getting user postage addresses for: ' + user_id);
 		postage.find({uid: user_id}, function(err, result) {
 			if (err) {
 				return('none');
 				throw err;
 			} else {
 				// object of all the users returned in result variable
-				console.log('result: ' + result);
 				res.render('pages/product', extend({
 					title: 'Copicat',
 					root: ref,

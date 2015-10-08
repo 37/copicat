@@ -14,29 +14,27 @@ var product = require('../models/product');
 
 //Declare the schema of new address form:
 var newProduct = forms.create({
-	title: forms.fields.string({
+	title : forms.fields.string({
 		required: true
 	}),
-	price: forms.fields.string({
+	price : forms.fields.string({
 		required: true
 	}),
-	defaultimage: forms.fields.string({
+	defaultimage : forms.fields.string({
 		required: true
 	}),
-	images: forms.fields.array({
+	images : forms.fields.array({
 		required: true
 	}),
-	sex: forms.fields.string({
+	sex : forms.fields.string({
 		required: true
 	}),
-	category: forms.fields.string({
+	category : forms.fields.string({
 		required: true
 	}),
-	tags: forms.fields.array(),
-	option: forms.fields.array(),
-	rating: forms.fields.string({
-		required: true
-	})
+	tags : forms.fields.array(),
+	option : forms.fields.array(),
+	rating : forms.fields.string()
 });
 
 // A render function that will render our page and provide the values of the
@@ -58,6 +56,11 @@ module.exports = function loader(){
 	// Capture all parametised requests, the form library will regotiate between them
 
 	//DEFAULT LOAD
+	router.post('/new', function(req, res){
+		console.log('form submission: ' + req);
+		res.send('stuff: ' + req.body);
+	});
+
 	router.all ('/', function(req, res){
 		newProduct.handle(req, {
 			success: function (form) {
@@ -72,15 +75,15 @@ module.exports = function loader(){
 					// create a new user called chris
 					var newProduct = new product({
 						name : form.data.title,
-    					price : form.data.price,
+						price : form.data.price,
 						sales : 0,
 						defaultimage : form.data.defaultimage,
-    					images : form.data.images,
-    					sex : form.data.sex,
-    					category : form.data.category,
-    					tags : form.data.tags,
-    					options : form.data.option,
-    					rating : form.data.rating
+						images : form.data.images,
+						sex : form.data.sex,
+						category : form.data.category,
+						tags : form.data.tags,
+						options : form.data.option,
+						rating : form.data.rating
 					});
 
 					// Take product and generate ID

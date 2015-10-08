@@ -16,15 +16,16 @@ module.exports = function loader(){
 	  privateKey: "f5021d4aa8d7932b8778c341ae3a793e"
 	});
 
-	router.post("/", function (req, res) {
+	router.post("/:product", function (req, res) {
+		var product_id = req.params.product;
+		console.log('body: ' + req.body);
 		var nonce = req.body.payment_method_nonce;
-		console.log('braintree payment nonce: ' + nonce);
-
 		var brain_id = (req.user.id).replace('|', '');
+
 		// Create payment method
 		gateway.paymentMethod.create({
 			customerId: brain_id,
-			paymentMethodNonce: 'fake-valid-nonce',
+			paymentMethodNonce: nonce,
 			options: {
 				makeDefault: true,
 				failOnDuplicatePaymentMethod: true,
@@ -34,21 +35,25 @@ module.exports = function loader(){
 		}, function (err, result) {
 			if (err) console.log (err);
 			console.log(result);
-		});
-
-		gateway.transaction.sale({
-			customerId: brain_id,
-			amount: '10.00',
-			paymentMethodNonce: 'fake-valid-nonce',
-		}, function (err, result) {
-			if (err) console.log (err);
-			if (result.success == true) {
-				res.send('success');
-			} else {
-				res.send('failed');
-			}
+			//SAVE THIS PAYMENT METHOD TO USER
+			// CREATE TRANSACTION FUNCTIONALITY
 		});
 	});
+
+	// --------------------------
+	// 		TRANSACTION
+	// gateway.transaction.sale({
+	// 	customerId: nonce,
+	// 	amount: '10.00',
+	// 	paymentMethodNonce: 'fake-valid-nonce',
+	// }, function (err, result) {
+	// 	if (err) console.log (err);
+	// 	if (result.success == true) {
+	// 		res.send('success');
+	// 	} else {
+	// 		res.send('failed');
+	// 	}
+	// });
 
 	return router;
 }
